@@ -2,6 +2,8 @@ const express = require('express') //npm i express cors
 const cors = require('cors')
 const app = express(); //to use express
 const port = 3000;
+require('dotenv').config
+
 
 app.use(cors()) //to allow everyone access the cors will change later 
 
