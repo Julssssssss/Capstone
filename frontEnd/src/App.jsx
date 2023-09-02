@@ -1,10 +1,10 @@
 import './App.css'
-import LoginPage from './components/loginPage'
+import LoginButton from './components/LoginButton'
 
 const App = () => {
   return (
     <div>
-      <LoginPage/>
+      <LoginButton/>
     </div>
   )
 }
