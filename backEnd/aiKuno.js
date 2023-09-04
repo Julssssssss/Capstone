@@ -1,4 +1,3 @@
-const random = require('random')
 const HOBBY = "Playing video games";
 
 function Question(hobby){
@@ -32,7 +31,7 @@ function Question(hobby){
             num = rand[i]+5
         }
     })
-    let randomNumber = random.integer(0, i)
+    let randomNum = parseInt(Math.random() * num)
     
     const spec = [
         `What is the name of your favorite in a ${bop}?`, //<reading, video game, watching movie>
@@ -92,10 +91,11 @@ function Question(hobby){
             gen.push(spec[6])
             break;
     }    
-    
-    q1=gen[randomNumber]
-    q2=gen[randomNumber]
-    
-    console.log(q1,"\n", q1)
+    q1=gen[randomNum]
+    gen.splice(randomNum, 1)
+    randomNum = parseInt(Math.random() * num)
+    q2=gen[randomNum]
+    console.log(gen)
+    console.log(q1, "\n", q2)
 }
 Question(HOBBY)
