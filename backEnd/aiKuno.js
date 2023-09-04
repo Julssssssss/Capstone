@@ -93,9 +93,11 @@ function Question(hobby){
     }    
     q1=gen[randomNum]
     gen.splice(randomNum, 1)
-    randomNum = parseInt(Math.random() * num)
+    temp = randomNum
+    while (temp == randomNum){
+        randomNum = parseInt(Math.random() * num)
+    }
     q2=gen[randomNum]
-    console.log(gen)
     console.log(q1, "\n", q2)
 }
 Question(HOBBY)
