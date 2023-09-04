@@ -13,10 +13,10 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       domain={Dom}
       clientId = {ClientId}
       authorizationParams={{
-        redirect_uri: window.location.origin
+      redirect_uri: window.location.origin
       }}
     >
       <App />
-    </Auth0Provider>,
+    </Auth0Provider>
   </React.StrictMode>,
 )

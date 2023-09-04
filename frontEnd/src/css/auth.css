@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*{
+    margin:0px;
+    padding: 0px;
+}
+
+.container{
+    @apply bg-[#0D1832] flex flex-row justify-center
+} 
+
+.userForm{
+    @apply bg-[#17394C] flex flex-row
+
+}
+.form{
+ @apply bg-white
+
+}

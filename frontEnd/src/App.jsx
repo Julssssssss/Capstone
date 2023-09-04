@@ -1,11 +1,18 @@
 import './App.css'
-import LoginButton from './components/LoginButton'
+import {BrowserRouter, Routes, Route} from 'react-router-dom'
+import UserLanding from './pages/userLanding.jsx'
+import AuthForm from './pages/authForm.jsx'
+
+
 
 const App = () => {
   return (
-    <div>
-      <LoginButton/>
-    </div>
+  <BrowserRouter>
+    <Routes>
+      <Route path="/" element={<UserLanding/>}/>
+      <Route path="landing" element={<AuthForm />}/>
+    </Routes>
+  </BrowserRouter>
   )
 }
 
