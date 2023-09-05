@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.landParent{
+    @apply bg-[#0D1832] flex flex-col
+}
+
+.loginButton{
+    @apply bg-[#134083] flex flex-row justify-center m-20 p-10 text-white text-xl
+}
