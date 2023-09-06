@@ -2,9 +2,8 @@ const HOBBY = "Playing video games";
 
 function Question(hobby){
     let bop=``
-    let q1= ``
-    let q2= ``
     let num =''
+    let q = []
     const rand = [5, 5, 2, 3, 3, 4, 4, 4]
     const cat= [
         "movie", "video game", 
@@ -91,13 +90,14 @@ function Question(hobby){
             gen.push(spec[6])
             break;
     }    
-    q1=gen[randomNum]
+    q.push(gen[randomNum])
     gen.splice(randomNum, 1)
     temp = randomNum
     while (temp == randomNum){
         randomNum = parseInt(Math.random() * num)
     }
-    q2=gen[randomNum]
-    console.log(q1, "\n", q2)
+    q.push(gen[randomNum])
+    return q
 }
-Question(HOBBY)
+const secQues= Question(HOBBY)
+console.log(secQues)
