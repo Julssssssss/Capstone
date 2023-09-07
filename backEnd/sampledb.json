@@ -1,16 +1,16 @@
 {
     "sample1":{
-        "img": "sample1",
+        "img": "sampleIMG1",
         "title": "sample1",
         "desc": "sample1"
     },
     "sample2":{
-        "img": "sample2",
+        "img": "sampleIMG2",
         "title": "sample2",
         "desc": "sample2"
     },
     "sample3":{
-        "img": "sample3",
+        "img": "sampleIMG3",
         "title": "sample3",
         "desc": "sample3"
     }
