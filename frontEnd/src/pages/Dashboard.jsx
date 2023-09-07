@@ -3,25 +3,40 @@ import axios from 'axios'
 
 const Dashboard = () => {
 
-    //taga salo lang ng data galing backend
-    const [data, setData] = useState([]);
+  //taga salo lang ng data galing backend
+  const [data, setData] = useState([]);
 
-    useEffect(() => {
-      // Fetch data from the server when the component mounts
-      axios.get("http://localhost:3000/db")//saan kukunin yung data
-        .then((res) => setData(res.data))
-        .catch((error) => console.log("Error fetching data", error));
-    }, []);
-    
-    console.log(`here`, Object.values(data))
+  useEffect(() => {
+  // Create an asynchronous function within useEffect
+  async function fetchData() {
+    try {
+      const response = await axios.get("http://localhost:3000/db");
+      setData([...data, response.data]);
+    } catch (error) {
+      console.log("Error fetching data", error);
+    }
+  }
+
+  // Call the asynchronous function
+  fetchData();
+}, []); // Empty dependency array means this effect will run once on mount
+
+  function sample() {
+    return data.map((elem) => 
+      Object.values(elem).map((el, index)=>{
+        return (
+          <div key={index}>
+            <h1>{el.img}</h1>
+          </div>
+        )
+      })
+    );
+  }
+
   return (
-    <>
-    <div className="grid grid-cols-4 gap-4">
-  <div>01</div>
-  
-  <div>09</div>
-</div>
-    </>
+    <div>
+      {sample()}
+    </div>
   )
 }
 

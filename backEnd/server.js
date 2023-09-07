@@ -3,7 +3,7 @@ const cors = require('cors')
 const app = express(); //to use express
 const port = 3000;
 require('dotenv').config
-const sample = [require('./sampledb.json')]
+const sample = require('./sampledb.json')
 
 app.use(cors()) //to allow everyone access the cors will change later 
 
