@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react"
+import NavBar from '/src/components/NavBar'
+import Profile from '/src/components/Profile'
 import axios from 'axios'
 
 const Dashboard = () => {
@@ -22,20 +24,24 @@ const Dashboard = () => {
 }, []); // Empty dependency array means this effect will run once on mount
 
   function sample() {
+  
     return data.map((elem) => 
       Object.values(elem).map((el, index)=>{
         return (
-          <div key={index} className="flex flex-row mb-[1rem]">
-            <div>
-              <img src={el.img} alt={el.title}>
+          // container for item and description
+          <div key={index} className="flex flex-row m-3 rounded-lg bg-[#134083] mb-[1rem] z-0">
+            <div className="p-3 bg-[#17394C] m-2 rounded-xl">
+              <img src={el.img} alt={el.title} className="rounded-xl">
               </img>
             </div>
-
+          {/*Parent container for desription */}
             <div className="flex flex-col w-full items-center relative">
+              {/*name item*/}
               <div>{el.title}</div>
+          {/*item description */}
               <div className="w-full h-full p-2">{el.desc}</div>
-              
-              <button className={`rounded-full h-2 w-2 absolute bottom-1 right-1 ${el.availability===("yes") ? 'bg-green-500':'bg-red-500'}`}></button>
+          {/*for item status */}
+              <button className={`rounded-full h-2 w-2 absolute bottom-2 right-2 ${el.availability===("yes") ? 'bg-green-500':'bg-red-500'}`}></button>
             </div>
           </div>
         )
@@ -44,26 +50,42 @@ const Dashboard = () => {
   }
 
   return (
+    <>
     <div>
-      {/*wag kalimutan delete to after kasi pang debug lang tong style nato*/}
-      <style>
+         <style>
         {`
           *{outline: solid red}
         `}
       </style>
+      
 
-      <div className="bg-[#0d1832] text-white">
-        <div className="flex flex-row">
-          <h1>
-            NAVBAR
-          </h1>
+{/*navbar and item contaner */}
+
+      <div className="bg-[#0d1832]  text-white">
+        
+        <div className="hi flex flex-row w-auto">
+            <div className="flex flex-row">
+                <NavBar />
+                <div className="mt-0 pt-6 text-xl">hello, juls</div>
+            </div>
+          
+          <div className="hello flex flex-row-reverse">
+              <Profile />
+              <h1>hello</h1>
+          </div>
         </div>
+         
+        
 
+{/*Item display parent*/}
         <div className="flex flex-col h-full p-[1rem]">
           {sample()}
         </div>
       </div>
     </div>
+    
+    
+    </>
   )
 }
 
