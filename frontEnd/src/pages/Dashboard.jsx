@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import NavBar from '/src/components/NavBar'
 import Profile from '/src/components/Profile'
+import SearchBar from '/src/components/SearchBar'
 import axios from 'axios'
 
 const Dashboard = () => {
@@ -13,7 +14,7 @@ const Dashboard = () => {
   async function fetchData() {
     try {
       const response = await axios.get("http://localhost:3000/db");
-      setData([...data, response.data]);
+      setData([response.data]);
     } catch (error) {
       console.log("Error fetching data", error);
     }
@@ -30,8 +31,8 @@ const Dashboard = () => {
         return (
           // container for item and description
           <div key={index} className="flex flex-row m-3 rounded-lg bg-[#134083] mb-[1rem] z-0">
-            <div className="p-3 bg-[#17394C] m-2 rounded-xl">
-              <img src={el.img} alt={el.title} className="rounded-xl">
+            <div className="p-2 bg-[#17394C] m-2 rounded-xl">
+              <img src={el.img} alt={el.title} className="rounded-xl object-contain w-52 h-22">
               </img>
             </div>
           {/*Parent container for desription */}
@@ -51,38 +52,34 @@ const Dashboard = () => {
 
   return (
     <>
-    <div>
-         <style>
-        {`
-          *{outline: solid red}
-        `}
-      </style>
-      
-
+  <div className="bg-[#0d1832]">
+  
 {/*navbar and item contaner */}
 
-      <div className="bg-[#0d1832]  text-white">
-        
-        <div className="hi flex flex-row w-auto">
-            <div className="flex flex-row">
-                <NavBar />
-                <div className="mt-0 pt-6 text-xl">hello, juls</div>
-            </div>
-          
-          <div className="hello flex flex-row-reverse">
-              <Profile />
-              <h1>hello</h1>
-          </div>
+<div className="w-full flex justify-between">
+    <div className="flex justify-start space-x-2 w-[50rem]">
+      <div className="mt-6 ml-5">
+        <NavBar />
         </div>
-         
+        <div className="text-white text-lg mt-5">Hello, Julsssss</div>
+    </div>
+    <div className="flex justify-end space-x-2 w-[50rem]">
+        <Profile />
+    </div>
+</div>
         
+        
+         
+    
 
 {/*Item display parent*/}
+          <SearchBar />
         <div className="flex flex-col h-full p-[1rem]">
+         
           {sample()}
         </div>
       </div>
-    </div>
+    
     
     
     </>
