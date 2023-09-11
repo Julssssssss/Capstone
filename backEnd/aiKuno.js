@@ -1,4 +1,4 @@
-const HOBBY = "Playing video games";
+const HOBBY = "Acting";
 
 function Question(hobby){
     let bop=``
@@ -27,7 +27,7 @@ function Question(hobby){
         if(hobby === el){
             i=index
             bop = cat[i]
-            num = rand[i]+5
+            num = rand[i]+4
         }
     })
     let randomNum = parseInt(Math.random() * num)
@@ -95,6 +95,7 @@ function Question(hobby){
     temp = randomNum
     while (temp == randomNum){
         randomNum = parseInt(Math.random() * num)
+        randomNum == temp 
     }
     q.push(gen[randomNum])
     return q

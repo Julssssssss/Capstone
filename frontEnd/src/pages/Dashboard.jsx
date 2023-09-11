@@ -30,7 +30,7 @@ const Dashboard = () => {
               <img src={el.img} alt={el.title}>
               </img>
             </div>
-
+            
             <div className="flex flex-col w-full items-center relative">
               <div>{el.title}</div>
               <div className="w-full h-full p-2">{el.desc}</div>
