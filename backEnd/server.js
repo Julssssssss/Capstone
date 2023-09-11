@@ -22,22 +22,14 @@ app.use(passport.session())
 app.use(cors(
     {
     origin: "http://localhost:3000",
-    methods: "GET,POST,PUT,DELETE", 
+    methods: "GET,POST,PUT,DELETE",
     credentials: true
     }
 )) //to allow everyone access the cors will change later 
 
 app.use("/auth", authRoute)
 
-app.listen(port, console.log(`running in port ${port}`)) //run the port in 3000
-
-app.get('/', (req, res)=>{
-    res.send('<a href="/auth/google">Authenticate wi th Google</a>')
-})
-
-app.get('/protected', (req, res)=>{
-    res.send('<h1>Hello!</h1>')
-})
+app.listen(port || 8080, console.log(`running in port ${port}`)) //run the port in 3000
 
 app.get('/db', (req, res)=>{
     res.json(sample)

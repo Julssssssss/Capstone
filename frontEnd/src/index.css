@@ -1,3 +1,21 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+.hi{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    
+}
+.hello{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    
+}
