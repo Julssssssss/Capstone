@@ -29,7 +29,7 @@ app.use(cors(
 
 app.use("/auth", authRoute)
 
-app.listen(port, console.log(`running in port ${port}`)) //run the port in 3000
+app.listen(port,()=> console.log(`running in port ${port}`)) //run the port in 3000
 
 app.get('/db', (req, res)=>{
     res.json(sample)
