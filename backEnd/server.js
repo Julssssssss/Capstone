@@ -21,7 +21,7 @@ app.use(passport.session())
 
 app.use(cors(
     {
-    origin: "http://localhost:3000",
+    origin: "http://localhost:4000",
     methods: "GET,POST,PUT,DELETE",
     credentials: true
     }
@@ -29,7 +29,7 @@ app.use(cors(
 
 app.use("/auth", authRoute)
 
-app.listen(port || 8080, console.log(`running in port ${port}`)) //run the port in 3000
+app.listen(port, console.log(`running in port ${port}`)) //run the port in 3000
 
 app.get('/db', (req, res)=>{
     res.json(sample)

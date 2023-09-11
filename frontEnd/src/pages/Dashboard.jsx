@@ -12,7 +12,7 @@ const Dashboard = () => {
   // Create an asynchronous function within useEffect
   async function fetchData() {
     try {
-      const response = await axios.get(import.meta.env.VITE_API_SAMPLEDB);
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}/db`);
       setData([response.data]);
     } catch (error) {
       console.log("Error fetching data", error);
