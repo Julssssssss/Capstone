@@ -1,6 +1,13 @@
 const GoogleStrategy = require("passport-google-oauth20").Strategy
 const passport =require('passport')
 
+passport.serializeUser((user, done)=>{
+    done(null, user)
+})
+passport.deserializeUser((user, done)=>{
+    done(null, user)
+})
+
 passport.use(
     new GoogleStrategy(
         {
@@ -9,15 +16,8 @@ passport.use(
             callbackURL: "/auth/google/callback",
             scope:["profile", "email"]
         },
-        function (accessToken, refreshToken, profile, callback){
-            callback(null, profile)
+        function (accessToken, refreshToken, profile, done){
+            done(null, profile)
         }
     )
 )
-
-passport.serializeUser((user, done)=>{
-    done(null, user)
-})
-passport.deserializeUser((user, done)=>{
-    done(null, user)
-})
