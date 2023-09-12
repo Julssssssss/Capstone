@@ -1,13 +1,19 @@
-import React, { useState } from "react";
+import React, { useState } from "react"
+import { Outlet, Link } from "react-router-dom"
+import Help from '/src/navComponents/Help'
 
 
 
 const NavBar = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false)
+  const [isNav, setNav] = useState(false)
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
+  const toggleNav = () =>{
+    setNav(!isNav)
+  }
 
   return (
     <>
@@ -45,14 +51,24 @@ const NavBar = () => {
         )}
         {isOpen && (
        // nav bar options 
-       // the parent
+       // parent
           <div className="bg-[#17394c80] rounded-xl h-screen w-screen absolute top-0 left-0 z-10">
             {/* sub parent */}
             <div className="flex flex-col p-5 mt-14 text-white">
-                <button className="bg-[#134083] mt-5 mb-5 rounded-full mr-48 p-2">Appointment</button>
-                <button className="bg-[#134083] mb-5 rounded-full mr-48 p-2">Appointment</button>
-                <button className="bg-[#134083] mb-5 rounded-full mr-48 p-2">Appointment</button>
-                <button className="bg-[#134083] rounded-full mr-48 p-2">Help</button>
+                <button className="bg-[#134083] mt-5 mb-3 rounded-full mr-48 p-3">
+                Appointment
+                </button>
+
+                <button className="bg-[#134083] mt-5 mb-3 rounded-full mr-48 p-3">
+                  Appointment
+                </button>
+
+                <button className="bg-[#134083] mt-5 mb-3 rounded-full mr-48 p-3">
+                Appointment
+                </button>
+ 
+
+            
             </div>
           </div>
         )}

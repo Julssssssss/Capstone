@@ -1,5 +1,4 @@
 import { Outlet, Link } from 'react-router-dom'
-import '/src/css/auth.css'
 import LoginButton from '/src/components/LoginButton.jsx'
 import LogoutButton from '/src/components/LogoutButton.jsx'
 
