@@ -50,42 +50,32 @@ const Dashboard = () => {
   }
 
   return (
-    <>
-  <div className="bg-[#0d1832]">
-    {/*<style>
-      {`
-        *{outline: solid red}
-      `}
-    </style>*/}
-{/*navbar and item contaner */}
-
-<div className="w-full flex justify-between">
-    <div className="flex justify-start space-x-2 w-[50rem]">
-      <div className="mt-6 ml-5">
-        <NavBar />
-        </div>
-        <div className="text-white text-lg mt-5">Hello, Julsssss</div>
-    </div>
-    <div className="flex justify-end space-x-2 w-[50rem]">
-        <Profile />
-    </div>
-</div>
-        
-        
-         
     
-
-{/*Item display parent*/}
-          <SearchBar />
-        <div className="flex flex-col h-full p-[1rem]">
-         
-          {sample()}
+    <div className="bg-[#0d1832]">
+      {/* eto yung red pang debug to*/}
+      <style>
+        {`
+          *{outline: solid red}
+        `}
+      </style>
+        {/*navbar and item contaner */}
+      <div className="w-full flex justify-between">
+        <div className="flex justify-start space-x-2 w-[50rem]">
+          <div className="mt-6 ml-5">
+            <NavBar />
+          </div>
+          <div className="text-white text-lg mt-5">Hello, Julsssss</div>
+        </div>
+        <div className="flex justify-end space-x-2 w-[50rem]">
+          <Profile />
         </div>
       </div>
-    
-    
-    
-    </>
+          {/*Item display parent*/}
+      <SearchBar />
+      <div className="flex flex-col h-full p-[1rem]">
+        {sample()}
+      </div>
+    </div>
   )
 }
 

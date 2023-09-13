@@ -93,9 +93,9 @@ function Question(hobby){
     q.push(gen[randomNum])
     gen.splice(randomNum, 1)
     temp = randomNum
-    while (temp == randomNum){
-        randomNum = parseInt(Math.random() * num)
-        randomNum == temp 
+    while (temp === randomNum){
+        randomNum = parseInt(Math.random() * (num-1))
+        
     }
     q.push(gen[randomNum])
     return q
