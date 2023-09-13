@@ -29,20 +29,26 @@ const Dashboard = () => {
       Object.values(elem).map((el, index)=>{
         return (
           // container for item and description
-          <div key={index} className="flex flex-row m-3 rounded-lg bg-[#134083] mb-[1rem] z-0">
-            <div className="p-2 bg-[#17394C] m-2 rounded-xl">
-              <img src={el.img} alt={el.title} className="rounded-xl object-contain w-52 h-22">
+          <div key={index} className="flex flex-row m-3 rounded-lg mb-[1rem] z-0 justify-end h-[9rem] items-center">
+              {/*title container*/}
+            <div className="m-2 rounded-lg bg-[#003985] overflow-hidden w-[15rem] h-[5rem]">
+              <div className="flex items-center font-bold text-white ml-[5rem] h-full p-3">
+                {el.title}
+              </div>
+            </div>
+
+            <div className="p-2 m-3 rounded-full bg-yellow-400 overflow-hidden absolute left-[1rem]">
+              <img src={el.img} alt={el.title} className="rounded-full object-contain w-[7rem]">
               </img>
             </div>
-          {/*Parent container for desription */}
-            <div className="flex flex-col w-full items-center relative">
-              {/*name item*/}
-              <div>{el.title}</div>
-          {/*item description */}
-              <div className="w-full h-full p-2">{el.desc}</div>
-          {/*for item status */}
+
+              {/*name item
+              <div>{el.title}</div>*/}
+
+              {/*for item status 
               <button className={`rounded-full h-2 w-2 absolute bottom-2 right-2 ${el.availability===("yes") ? 'bg-green-500':'bg-red-500'}`}></button>
-            </div>
+              */}
+            
           </div>
         )
       })
@@ -52,12 +58,6 @@ const Dashboard = () => {
   return (
     
     <div className="bg-[#0d1832]">
-      {/* eto yung red pang debug to*/}
-      <style>
-        {`
-          *{outline: solid red}
-        `}
-      </style>
         {/*navbar and item contaner */}
       <div className="w-full flex justify-between">
         <div className="flex justify-start space-x-2 w-[50rem]">
