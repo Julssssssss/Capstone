@@ -1,5 +1,6 @@
 
 const LpCont1 = () => {
+    let r= false
     const img = `https://picsum.photos/200`
     const lorem = `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`
     
@@ -7,7 +8,7 @@ const LpCont1 = () => {
         return(
             <>
                 {/* content na dko din alam itatawag */}
-                <div className="flex w-full mt-[3rem] h-[10rem] justify-between">
+                <div className={`flex w-full h-[10rem] justify-between ${r? 'flex-row-reverse mt-[3.5rem]': 'mt-[3rem]'}`}>
                     <div className="bg-[#003985] w-[5rem]">
                     </div>
 
@@ -17,25 +18,8 @@ const LpCont1 = () => {
 
                 </div>
                 {/* phone i guess? */}
-                <img className="absolute left-[4rem] bottom-[16rem] w-[7rem] h-[12rem] shadow-sm rounded-md" src={img}></img>
-            </>
-        )
-    }
-    function content1rev(){
-        return(
-            <>
-                {/* content na dko din alam itatawag */}
-                <div className="flex w-full mt-[4rem] h-[10rem] justify-between flex-row-reverse">
-                    <div className="bg-[#003985] w-[5rem]">
-                    </div>
-
-                    <div className="text-center rounded-lg p-2 w-[48%] bg-[#17394c] shadow-md shadow-yellow-400">
-                        {lorem}
-                    </div>
-
-                </div>
-                {/* phone i guess? */}
-                <img className="absolute right-[4rem] bottom-[2rem] w-[7rem] h-[12rem] shadow-sm rounded-md" src={img}></img>
+                <img className={`absolute w-[7rem] h-[12rem] shadow-sm rounded-md ${r? 'right-[4rem] bottom-[2.4rem]': 'left-[4rem] bottom-[16rem]'}`} src={img}></img>
+                {r=true}
             </>
         )
     }
@@ -69,7 +53,7 @@ const LpCont1 = () => {
 
                 {/* dko din alam tatawag dito basta first content */}
                 {content1()}
-                {content1rev()}
+                {content1()}
                 
             </div>
         </>
