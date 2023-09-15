@@ -8,6 +8,7 @@ import {Route, Routes} from 'react-router-dom'
 import Confirmation from './pages/Confirmation'
 import ItemDetails from './pages/ItemDetails'
 import Profile from './pages/Profile'
+import LandingPage from './pages/LandingPage'
 
 
 
@@ -15,16 +16,14 @@ const App = () => {
   return (
     <>
     {/* eto yung red pang debug to*/}
-    <style>
-      {`*{outline: solid red}`}
-    </style>
+    
     
    <div>
     <Routes>
       {/*default view */}
       <Route path='/' element={<UserLanding />}/>
       {/*pag gusto mo mag-add pa ng ibang path declare mo muna dito*/}
-      <Route exact path='/dashboard' element={<Profile/>}/>
+      <Route exact path='/dashboard' element={<LandingPage/>}/>
       <Route exact path='/authForm' element={<AuthForm/>}/>
     </Routes>
    </div>
