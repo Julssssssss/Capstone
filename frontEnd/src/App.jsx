@@ -16,7 +16,9 @@ const App = () => {
   return (
     <>
     {/* eto yung red pang debug to*/}
-    
+    <style>
+      {`*{outline: solid red}`}
+    </style>
     
    <div>
     <Routes>

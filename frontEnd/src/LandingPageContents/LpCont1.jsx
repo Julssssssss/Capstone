@@ -26,7 +26,7 @@ const LpCont1 = () => {
 
     return (
         <>
-            <div className="h-full flex flex-col items-center">
+            <div className="h-screen flex flex-col items-center">
                 {/* dko alam ano itatawag dito basta eto nasa unahan */}
                 
                 <div className="flex flex-row bg-[#0d1832] rounded-2xl shadow-2xl shadow-[#003985] w-[21rem] h-[12.6rem] mt-[3rem]">
