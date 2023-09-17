@@ -7,7 +7,11 @@ export default {
   ],
   theme: {
 
-    extend: {},
+    extend: {
+      boxShadow: {
+        '3xl': '0px 4px 5px 5px',
+      }
+    },
   },
   plugins: [],
 }

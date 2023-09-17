@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { Outlet, Link } from "react-router-dom"
 import Help from '/src/navComponents/Help'
-
+import Profile from '/src/components/Profile'
 
 
 const NavBar = () => {
@@ -36,23 +36,14 @@ const NavBar = () => {
           <div className="bg-black absolute top-0 left-0 z-10 w-[14rem] h-full">
             {/* sub parent dito */}
             <div className="flex flex-col text-white p-5 h-full">
-
               {/* need tong naka map*/}
               <button className="bg-[#134083] rounded-full mt-[1rem] p-2">
                 Appointment
               </button>
-
-              <button className="bg-[#134083] rounded-full mt-[2rem] p-2">
-                Appointment
-              </button>
-
-              <button className="bg-[#134083] rounded-full mt-[2rem] p-2">
-                Appointment
-              </button>
-
             </div>
           </div>
         )}
+        
       </div>
     </>
   );
