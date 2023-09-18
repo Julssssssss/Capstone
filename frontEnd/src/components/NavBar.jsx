@@ -31,23 +31,21 @@ const NavBar = () => {
       </div>
 
         {isOpen && (
-          <div>
-            <div className="pt-[2rem] bg-[#17394C] w-[50%] absolute left-0 top-0 z-10 h-full">
-              {/* sub parent dito */}
-              <div className="flex flex-col bg-[#17394C] text-white h-full items-center">
+          <div className="flex fixed left-0 top-0 z-10 h-full w-screen">
+            {/* sub parent dito */}
+            <div className="flex flex-col h-full items-center py-[2rem] bg-[#17394C] w-[50%] text-white">
 
-                {/*naka map na*/}
-                {buttons.map((menus, index)=>(
-                  <Link to={menus.to} key={index}>
-                    <button className="bg-[#134083] w-[10rem] rounded-full mt-[1rem] p-2">
-                      {menus.label}
-                    </button>
-                  </Link>  
-                ))}
-              </div>
+              {/*naka map na*/}
+              {buttons.map((menus, index)=>(
+                <Link to={menus.to} key={index}>
+                  <button className="bg-[#134083] w-[10rem] rounded-full mt-[1rem] p-2">
+                    {menus.label}
+                  </button>
+                </Link>  
+              ))}
             </div>
-            <div className="absolute right-0 top-0 w-[50%] z-10 h-screen" onClick={toggleMenu}>
-            </div>
+            
+            <div className="w-[50%] h-full" onClick={toggleMenu}></div>
           </div>
         )}
 

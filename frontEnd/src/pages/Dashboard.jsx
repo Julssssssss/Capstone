@@ -51,14 +51,14 @@ const Dashboard = () => {
     
     <div className="bg-[#0d1832]">
         {/*navbar and item contaner */}
-      <div className="w-full flex justify-between">
-        <div className="flex justify-center items-center space-x-2 w-[50rem]">
+      <div className="w-full flex">
+        <div className="flex justify-center items-center space-x-3 w-[50rem]">
 
           <div className="">
             <NavBar />
           </div>
 
-          <div className="text-white text-lg mt-5">Hello, Julsssss</div>
+          <div className="text-white text-lg">Hello, Julsssss</div>
         </div>
         <div className="flex justify-end space-x-2 w-[50rem]">
           <Profile />
@@ -66,7 +66,7 @@ const Dashboard = () => {
       </div>
           {/*Item display parent*/}
       <SearchBar />
-      <div className="flex flex-col h-full p-[1rem]">
+      <div className="flex flex-col p-[1rem]">
         {sample()}
       </div>
     </div>
