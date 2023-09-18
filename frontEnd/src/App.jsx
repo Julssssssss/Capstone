@@ -3,7 +3,7 @@ import Dashboard from './pages/Dashboard'
 import {Route, Routes} from 'react-router-dom'
 import Help from '/src/navComponents/Help'
 import LandingPage from './pages/LandingPage'
-import Profile from '/src/pages/Profile'
+import Profile from '/src/pages/UserProfile'
 import Item from '/src/pages/ItemDetails'
 import Confirmation from '/src/pages/Confirmation'
 

@@ -31,7 +31,7 @@ const Dashboard = () => {
           // container for item and description
           <div key={index} className="flex flex-row m-3 rounded-lg mb-[1rem] z-0 justify-end h-[9rem] items-center">
               {/*title container*/}
-            <div className="m-2 rounded-lg bg-[#003985] overflow-hidden w-[15rem] h-[5rem]">
+            <div className="m-2 rounded-lg bg-[#003985] hover:bg-sky-700 active:bg-[#0d1832] overflow-hidden w-[15rem] h-[5rem]">
               <div className="flex items-center font-bold text-white ml-[5rem] h-full p-3">
                 {el.title}
               </div>
@@ -52,7 +52,7 @@ const Dashboard = () => {
     <div className="bg-[#0d1832]">
         {/*navbar and item contaner */}
       <div className="w-full flex">
-        <div className="flex justify-center items-center space-x-3 w-[50rem]">
+        <div className="flex justify-center items-end space-x-3 w-[50rem]">
 
           <div className="">
             <NavBar />
@@ -66,7 +66,7 @@ const Dashboard = () => {
       </div>
           {/*Item display parent*/}
       <SearchBar />
-      <div className="flex flex-col p-[1rem]">
+      <div className="flex flex-col h-screen p-[1rem]">
         {sample()}
       </div>
     </div>
