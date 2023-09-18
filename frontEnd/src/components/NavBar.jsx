@@ -1,20 +1,20 @@
 import React, { useState } from "react"
-import { Outlet, Link } from "react-router-dom"
-import Help from '/src/navComponents/Help'
-import Profile from '/src/components/Profile'
+import { Link } from "react-router-dom"
+
 
 
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false)
-  const [isNav, setNav] = useState(false)
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
-  const toggleNav = () =>{
-    setNav(!isNav)
-  }
-
+  
+  const buttons =[
+    {label:'Help', to:'/Help'},
+    {label:'hello'}
+  ]
+  
   return (
     <>
       {/*hamburger and close parent*/}
@@ -33,17 +33,21 @@ const NavBar = () => {
         )}
 
         {isOpen && (
-          <div className="bg-black absolute top-0 left-0 z-10 w-[14rem] h-full">
+          <div className="bg-[#17394C] absolute top-0 left-0 z-10 w-[13rem] h-full">
             {/* sub parent dito */}
-            <div className="flex flex-col text-white p-5 h-full">
-              {/* need tong naka map*/}
-              <button className="bg-[#134083] rounded-full mt-[1rem] p-2">
-                Appointment
-              </button>
+            <div className="flex flex-col bg-[#17394C] text-white h-full items-center mt-[1.5rem]">
+
+              {/*naka map na*/}
+              {buttons.map((menus, index)=>(
+                <Link to={menus.to} key={index}>
+                  <button className="bg-[#134083] w-[10rem] rounded-full mt-[1rem] p-2">
+                    {menus.label}
+                  </button>
+                </Link>  
+              ))}
             </div>
           </div>
         )}
-        
       </div>
     </>
   );

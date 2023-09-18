@@ -1,13 +1,11 @@
 //test
 import Dashboard from './pages/Dashboard'
-import NavBar from './components/NavBar'
-import AuthForm from './pages/authForm'
-import Home from './api/Home'
 import {Route, Routes} from 'react-router-dom'
-import Confirmation from './pages/Confirmation'
-import ItemDetails from './pages/ItemDetails'
-import Profile from './pages/Profile'
+import Help from '/src/navComponents/Help'
 import LandingPage from './pages/LandingPage'
+import Profile from '/src/pages/Profile'
+import Item from '/src/pages/ItemDetails'
+import Confirmation from '/src/pages/Confirmation'
 
 
 
@@ -15,16 +13,18 @@ const App = () => {
   return (
     <>
     {/* eto yung red pang debug to*/}
-    <style>
-      {`*{outline: solid red}`}
-    </style>
     
+
    <div>
     <Routes>
       {/*default view */}
-      <Route path='/' element={<Dashboard/>}/>
+      <Route path='/' element={<LandingPage/>}/>
       {/*pag gusto mo mag-add pa ng ibang path declare mo muna dito*/}
-      <Route exact path='/authForm' element={<AuthForm/>}/>
+      <Route exact path='/Dashboard' element={<Dashboard/>}/>
+      <Route exact path='/Confirmation' element={<Confirmation/>}/>
+      <Route exact path='/Item' element={<Item/>}/>
+      <Route exact path='/Help' element={<Help/>}/>
+      <Route exact path='/Profile' element={<Profile/>}/>
     </Routes>
    </div>
    </>
