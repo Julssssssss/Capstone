@@ -40,13 +40,6 @@ const Dashboard = () => {
             <div className="p-2 m-3 rounded-full bg-yellow-400 overflow-hidden absolute left-[1rem]">
               <img src={el.img} alt={el.title} className="rounded-full object-contain w-[7rem]"/>
             </div>
-
-              {/*name item
-              <div>{el.title}</div>*/}
-
-              {/*for item status 
-              <button className={`rounded-full h-2 w-2 absolute bottom-2 right-2 ${el.availability===("yes") ? 'bg-green-500':'bg-red-500'}`}></button>
-              */}
             
           </div>
         )
@@ -59,10 +52,12 @@ const Dashboard = () => {
     <div className="bg-[#0d1832]">
         {/*navbar and item contaner */}
       <div className="w-full flex justify-between">
-        <div className="flex justify-start space-x-2 w-[50rem]">
-          <div className="mt-6 ml-5 mb-1">
+        <div className="flex justify-center items-center space-x-2 w-[50rem]">
+
+          <div className="">
             <NavBar />
           </div>
+
           <div className="text-white text-lg mt-5">Hello, Julsssss</div>
         </div>
         <div className="flex justify-end space-x-2 w-[50rem]">
