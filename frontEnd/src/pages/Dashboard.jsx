@@ -52,7 +52,7 @@ const Dashboard = () => {
     <div className="bg-[#0d1832]">
         {/*navbar and item contaner */}
       <div className="w-full flex">
-        <div className="flex justify-center items-center space-x-3 w-[50rem]">
+        <div className="flex justify-center items-end space-x-3 w-[50rem]">
 
           <div className="">
             <NavBar />

@@ -12,8 +12,9 @@ const Profile = () => {
   return (
     <>
       {/* Parent profile */}
+      {profile ? <div className="h-screen w-screen fixed z-10" onClick={toggleProfile} ></div> : null}
       <div>
-        <div className={`cursor-pointer mt-4 mr-3 rounded-full bg-white h-10 w-10 z-10 ${profile ? 'bg-opacity-20' : ''}`} onClick={toggleProfile}>
+        <div className={`cursor-pointer mt-4 mr-3 rounded-full bg-white h-10 w-10 z-20 ${profile ? 'bg-opacity-20' : ''}`} onClick={toggleProfile}>
         </div>
         {profile && (
         

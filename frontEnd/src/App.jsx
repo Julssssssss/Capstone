@@ -14,10 +14,9 @@ const App = () => {
     <>
 
       {/* eto yung red pang debug to*/}
-      <style>
-        {`*{outline: solid red}`}
-      </style>
-      
+     <style>
+      {`*{outline: solid red}`}
+     </style>
 
       <div>
         <Routes>
