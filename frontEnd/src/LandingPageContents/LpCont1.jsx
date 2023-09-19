@@ -20,7 +20,7 @@ const LpCont1 = () => {
                 <div className={`flex w-screen h-[10rem] justify-between ${r? 'flex-row-reverse mt-[3.5rem]': 'mt-[3rem]'}`}>
                     <div className="bg-[#134083] w-[5rem]"></div>
                         
-                    <div className="text-center rounded-lg p-2 w-[12rem] bg-[#17394c] shadow-md shadow-yellow-400">
+                    <div className="text-center rounded-lg p-2 w-[12rem] bg-[#17394c] shadow-md shadow-yellow-400 text-white sm:text-black">
                         {lorem}
                     </div>
 
