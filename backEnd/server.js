@@ -3,10 +3,13 @@ const cors = require('cors')
 const app = express(); //to use express
 const port = 3000;
 require('dotenv').config()
+
 const passport = require('passport')
 const cookieSession = require('cookie-session')
 const sample = require('./sampledb.json')
+//passport.js file
 const passportSetup =require('./comp/passport')
+//routes
 const authRoute = require("./routes/auth")
 
 app.use(
