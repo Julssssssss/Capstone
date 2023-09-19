@@ -3,6 +3,8 @@ import NavBar from '/src/components/NavBar'
 import Profile from '/src/components/Profile'
 import SearchBar from '/src/components/SearchBar'
 import axios from 'axios'
+import { Link } from "react-router-dom"
+
 
 const Dashboard = () => {
   //taga salo lang ng data galing backend
@@ -31,11 +33,13 @@ const Dashboard = () => {
           // container for item and description
           <div key={index} className="flex flex-row m-3 rounded-lg mb-[1rem] z-0 justify-end h-[9rem] items-center">
               {/*title container*/}
-            <div className="m-2 rounded-lg bg-[#003985] hover:bg-sky-700 active:bg-[#0d1832] overflow-hidden w-[15rem] h-[5rem]">
-              <div className="flex items-center font-bold text-white ml-[5rem] h-full p-3">
-                {el.title}
+            <Link to='/Item'>
+              <div className="m-2 rounded-lg bg-[#003985] hover:bg-sky-700 active:bg-[#0d1832] overflow-hidden w-[15rem] h-[5rem]">
+                <div className="flex items-center font-bold text-white ml-[5rem] h-full p-3">
+                  {el.title}
+                </div>
               </div>
-            </div>
+            </Link>
 
             <div className="p-2 m-3 rounded-full bg-yellow-400 overflow-hidden absolute left-[1rem]">
               <img src={el.img} alt={el.title} className="rounded-full object-contain w-[7rem]"/>

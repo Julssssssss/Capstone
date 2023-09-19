@@ -45,7 +45,7 @@ const NavBar = () => {
               {/*naka map na*/}
               {buttons.map((menus, index)=>(
                 <Link to={menus.to} key={index}>
-                  <button className="bg-[#134083] w-[10rem] rounded-full p-2">
+                  <button className="bg-[#134083] active:bg-[#0d1832] w-[10rem] rounded-full p-2">
                     {menus.label}
                   </button>
                 </Link>  
