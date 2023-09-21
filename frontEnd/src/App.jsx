@@ -6,22 +6,20 @@ import LandingPage from './pages/LandingPage'
 import Profile from '/src/pages/UserProfile'
 import Item from '/src/pages/ItemDetails'
 import Confirmation from '/src/pages/Confirmation'
-
-
+import SignUpSecQ from './pages/SignUpSecQ'
+import SecSignUp from './pages/SecSignUp'
 
 const App = () => {
   return (
     <>
 
       {/* eto yung red pang debug to*/}
-     <style>
-      {`*{outline: solid red}`}
-     </style>
+     
 
       <div>
         <Routes>
           {/*default view */}
-          <Route path='/' element={<LandingPage/>}/>
+          <Route path='/' element={<SecSignUp/>}/>
           {/*pag gusto mo mag-add pa ng ibang path declare mo muna dito*/}
           <Route exact path='/Dashboard' element={<Dashboard/>}/>
           <Route exact path='/Confirmation' element={<Confirmation/>}/>
