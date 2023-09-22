@@ -1,6 +1,5 @@
 
-const Logout = (userDetails) => {
-    const user = userDetails.user
+const Logout = () => {
     const logout =()=>{
         window.open(
             `${import.meta.env.VITE_API_URL}/auth/logout`, "_self"
@@ -8,7 +7,7 @@ const Logout = (userDetails) => {
     }
   return (
     <div>
-        <button onClick={logout}></button>
+      <button className="bg-[#134083] w-[9rem] rounded-full p-2 mb-3" onClick={logout}>Logout</button>
     </div>
   )
 }

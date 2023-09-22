@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 
 
-const Profile = () => {
+const Profile = ({User}) => {
   return (
     <>
     <div className="bg-[#0d1832] flex flex-row-reverse">
@@ -15,7 +15,7 @@ const Profile = () => {
     </div>
         <div className="bg-[#0d1832] h-screen flex flex-col items-center">
           {/* USER IMAGE */}
-          <img className='rounded-full border-8 mt-10 w-[10rem] h-[10rem] border-yellow-400' src="https://i.pinimg.com/236x/39/1c/47/391c4702d18e30c1fe92a8ffdeafc45f.jpg?nii=t"></img>
+          <img className='rounded-full border-8 mt-10 w-[10rem] h-[10rem] border-yellow-400' src={User[0].user._json.picture}></img>
           {/* USER DATA */}
           <div className="bg-[#003985] h-[10rem] w-[15rem] mt-[3.5rem] text-white p-5 z-20">
             hello

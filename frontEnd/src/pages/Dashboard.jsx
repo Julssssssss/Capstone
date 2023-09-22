@@ -3,28 +3,17 @@ import NavBar from '/src/components/NavBar'
 import Profile from '/src/components/Profile'
 import SearchBar from '/src/components/SearchBar'
 import axios from 'axios'
-import { Link } from "react-router-dom"
+import { Link, Navigate, Route, Routes } from "react-router-dom"
 
 //note to self
 //tumigil ka sa pag console log ng data
-const Dashboard = () => {
+const Dashboard = ({User}) => {
   //taga salo lang ng data galing backend
   const [data, setData] = useState([]);
-  const [user, setUser] = useState([]);
-
-  //fetch user data
-  async function fetchUser() {
-    try {
-      const res = await axios.get(`${import.meta.env.VITE_API_URL}/auth/login/success`, {withCredentials: true});
-      setUser([res.user]);
-    } catch (err) {
-      console.log("Error fetching data", err);
-    }
-  }
 
   // Create an asynchronous function within useEffect
   //eto yung sa data like items eme
-  async function fetchData() {
+  const fetchData = async() => {
     try {
       const response = await axios.get(`${import.meta.env.VITE_API_URL}/db`, {withCredentials: true});
       setData([response.data]);
@@ -34,12 +23,12 @@ const Dashboard = () => {
   }
 
   useEffect(() => {
-  // Call the asynchronous function
-  fetchData();
-  fetchUser();
-}, []); // Empty dependency array means this effect will run once on mount
-console.log(user)
-console.log(`data`, data)
+    // Call the asynchronous function
+    fetchData();
+  }, []); // Empty dependency array means this effect will run once on mount
+
+  console.log(User[0].user._json)
+  
   function sample() {
   
     return data.map((elem) => 
@@ -65,7 +54,6 @@ console.log(`data`, data)
       })
     );
   }
-
   return (
     
     <div className="bg-[#0d1832]">
@@ -77,10 +65,10 @@ console.log(`data`, data)
             <NavBar />
           </div>
 
-          <div className="text-white text-lg">Hello, Julsssss</div>
+          <div className="text-white text-lg">Hello, {User[0].user.displayName}</div>
         </div>
         <div className="flex justify-end space-x-2 w-[50rem]">
-          <Profile />
+          <Profile User={User}/>
         </div>
       </div>
           {/*Item display parent*/}
