@@ -15,21 +15,26 @@ const authRoute = require("./routes/auth")
 app.use(
     cookieSession({
         name:"session",
-        keys: ["cyberwolve"],
+        keys: ["LostAndFound"],
         maxAge: 24*60*60*100
     })
 )
 app.use(passport.initialize())
 app.use(passport.session())
 
-app.use(cors(
-)) //to allow everyone access the cors will change later 
+//to whitelist urls
+const corsOptions =
+    {
+        origin:"http://localhost:4000",
+        methods: "GET,POST,PUT,DELETE",
+        credentials: true,
+    }
 
-app.use("/auth", authRoute)
+app.use("/auth", cors(corsOptions), authRoute)
 
 app.listen(port,()=> console.log(`running in port ${port}`)) //run the port in 3000
 
-app.get('/db', (req, res)=>{
+app.get('/db', cors(corsOptions), (req, res)=>{
     res.json(sample)
 })
 

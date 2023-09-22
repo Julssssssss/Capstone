@@ -5,26 +5,41 @@ import SearchBar from '/src/components/SearchBar'
 import axios from 'axios'
 import { Link } from "react-router-dom"
 
-
+//note to self
+//tumigil ka sa pag console log ng data
 const Dashboard = () => {
   //taga salo lang ng data galing backend
   const [data, setData] = useState([]);
+  const [user, setUser] = useState([]);
 
-  useEffect(() => {
+  //fetch user data
+  async function fetchUser() {
+    try {
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}/auth/login/success`, {withCredentials: true});
+      setUser([res.user]);
+    } catch (err) {
+      console.log("Error fetching data", err);
+    }
+  }
+
   // Create an asynchronous function within useEffect
+  //eto yung sa data like items eme
   async function fetchData() {
     try {
-      const response = await axios.get(`${import.meta.env.VITE_API_URL}/db`);
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}/db`, {withCredentials: true});
       setData([response.data]);
     } catch (error) {
       console.log("Error fetching data", error);
     }
   }
 
+  useEffect(() => {
   // Call the asynchronous function
   fetchData();
+  fetchUser();
 }, []); // Empty dependency array means this effect will run once on mount
-
+console.log(user)
+console.log(`data`, data)
   function sample() {
   
     return data.map((elem) => 
