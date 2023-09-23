@@ -9,6 +9,7 @@ const Profile = ({User}) => {
   const toggleProfile = () => {
     setProfile(!profile);
   };
+  console.log(User[0].user._json.picture)
 
   return (
     <>

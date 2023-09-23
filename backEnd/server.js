@@ -11,6 +11,10 @@ const sample = require('./sampledb.json')
 const passportSetup =require('./comp/passport')
 //routes
 const authRoute = require("./routes/auth")
+//mongoose db
+const mongoose = require('mongoose')
+const connectionString = `mongodb+srv://ADMIN:<password>@lostandfounddb.lcqlpve.mongodb.net/`
+mongoose.connect(`${connectionString}test`)
 
 app.use(
     cookieSession({
@@ -21,6 +25,15 @@ app.use(
 )
 app.use(passport.initialize())
 app.use(passport.session())
+
+//schema model
+const Schema = new mongoose.Schema({
+    name: String
+})
+
+app.get("/users", cors(corsOptions), (req, res)=>{
+
+})
 
 //to whitelist urls
 const corsOptions =
