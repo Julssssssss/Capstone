@@ -14,8 +14,11 @@ const authRoute = require("./routes/auth")
 //mongoose db
 const mongoose = require('mongoose')
 const connectionString = `mongodb+srv://ADMIN:<password>@lostandfounddb.lcqlpve.mongodb.net/`
-mongoose.connect(`${connectionString}test`)
 
+mongoose.connect(`${connectionString}test`)
+    .then((result)=>app.listen(port,()=> console.log(`running in port ${port}`))) //run the port in 3000
+    .catch(err=>{console.log(err)})
+    
 app.use(
     cookieSession({
         name:"session",
@@ -28,12 +31,13 @@ app.use(passport.session())
 
 //schema model
 const Schema = new mongoose.Schema({
-    name: String
+    name:{ 
+        type: String,
+        required: true
+    }
 })
-
-app.get("/users", cors(corsOptions), (req, res)=>{
-
-})
+//saan model lalagay then lagay yung schema na ilalagay
+const userModel = mongoose.model("users", Schema)
 
 //to whitelist urls
 const corsOptions =
@@ -43,9 +47,11 @@ const corsOptions =
         credentials: true,
     }
 
-app.use("/auth", cors(corsOptions), authRoute)
+app.get("/users", cors(corsOptions), (req, res)=>{
+    res.json(userModel.find())
+})
 
-app.listen(port,()=> console.log(`running in port ${port}`)) //run the port in 3000
+app.use("/auth", cors(corsOptions), authRoute)
 
 app.get('/db', cors(corsOptions), (req, res)=>{
     res.json(sample)
