@@ -7,7 +7,7 @@ const Logout = () => {
     }
   return (
     <div>
-      <button className="bg-[#134083] w-[9rem] rounded-full p-2 mb-3" onClick={logout}>Logout</button>
+      <button className="bg-[#134083] w-[9rem] rounded-full p-2 text-white" onClick={logout}>Logout</button>
     </div>
   )
 }

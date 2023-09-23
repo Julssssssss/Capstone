@@ -54,20 +54,21 @@ const Dashboard = ({User}) => {
       })
     );
   }
+  
   return (
     
     <div className="bg-[#0d1832]">
         {/*navbar and item contaner */}
       <div className="w-full flex">
-        <div className="flex justify-center items-end space-x-3 w-[50rem]">
-
-          <div className="">
+        <div className="flex justify-start items-end space-x-3 w-[12rem]">
+          <div className=" ml-[1.3rem]">
             <NavBar />
           </div>
-
+        </div>
+        <div className="flex justify-start items-end space-x-3 w-[50rem] ml-2">
           <div className="text-white text-lg">Hello, {User[0].user.displayName}</div>
         </div>
-        <div className="flex justify-end space-x-2 w-[50rem]">
+        <div className="flex justify-end space-x-2 w-[12rem]">
           <Profile User={User}/>
         </div>
       </div>
