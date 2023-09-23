@@ -31,7 +31,7 @@ router.get("/google/callback",
 
     })
 )
-router.get("/google", passport.authenticate("google", ["profile"]))
+router.get("/google", passport.authenticate("google", ["email", "profile"]))
 
 router.get("/logout", (req, res)=>{
     req.logout();

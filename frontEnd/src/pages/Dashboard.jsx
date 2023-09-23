@@ -27,7 +27,7 @@ const Dashboard = ({User}) => {
     fetchData();
   }, []); // Empty dependency array means this effect will run once on mount
 
-  console.log(User[0].user._json)
+  console.log(User[0])
   
   function sample() {
   
