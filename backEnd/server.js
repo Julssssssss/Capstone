@@ -6,7 +6,7 @@ require('dotenv').config()
 
 const passport = require('passport')
 const cookieSession = require('cookie-session')
-const sample = require('./sampledb.json')
+
 //passport.js file
 const passportSetup =require('./comp/passport')
 //routes
@@ -14,6 +14,9 @@ const authRoute = require("./routes/auth")
 //mongoose db
 const mongoose = require('mongoose')
 const connectionString = `mongodb+srv://ADMIN:KTVVmRdf0AzoMW4F@lostandfounddb.lcqlpve.mongodb.net/`
+
+//schemas
+const itemModels = require('./Models/itemModels')
 
 //to whitelist urls
 const corsOptions =
@@ -58,7 +61,7 @@ app.get("/users", cors(corsOptions), (req, res)=>{
 app.use("/auth", cors(corsOptions), authRoute)
 
 app.get('/db', cors(corsOptions), (req, res)=>{
-    res.json(sample)
+    
 })
 
 app.use((req, res)=>{

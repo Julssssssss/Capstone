@@ -40,13 +40,13 @@ const Dashboard = ({User}) => {
             <Link to='/Item'>
               <div className="m-2 rounded-lg bg-[#003985] hover:bg-sky-700 active:bg-[#0d1832] overflow-hidden w-[15rem] h-[5rem]">
                 <div className="flex items-center font-bold text-white ml-[5rem] h-full p-3">
-                  {el.title}
+                  {/*el.title*/}
                 </div>
               </div>
             </Link>
 
             <div className="p-2 m-3 rounded-full bg-yellow-400 overflow-hidden absolute left-[1rem]">
-              <img src={el.img} alt={el.title} className="rounded-full object-contain w-[7rem]"/>
+              {/*<img src={el.img} alt={el.title} className="rounded-full object-contain w-[7rem]"/>*/}
             </div>
             
           </div>
@@ -74,7 +74,7 @@ const Dashboard = ({User}) => {
           {/*Item display parent*/}
       <SearchBar />
       <div className="flex flex-col h-screen p-[1rem]">
-        {sample()}
+        {/*sample()*/}
       </div>
     </div>
   )
