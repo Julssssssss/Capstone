@@ -13,7 +13,15 @@ const passportSetup =require('./comp/passport')
 const authRoute = require("./routes/auth")
 //mongoose db
 const mongoose = require('mongoose')
-const connectionString = `mongodb+srv://ADMIN:<password>@lostandfounddb.lcqlpve.mongodb.net/`
+const connectionString = `mongodb+srv://ADMIN:KTVVmRdf0AzoMW4F@lostandfounddb.lcqlpve.mongodb.net/`
+
+//to whitelist urls
+const corsOptions =
+    {
+        origin:"http://localhost:4000",
+        methods: "GET,POST,PUT,DELETE",
+        credentials: true,
+    }
 
 mongoose.connect(`${connectionString}test`)
     .then((result)=>app.listen(port,()=> console.log(`running in port ${port}`))) //run the port in 3000
@@ -39,16 +47,12 @@ const Schema = new mongoose.Schema({
 //saan model lalagay then lagay yung schema na ilalagay
 const userModel = mongoose.model("users", Schema)
 
-//to whitelist urls
-const corsOptions =
-    {
-        origin:"http://localhost:4000",
-        methods: "GET,POST,PUT,DELETE",
-        credentials: true,
-    }
-
 app.get("/users", cors(corsOptions), (req, res)=>{
-    res.json(userModel.find())
+    userModel.find({})
+        .then(result=>{
+            res.json(result)
+        }
+    ).catch(err=>{console.log(err)})
 })
 
 app.use("/auth", cors(corsOptions), authRoute)
