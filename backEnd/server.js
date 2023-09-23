@@ -40,18 +40,8 @@ app.use(
 app.use(passport.initialize())
 app.use(passport.session())
 
-//schema model
-const Schema = new mongoose.Schema({
-    name:{ 
-        type: String,
-        required: true
-    }
-})
-//saan model lalagay then lagay yung schema na ilalagay
-const userModel = mongoose.model("users", Schema)
-
-app.get("/users", cors(corsOptions), (req, res)=>{
-    userModel.find({})
+app.get("/items", cors(corsOptions), (req, res)=>{
+    itemModels.find({})
         .then(result=>{
             res.json(result)
         }
