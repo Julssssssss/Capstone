@@ -3,7 +3,7 @@ import NavBar from '/src/components/NavBar'
 import Profile from '/src/components/Profile'
 import SearchBar from '/src/components/SearchBar'
 import axios from 'axios'
-import { Link, Navigate, Route, Routes } from "react-router-dom"
+import { Link} from "react-router-dom"
 
 //note to self
 //tumigil ka sa pag console log ng data
@@ -27,7 +27,7 @@ const Dashboard = ({User}) => {
     fetchData();
   }, []); // Empty dependency array means this effect will run once on mount
 
-  
+  console.log(data)
   function sample() {
   
     return data.map((elem) => 
@@ -36,7 +36,8 @@ const Dashboard = ({User}) => {
           // container for item and description
           <div key={index} className="flex flex-row m-3 rounded-lg mb-[1rem] z-0 justify-end h-[9rem] items-center">
               {/*title container*/}
-            <Link to='/Item'>
+              {console.log('ung id', el._id)}
+            <Link to={`/Item/${el._id}`}>
               <div className="m-2 rounded-lg bg-[#003985] hover:bg-sky-700 active:bg-[#0d1832] overflow-hidden w-[15rem] h-[5rem]">
                 <div className="flex items-center font-bold text-white ml-[5rem] h-full p-3">
                   {el.title}

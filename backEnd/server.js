@@ -11,6 +11,7 @@ const cookieSession = require('cookie-session')
 const passportSetup =require('./comp/passport')
 //routes
 const authRoute = require("./routes/auth")
+
 //mongoose db
 const mongoose = require('mongoose')
 const connectionString = `mongodb+srv://ADMIN:KTVVmRdf0AzoMW4F@lostandfounddb.lcqlpve.mongodb.net/`
@@ -40,6 +41,7 @@ app.use(
 app.use(passport.initialize())
 app.use(passport.session())
 
+
 app.get("/items", cors(corsOptions), (req, res)=>{
     itemModels.find({})
         .then(result=>{
@@ -48,7 +50,20 @@ app.get("/items", cors(corsOptions), (req, res)=>{
     ).catch(err=>{console.log(err)})
 })
 
+app.get('/items/:itemId', cors(corsOptions), async(req, res)=>{
+    try {
+        const item = await itemModels.findById(req.params.itemId);
+        if (!item) {
+          return res.status(404).json({ message: 'Item not found' });
+        }
+        res.json(item);
+      } catch (error) {
+        res.status(500).json({ message: 'Server error' });
+      }
+})
+
 app.use("/auth", cors(corsOptions), authRoute)
+
 
 app.get('/db', cors(corsOptions), (req, res)=>{
     

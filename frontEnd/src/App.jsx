@@ -41,11 +41,13 @@ const App = () => {
       <div>
         <Routes>
           {/*default view */}
+          
           <Route path='/' element={user ? <Navigate to="/Dashboard"/> : <LandingPage/>}/>
           {/*pag gusto mo mag-add pa ng ibang path declare mo muna dito*/}
+          <Route exact path='/SecQ1' element={user ? <SecSignUp User={user}/> : <Navigate to="/"/>}/>
           <Route exact path='/Dashboard' element={user ? <Dashboard User={user}/> : <Navigate to="/"/>}/>
           <Route exact path='/Confirmation' element={user ? <Confirmation/> : <Navigate to="/"/>}/>
-          <Route exact path='/Item' element={user ? <Item/> : <Navigate to="/"/>}/>
+          <Route exact path='/Item/:itemId' element={user ? <Item/> : <Navigate to="/"/>}/>
           <Route exact path='/Help' element={user ? <Help/> : <Navigate to="/"/>}/>
           <Route exact path='/Profile' element={user ? <Profile User={user}/> : <Navigate to="/"/>}/>
         </Routes>
