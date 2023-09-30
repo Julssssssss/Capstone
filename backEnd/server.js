@@ -5,12 +5,14 @@ const port = 3000;
 require('dotenv').config()
 
 const passport = require('passport')
-const cookieSession = require('cookie-session')
 
 //passport.js file
 const passportSetup =require('./comp/passport')
 //routes
 const authRoute = require("./routes/auth")
+
+//session para sa google oauth
+const session = require("cookie-session")
 
 //mongoose db
 const mongoose = require('mongoose')
@@ -18,6 +20,9 @@ const connectionString = `mongodb+srv://ADMIN:KTVVmRdf0AzoMW4F@lostandfounddb.lc
 
 //schemas
 const itemModels = require('./Models/itemModels')
+
+//jwt 
+const jwt =require('jsonwebtoken')
 
 //to whitelist urls
 const corsOptions =
@@ -30,16 +35,32 @@ const corsOptions =
 mongoose.connect(`${connectionString}test`)
     .then((result)=>app.listen(port,()=> console.log(`running in port ${port}`))) //run the port in 3000
     .catch(err=>{console.log(err)})
+
+//use session
+app.use(session({
+    name: 'session',
+    keys: [process.env.SESSION_SECRET],
+
+    // Cookie expiration date
+    maxAge: 24 * 60 * 60 * 1000 // 24 hours
+}))    
     
-app.use(
-    cookieSession({
-        name:"session",
-        keys: ["LostAndFound"],
-        maxAge: 24*60*60*100
-    })
-)
 app.use(passport.initialize())
 app.use(passport.session())
+
+//to verify token 
+const verifyToken = (req, res, next) => {
+    const token = req.header('Authorization');
+    if (!token) return res.status(403).json({ error: true, message: 'Access denied' });
+
+    try {
+        const decoded = jwt.verify(token, process.env.JWT_SECRET);
+        req.user = decoded.user;
+        next();
+    } catch (err) {
+        res.status(401).json({ error: true, message: 'Invalid token' });
+    }
+};
 
 
 app.get("/items", cors(corsOptions), (req, res)=>{
@@ -64,9 +85,8 @@ app.get('/items/:itemId', cors(corsOptions), async(req, res)=>{
 
 app.use("/auth", cors(corsOptions), authRoute)
 
+app.post("/post", cors(corsOptions), (req, res)=>{
 
-app.get('/db', cors(corsOptions), (req, res)=>{
-    
 })
 
 app.use((req, res)=>{

@@ -1,12 +1,14 @@
 const router =require("express").Router()
 const passport = require("passport")
+const jwt = require('jsonwebtoken')
 
 router.get("/login/success", (req, res)=>{
     if(req.user){
+
         res.status(200).json({
             error:false,
             message:"Success",
-            user:req.user
+            token: jwt.verify(req.user, process.env.JWT_ACCESS_SECRET)
         })
     }
     else{

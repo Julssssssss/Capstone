@@ -1,5 +1,6 @@
 const GoogleStrategy = require("passport-google-oauth20").Strategy
 const passport =require('passport')
+const jwt = require('jsonwebtoken')
 
 passport.serializeUser((user, done)=>{
     done(null, user)
@@ -17,7 +18,8 @@ passport.use(
             scope:["email", "profile"],
         },
         function (accessToken, refreshToken, profile, cb){
-            cb(null, profile)
+            const token = jwt.sign(profile, process.env.JWT_ACCESS_SECRET)
+            cb(null, token)
         }
     )
 )
