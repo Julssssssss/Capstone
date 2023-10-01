@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import NavBar from '/src/components/NavBar'
-import Profile from '/src/components/Profile'
+import Profile from '../components/ProfilePic'
 import SearchBar from '/src/components/SearchBar'
 import axios from 'axios'
 import { Link} from "react-router-dom"

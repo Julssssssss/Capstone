@@ -1,6 +1,6 @@
 import { useState } from "react"
-import Login from "/src/api/Login"
-import Signup from "/src/api/Signup"
+import Login from "/src/components/Login"
+import Signup from "/src/components/Signup"
 
 
 const LpCont1 = () => {

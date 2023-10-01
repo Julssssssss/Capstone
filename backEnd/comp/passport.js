@@ -18,7 +18,9 @@ passport.use(
             scope:["email", "profile"],
         },
         function (accessToken, refreshToken, profile, cb){
-            const token = jwt.sign(profile, process.env.JWT_ACCESS_SECRET)
+            const {name, picture, email} = profile._json
+            const user = {name, picture, email}
+            const token = jwt.sign(user, process.env.JWT_ACCESS_SECRET, {expiresIn: '15m'})
             cb(null, token)
         }
     )

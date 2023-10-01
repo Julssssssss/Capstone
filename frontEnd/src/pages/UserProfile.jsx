@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import Logout from "../api/Logout";
+import Logout from "../components/Logout";
 
 
 const Profile = ({User}) => {
