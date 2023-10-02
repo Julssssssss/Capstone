@@ -1,14 +1,42 @@
 const router =require("express").Router()
 const passport = require("passport")
+const jwt = require('jsonwebtoken')
 
+let refreshTokens = []
+
+function generateAccessToken(user){
+    return jwt.sign(user, process.env.JWT_ACCESS_SECRET, {expiresIn: '10m'})
+}
+
+router.post('/refreshToken', (req, res)=>{
+    const refreshToken =req.body.token
+    if(refreshToken == null) return res.status(401)
+    if (!refreshTokens.includes(refreshToken)) return res.status(403)
+    jwt.verify (refreshToken, process.env.JWT_REFRESH_SECRET, (err, user)=>{
+        if(err) return res.status(403)
+        const accessToken = generateAccessToken(//ginawa to para hindi maget yung ias
+        { 
+            name: user.name,
+            picture: user.picture,
+            email: user.email
+        })
+        res.json({ accessToken: accessToken})
+    })
+})
 
 router.get("/login/success", (req, res)=>{
     if(req.user){
+        const user = req.user
+        const refreshToken = jwt.sign(user, process.env.JWT_REFRESH_SECRET) 
+        refreshTokens.push(refreshToken)
+        const accessToken=generateAccessToken(user)
 
         res.status(200).json({
             error:false,
             message:"Success",
-            token: req.user
+            accessToken: accessToken,
+            refreshToken: refreshToken
+            
         })
     }
     else{

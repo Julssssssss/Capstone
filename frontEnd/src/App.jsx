@@ -10,26 +10,13 @@ import Item from '/src/pages/ItemDetails'
 import Confirmation from '/src/pages/Confirmation'
 import SignUpSecQ from './pages/SignUpSecQ'
 import SecSignUp from './pages/SecSignUp'
+import Authenticate from './components/Authenticate'
 
 
 const App = () => {
 
-  const [user, setUser] = useState(null);
-
-  //fetch user data
-  const fetchUser = async() => {
-    try {
-      const res = await axios.get(`${import.meta.env.VITE_API_URL}/auth/login/success`, {withCredentials: true});
-      setUser([res.data]);
-    } catch (err) {
-      console.log("Error fetching data", err);
-    }
-  }
-  useEffect(() => {
-    // Call the asynchronous function
-    fetchUser();
-  }, []); // Empty dependency array means this effect will run once on mount
-  //console.log(user[0].token)
+  <Authenticate/>
+  
   return (
     <>
 
@@ -44,7 +31,6 @@ const App = () => {
           
           <Route path='/' element={<LandingPage/>}/>
           {/*pag gusto mo mag-add pa ng ibang path declare mo muna dito*/}
-          <Route exact path='/SecQ1' element={user ? <SecSignUp User={user}/> : <Navigate to="/"/>}/>
           
         </Routes>
       </div>

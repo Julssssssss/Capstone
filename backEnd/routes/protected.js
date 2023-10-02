@@ -7,7 +7,7 @@ const verifyToken = (req, res, next) => {
     //get yung token mismo na hindi kasama yung bearer
     const token = authHeader && authHeader.split(' ')[1]
     if (token == null) return res.status(403)
-    jwt.verify(token, process.env.JWT_SECRET, (err, user)=>{
+    jwt.verify(token, process.env.JWT_ACCESS_SECRET, (err, user)=>{
         if(err) return res.status(403)
         req.user=user
         next()
@@ -36,5 +36,6 @@ router.get('/items/:itemId', verifyToken, async(req, res)=>{
         res.status(500).json({ message: 'Server error' });
       }
 })
+
 
 module.exports = router

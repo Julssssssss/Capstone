@@ -20,8 +20,7 @@ passport.use(
         function (accessToken, refreshToken, profile, cb){
             const {name, picture, email} = profile._json
             const user = {name, picture, email}
-            const token = jwt.sign(user, process.env.JWT_ACCESS_SECRET, {expiresIn: '15m'})
-            cb(null, token)
+            cb(null, user)
         }
     )
 )
