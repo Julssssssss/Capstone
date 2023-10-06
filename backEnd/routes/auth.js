@@ -9,8 +9,8 @@ function generateAccessToken(user){
 }
 
 router.post('/refreshToken', (req, res)=>{
-    const refreshToken =req.body.token
-    if(refreshToken == null) return res.status(401)
+    const refreshToken =req.cookies
+    if(!refreshToken?.jwt) return res.status(401)
     if (!refreshTokens.includes(refreshToken)) return res.status(403)
     jwt.verify (refreshToken, process.env.JWT_REFRESH_SECRET, (err, user)=>{
         if(err) return res.status(403)
@@ -27,16 +27,17 @@ router.post('/refreshToken', (req, res)=>{
 router.get("/login/success", (req, res)=>{
     if(req.user){
         const user = req.user
-        const refreshToken = jwt.sign(user, process.env.JWT_REFRESH_SECRET) 
+        const refreshToken = jwt.sign(user, process.env.JWT_REFRESH_SECRET, {expiresIn: '1d'}) 
         refreshTokens.push(refreshToken)
         const accessToken=generateAccessToken(user)
+        
+        //send as http only para hindi maaccess through javascript
+        res.cookie('jwt', refreshToken, {httpOnly: true, maxAge: 24 * 60 *60 * 1000 })
 
         res.status(200).json({
             error:false,
             message:"Success",
-            accessToken: accessToken,
-            refreshToken: refreshToken
-            
+            accessToken: accessToken
         })
     }
     else{
@@ -64,6 +65,8 @@ router.get("/google/callback",
 router.get("/google", passport.authenticate("google", ["email", "profile"]))
 
 router.get("/logout", (req, res)=>{
+    const refreshToken =req.cookies
+    if (refreshTokens.includes(refreshToken)) refreshTokens.splice(refreshTokens.indexOf(refreshToken), 1)
     req.logout();
     res.redirect(process.env.CLIENT_URL)
 })

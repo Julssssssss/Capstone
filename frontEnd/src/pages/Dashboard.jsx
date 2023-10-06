@@ -7,16 +7,20 @@ import { Link} from "react-router-dom"
 
 //note to self
 //tumigil ka sa pag console log ng data
-const Dashboard = ({User}) => {
+const Dashboard = () => {
   //taga salo lang ng data galing backend
   const [data, setData] = useState([]);
+
+  let isMounted = true
+  const controller = new AbortController();
 
   // Create an asynchronous function within useEffect
   //eto yung sa data like items eme
   const fetchData = async() => {
     try {
-      const response = await axios.get(`${import.meta.env.VITE_API_URL}/items`, {withCredentials: true});
-      setData([response.data]);
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}/data`, {withCredentials: true});
+        signal: controller.signal
+        isMounted && setData([response.data]);
     } catch (error) {
       console.log("Error fetching data", error);
     }
@@ -25,6 +29,13 @@ const Dashboard = ({User}) => {
   useEffect(() => {
     // Call the asynchronous function
     fetchData();
+
+    //cleanup function
+    return () =>{
+      isMounted =false
+      controller.abort()
+    }
+
   }, []); // Empty dependency array means this effect will run once on mount
 
   console.log(data)

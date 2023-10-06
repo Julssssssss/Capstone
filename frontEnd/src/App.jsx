@@ -10,12 +10,10 @@ import Item from '/src/pages/ItemDetails'
 import Confirmation from '/src/pages/Confirmation'
 import SignUpSecQ from './pages/SignUpSecQ'
 import SecSignUp from './pages/SecSignUp'
-import Authenticate from './components/Authenticate'
+import Authenticate from './components/RefreshToken'
 
 
 const App = () => {
-
-  <Authenticate/>
   
   return (
     <>

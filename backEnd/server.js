@@ -16,6 +16,9 @@ const authRoute = require("./routes/auth")
 //session para sa google oauth
 const session = require("cookie-session")
 
+//for cookie req
+const cookieParser = require('cookie-parser')
+
 //mongoose db
 const mongoose = require('mongoose')
 const connectionString = `mongodb+srv://ADMIN:KTVVmRdf0AzoMW4F@lostandfounddb.lcqlpve.mongodb.net/`
@@ -33,6 +36,8 @@ const corsOptions =
         methods: "GET,POST,PUT,DELETE",
         credentials: true,
     }
+
+app.use(cookieParser())
 
 mongoose.connect(`${connectionString}test`)
     .then((result)=>app.listen(port,()=> console.log(`running in port ${port}`))) //run the port in 3000

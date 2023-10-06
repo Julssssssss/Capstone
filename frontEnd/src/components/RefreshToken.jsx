@@ -9,7 +9,7 @@ const Authenticate = () => {
     const refreshToken = async () => {
       try {
         // Make a request to your backend's /refresh-token endpoint to get a new access token 
-        const response = await axios.post('/refreshToken');
+        const response = await axios.post('/refreshToken', {withCredentials: true});
         const newAccessToken = response.data.accessToken;
         // Update the Authorization header with the new access token
         authAxios.defaults.headers.common['Authorization'] = `Bearer ${newAccessToken}`;
@@ -49,7 +49,7 @@ const Authenticate = () => {
 
     setAuthAxios(authAxios);
   }, []); // Ensure this effect runs only once
-
+  console.log(authAxios)
   return authAxios;
 };
  
