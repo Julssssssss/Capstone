@@ -11,9 +11,13 @@ import Confirmation from '/src/pages/Confirmation'
 import SignUpSecQ from './pages/SignUpSecQ'
 import SecSignUp from './pages/SecSignUp'
 import Authenticate from './components/RefreshToken'
+import {useAccessToken} from './components/api/useAccessToken'
 
 
 const App = () => {
+
+  useAccessToken()
+
   
   return (
     <>
