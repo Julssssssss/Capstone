@@ -1,6 +1,13 @@
-import { useState, useEffect } from "react"
+import { redirect, Navigate, Outlet } from "react-router-dom";
 
 const Auth = () => {
-  return(null)
+  const accessToken = localStorage.getItem('accessToken')
+
+    return(
+        accessToken ?
+            <Outlet/>
+            : <Navigate to='/'/>
+
+    )
 }
 export default Auth

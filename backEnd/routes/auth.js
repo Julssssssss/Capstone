@@ -4,10 +4,6 @@ const jwt = require('jsonwebtoken')
 
 let refreshTokens = []
 
-function generateAccessToken(user){
-    return jwt.sign(user, process.env.JWT_ACCESS_SECRET, {expiresIn: '10m'})
-}
-
 router.post('/refreshToken', (req, res)=>{
     const refreshToken =req.cookies
     if(!refreshToken?.jwt) return res.status(401)
@@ -26,10 +22,7 @@ router.post('/refreshToken', (req, res)=>{
 
 router.get("/login/success", (req, res)=>{
     if(req.user){
-        const user = req.user
-        const refreshToken = jwt.sign(user, process.env.JWT_REFRESH_SECRET, {expiresIn: '1d'}) 
-        refreshTokens.push(refreshToken)
-        const accessToken=generateAccessToken(user)
+        const {accessToken, refreshToken} = req.user
         
         //send as http only para hindi maaccess through javascript
         res.cookie('jwt', refreshToken, {httpOnly: true, maxAge: 24 * 60 *60 * 1000 })
@@ -57,8 +50,8 @@ router.get("/login/failed", (req, res)=>{
 
 router.get("/google/callback",
     passport.authenticate("google", {
-        successRedirect: `${process.env.CLIENT_URL}`,
-        failureRedirect:"/login/failed",
+        successRedirect: `${process.env.CLIENT_URL}/`,
+        failureRedirect: `/login/failed`,
 
     })
 )

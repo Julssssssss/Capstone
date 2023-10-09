@@ -23,9 +23,6 @@ const cookieParser = require('cookie-parser')
 const mongoose = require('mongoose')
 const connectionString = `mongodb+srv://ADMIN:KTVVmRdf0AzoMW4F@lostandfounddb.lcqlpve.mongodb.net/`
 
-//schemas
-const itemModels = require('./Models/itemModels')
-
 //jwt 
 const jwt =require('jsonwebtoken')
 
@@ -36,6 +33,8 @@ const corsOptions =
         methods: "GET,POST,PUT,DELETE",
         credentials: true,
     }
+
+app.use(cors(corsOptions))
 
 app.use(cookieParser())
 
@@ -55,9 +54,9 @@ app.use(passport.initialize())
 app.use(passport.session())
 
 
-app.use("/auth", cors(corsOptions), authRoute)
+app.use("/auth", authRoute)
 
-app.use("/prot", cors(corsOptions), protRoute)
+app.use("/prot", protRoute)
 
 app.use((req, res)=>{
     //if you made a mistake on typing the url

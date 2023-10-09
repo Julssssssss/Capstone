@@ -11,13 +11,12 @@ import Confirmation from '/src/pages/Confirmation'
 import SignUpSecQ from './pages/SignUpSecQ'
 import SecSignUp from './pages/SecSignUp'
 import Authenticate from './components/RefreshToken'
-import {useAccessToken} from './components/api/useAccessToken'
-
+import {getAccessToken} from './components/api/getAccessToken'
+import Auth from './components/Auth'
+import Page404 from './pages/Page404'
+import UserProfile from './pages/UserProfile'
 
 const App = () => {
-
-  useAccessToken()
-  
   
   return (
     <>
@@ -31,8 +30,17 @@ const App = () => {
         <Routes>
           {/*default view */}
           
-          <Route path='/' element={<LandingPage/>}/>
+            <Route exact path='/' element={<LandingPage/>}/>
           {/*pag gusto mo mag-add pa ng ibang path declare mo muna dito*/}
+
+            <Route path='/Dashboard' element={<Dashboard/>}/>
+            <Route path='/Profile' element={<UserProfile/>}/>
+            <Route path='/Item/:itemId' element={<itemDetails/>}/>
+            
+          
+
+          {/* 404 page  catch all  palitan to in the future hopefully ng 404 page tlga */}
+          <Route path='*' element={<Page404/>}/>
           
         </Routes>
       </div>

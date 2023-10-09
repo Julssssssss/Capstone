@@ -1,17 +1,14 @@
 const router =require("express").Router()
+
+//schemas
+const itemModels = require('../Models/itemModels')
+
 const jwt = require('jsonwebtoken')
 
 //to verify token 
 const verifyToken = (req, res, next) => {
-    const authHeader = req.header['authorization'];
-    //get yung token mismo na hindi kasama yung bearer
-    const token = authHeader && authHeader.split(' ')[1]
-    if (token == null) return res.status(403)
-    jwt.verify(token, process.env.JWT_ACCESS_SECRET, (err, user)=>{
-        if(err) return res.status(403)
-        req.user=user
-        next()
-    })
+    const authHeader = req.headers['Authorization'];
+    console.log(authHeader)
 };
 
 router.get("/data", verifyToken, (req, res)=>{
@@ -19,7 +16,7 @@ router.get("/data", verifyToken, (req, res)=>{
         .then(result=>{
             res.status(200).json({
                 items: result,
-                user: req.user
+                userData: req.user,
             })
         }
     ).catch(err=>{console.log(err)})
