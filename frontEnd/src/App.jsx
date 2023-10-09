@@ -17,6 +17,13 @@ import Page404 from './pages/Page404'
 import UserProfile from './pages/UserProfile'
 
 const App = () => {
+  //nababaliw ka na san mo lalagay yung accessToken kasi wala kayong rtk
+  const [accessToken, setAccessToken]=useState(null)
+  useEffect(()=>{
+    getAccessToken()
+    setAccessToken(localStorage.getItem(accessToken))
+    localStorage.removeItem(accessToken)
+  },[])
   
   return (
     <>

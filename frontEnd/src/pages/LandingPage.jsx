@@ -7,7 +7,7 @@ import { useEffect } from "react"
 import axios from 'axios'
 
 const LandingPage = () => {
-  getAccessToken()
+
   return (
     <>
         <div className="bg-[#0d1832] flex flex-col w-screen h-screen">

@@ -9,17 +9,15 @@ import Logout from "../components/Logout"
 
 const Dashboard = () => {
 
-  const [accessToken, setAccessToken] = useState(null)
-  setAccessToken(localStorage.getItem(accessToken))
-
   // Create an asynchronous function within useEffect
   //eto yung sa data like items eme
+  
   const [data, setData] = useState(null)
   const fetchData = async() => {
     try {
       const response = await axios.get(`${import.meta.env.VITE_API_URL}/prot/data`,
       {headers: {
-        'Authorization': `Bearer ${localStorage.getItem(accessToken)}`
+        'Authorization': `Bearer ${localStorage.getItem(`accessToken`)}`
       }, withCredentials: true
       });
       setData([response.data])
@@ -32,8 +30,7 @@ const Dashboard = () => {
     // Call the asynchronous function
     fetchData();
   }, []);
-
-  console.log(accessToken)
+  console.log(localStorage.getItem(`accessToken`))
 
   return (
     
