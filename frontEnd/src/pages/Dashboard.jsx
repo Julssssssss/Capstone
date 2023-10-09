@@ -10,6 +10,7 @@ import Logout from "../components/Logout"
 const Dashboard = () => {
 
   const [accessToken, setAccessToken] = useState(null)
+  setAccessToken(localStorage.getItem(accessToken))
 
   // Create an asynchronous function within useEffect
   //eto yung sa data like items eme
@@ -29,7 +30,6 @@ const Dashboard = () => {
 
   useEffect(() => {
     // Call the asynchronous function
-    setAccessToken(localStorage.getItem('accessToken'));
     fetchData();
   }, []);
 
