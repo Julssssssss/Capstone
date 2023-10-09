@@ -1,13 +1,34 @@
 const router =require("express").Router()
 const passport = require("passport")
+//schemas
+const itemModels = require('../Models/itemModels')
+
+router.get('/items/:itemId', async(req, res)=>{
+    try {
+        const item = await itemModels.findById(req.params.itemId);
+        if (!item) {
+          return res.status(404).json({ message: 'Item not found' });
+        }
+        res.json(item);
+      } catch (error) {
+        res.status(500).json({ message: 'Server error' });
+      }
+})
 
 router.get("/login/success", (req, res)=>{
     if(req.user){
-        res.status(200).json({
-            error:false,
-            message:"Success",
-            user:req.user
-        })
+        const user = req.user
+
+        itemModels.find({})
+            .then(result=>{
+                res.status(200).json({
+                    error:false,
+                    message:"Success",
+                    user: user,
+                    items: result
+                })
+            }
+        ).catch(err=>{console.log(err)})
     }
     else{
         res.status(403).json({
@@ -26,7 +47,7 @@ router.get("/login/failed", (req, res)=>{
 
 router.get("/google/callback",
     passport.authenticate("google", {
-        successRedirect: `${process.env.CLIENT_URL}`,
+        successRedirect: `${process.env.CLIENT_URL}/dashboard`,
         failureRedirect:"/login/failed",
 
     })

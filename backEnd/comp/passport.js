@@ -17,7 +17,9 @@ passport.use(
             scope:["email", "profile"],
         },
         function (accessToken, refreshToken, profile, cb){
-            cb(null, profile)
+            const {name, picture, email} = profile._json
+            const user = {name, picture, email}
+            cb(null, user)
         }
     )
 )

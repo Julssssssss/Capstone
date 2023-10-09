@@ -13,7 +13,7 @@ import SecSignUp from './pages/SecSignUp'
 
 
 const App = () => {
-
+  /*
   const [user, setUser] = useState(null);
 
   //fetch user data
@@ -29,7 +29,8 @@ const App = () => {
     // Call the asynchronous function
     fetchUser();
   }, []); // Empty dependency array means this effect will run once on mount
-  console.log(user ? 'yes meron laman' : 'null')
+  */
+
   return (
     <>
 
@@ -42,14 +43,14 @@ const App = () => {
         <Routes>
           {/*default view */}
           
-          <Route path='/' element={user ? <Navigate to="/Dashboard"/> : <LandingPage/>}/>
+          <Route path='/' element={<LandingPage/>}/>
           {/*pag gusto mo mag-add pa ng ibang path declare mo muna dito*/}
-          <Route exact path='/SecQ1' element={user ? <SecSignUp User={user}/> : <Navigate to="/"/>}/>
-          <Route exact path='/Dashboard' element={user ? <Dashboard User={user}/> : <Navigate to="/"/>}/>
-          <Route exact path='/Confirmation' element={user ? <Confirmation/> : <Navigate to="/"/>}/>
-          <Route exact path='/Item/:itemId' element={user ? <Item/> : <Navigate to="/"/>}/>
-          <Route exact path='/Help' element={user ? <Help/> : <Navigate to="/"/>}/>
-          <Route exact path='/Profile' element={user ? <Profile User={user}/> : <Navigate to="/"/>}/>
+          <Route exact path='/SecQ1' element={<SecSignUp/>}/>
+          <Route exact path='/Dashboard' element={<Dashboard/>}/>
+          <Route exact path='/Confirmation' element={<Confirmation/>}/>
+          <Route exact path='/Item/:itemId' element={<Item/>}/>
+          <Route exact path='/Help' element={<Help/>}/>
+          <Route exact path='/Profile' element={<Profile/>}/>
         </Routes>
       </div>
    </>

@@ -16,9 +16,6 @@ const authRoute = require("./routes/auth")
 const mongoose = require('mongoose')
 const connectionString = `mongodb+srv://ADMIN:KTVVmRdf0AzoMW4F@lostandfounddb.lcqlpve.mongodb.net/`
 
-//schemas
-const itemModels = require('./Models/itemModels')
-
 //to whitelist urls
 const corsOptions =
     {
@@ -26,6 +23,7 @@ const corsOptions =
         methods: "GET,POST,PUT,DELETE",
         credentials: true,
     }
+app.use(cors(corsOptions))
 
 mongoose.connect(`${connectionString}test`)
     .then((result)=>app.listen(port,()=> console.log(`running in port ${port}`))) //run the port in 3000
@@ -39,33 +37,13 @@ app.use(
     })
 )
 app.use(passport.initialize())
+
 app.use(passport.session())
 
-
-app.get("/items", cors(corsOptions), (req, res)=>{
-    itemModels.find({})
-        .then(result=>{
-            res.json(result)
-        }
-    ).catch(err=>{console.log(err)})
-})
-
-app.get('/items/:itemId', cors(corsOptions), async(req, res)=>{
-    try {
-        const item = await itemModels.findById(req.params.itemId);
-        if (!item) {
-          return res.status(404).json({ message: 'Item not found' });
-        }
-        res.json(item);
-      } catch (error) {
-        res.status(500).json({ message: 'Server error' });
-      }
-})
-
-app.use("/auth", cors(corsOptions), authRoute)
+app.use("/auth", authRoute)
 
 
-app.get('/db', cors(corsOptions), (req, res)=>{
+app.get('/db', (req, res)=>{
     
 })
 
