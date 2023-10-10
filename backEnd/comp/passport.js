@@ -18,7 +18,17 @@ passport.use(
         },
         function (accessToken, refreshToken, profile, cb){
             const {name, picture, email} = profile._json
-            const user = {name, picture, email}
+            let role = null
+            //add lang kayo params dito if usto nyo check admin side or user side
+            const admin = ['sample']
+            //dito chinecheck if nasa admin params ba tlga sya
+            if(admin.includes(name)){
+                role = 'admin'
+            }
+            else{
+                role = 'user'
+            }
+            const user = {name, picture, email, role}
             cb(null, user)
         }
     )

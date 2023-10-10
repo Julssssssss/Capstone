@@ -45,13 +45,25 @@ router.get("/login/failed", (req, res)=>{
     })
 })
 
-router.get("/google/callback",
-    passport.authenticate("google", {
-        successRedirect: `${process.env.CLIENT_URL}/dashboard`,
-        failureRedirect:"/login/failed",
+router.get("/google/callback", (req, res, next) => {
+    const { role } = req.user;
+    let redirect = null;
 
-    })
-)
+    if (role === 'admin') {
+        redirect = `${process.env.CLIENT_URL}/admin`;
+    } else if (role === 'user') {
+        redirect = `${process.env.CLIENT_URL}/dashboard`;
+    }
+    else{
+        redirect= `${process.env.CLIENT_URL}/404`
+    }
+
+    passport.authenticate("google", {
+        successRedirect: redirect,
+        failureRedirect: "/login/failed"
+    })(req, res, next); // <-- This is where passport.authenticate is being called
+});
+
 router.get("/google", passport.authenticate("google", ["email", "profile"]))
 
 router.get("/logout", (req, res)=>{
