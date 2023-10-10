@@ -10,6 +10,7 @@ import Item from '/src/pages/ItemDetails'
 import Confirmation from '/src/pages/Confirmation'
 import SignUpSecQ from './pages/SignUpSecQ'
 import SecSignUp from './pages/SecSignUp'
+import Admin from './pages/Admin'
 
 
 const App = () => {
@@ -29,12 +30,13 @@ const App = () => {
           
           <Route path='/' element={<LandingPage/>}/>
           {/*pag gusto mo mag-add pa ng ibang path declare mo muna dito*/}
-          <Route exact path='/SecQ1' element={<SecSignUp/>}/>
           <Route exact path='/Dashboard' element={<Dashboard/>}/>
           <Route exact path='/Confirmation' element={<Confirmation/>}/>
           <Route exact path='/Item/:itemId' element={<Item/>}/>
           <Route exact path='/Help' element={<Help/>}/>
           <Route exact path='/Profile' element={<Profile/>}/>
+
+          <Route exact path='/Admin' element={<Admin/>}/>
         </Routes>
       </div>
    </>

@@ -17,7 +17,8 @@ router.get('/items/:itemId', async(req, res)=>{
 
 router.get("/login/success", (req, res)=>{
     if(req.user){
-        const user = req.user
+        const {name, picture, email} = req.user
+        const user = {name, picture, email}
 
         itemModels.find({})
             .then(result=>{

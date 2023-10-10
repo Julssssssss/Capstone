@@ -20,9 +20,10 @@ passport.use(
             const {name, picture, email} = profile._json
             let role = null
             //add lang kayo params dito if usto nyo check admin side or user side
+            //need email lagay mo dito
             const admin = ['sample']
             //dito chinecheck if nasa admin params ba tlga sya
-            if(admin.includes(name)){
+            if(admin.includes(email)){
                 role = 'admin'
             }
             else{
