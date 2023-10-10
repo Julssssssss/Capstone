@@ -11,9 +11,16 @@ import Confirmation from '/src/pages/Confirmation'
 import SignUpSecQ from './pages/SignUpSecQ'
 import SecSignUp from './pages/SecSignUp'
 import Admin from './pages/Admin'
+import Page404 from './pages/Page404'
+import RequireAuth from './components/RequireAuth'
 
 
 const App = () => {
+  const ROLES = {
+    'User': 2001,
+    'Editor': 1984,
+    'Admin': 5150
+  }
 
 
   return (
@@ -26,17 +33,29 @@ const App = () => {
 
       <div>
         <Routes>
-          {/*default view */}
-          
-          <Route path='/' element={<LandingPage/>}/>
-          {/*pag gusto mo mag-add pa ng ibang path declare mo muna dito*/}
-          <Route exact path='/Dashboard' element={<Dashboard/>}/>
-          <Route exact path='/Confirmation' element={<Confirmation/>}/>
-          <Route exact path='/Item/:itemId' element={<Item/>}/>
-          <Route exact path='/Help' element={<Help/>}/>
-          <Route exact path='/Profile' element={<Profile/>}/>
+          {/* Default view */}
+          <Route path='/' element={<LandingPage />} />
 
-          <Route exact path='/Admin' element={<Admin/>}/>
+          {/* Routes protected by authentication for regular users */}
+          <Route
+            element={<RequireAuth allowedRoles={[ROLES.User]} />}
+          >
+            <Route path='/Dashboard' element={<Dashboard />} />
+            <Route path='/Confirmation' element={<Confirmation />} />
+            <Route path='/Item/:itemId' element={<Item />} />
+            <Route path='/Help' element={<Help />} />
+            <Route path='/Profile' element={<Profile />} />
+          </Route>
+
+          {/* Routes protected by authentication for admin users */}
+          <Route
+            element={<RequireAuth allowedRoles={[ROLES.Admin]} />}
+          >
+            <Route path='/Admin' element={<Admin />} />
+          </Route>
+
+          {/* 404 Page */}
+          <Route path='*' element={<Page404 />} />
         </Routes>
       </div>
    </>

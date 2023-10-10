@@ -2,6 +2,10 @@ const router =require("express").Router()
 const passport = require("passport")
 //schemas
 const itemModels = require('../Models/itemModels')
+const adminModels = require('../Models/admin')
+const moderatorModels = require('../Models/moderators')
+
+//database dapat to pero dito muna for testing
 
 router.get('/items/:itemId', async(req, res)=>{
     try {
@@ -15,21 +19,25 @@ router.get('/items/:itemId', async(req, res)=>{
       }
 })
 
+router.get("/items", (req, res)=>{
+    itemModels.find({})
+        .then(result=>{
+            res.status(200).json({
+                items: result
+            })
+        }
+    ).catch(err=>{console.log(err)})
+})
+
 router.get("/login/success", (req, res)=>{
     if(req.user){
         const {name, picture, email} = req.user
         const user = {name, picture, email}
-
-        itemModels.find({})
-            .then(result=>{
-                res.status(200).json({
-                    error:false,
-                    message:"Success",
-                    user: user,
-                    items: result
-                })
-            }
-        ).catch(err=>{console.log(err)})
+        res.status(200).json({
+            error:false,
+            message:"Success",
+            user: user
+        })
     }
     else{
         res.status(403).json({
@@ -47,8 +55,31 @@ router.get("/login/failed", (req, res)=>{
 })
 
 router.get("/google/callback", (req, res, next) => {
-    const { role } = req.user;
+    const user = req.user
+    let adminDb = [null]
+    let modDb = [null]
+    const getAdmin = async()=>{
+        try {
+            const result = await adminModels.find({})
+                adminDb = [result[0]]
+        } catch (err) {
+            console.log(err)
+        }
+    }
+    const getMod = async()=>{    
+        try {
+            const result = await moderatorModels.find({})
+                modDb = [result[0]]
+        } catch (err) {
+            console.log(err)
+        }
+    }
+    getAdmin()
+    getMod()
+
+    console.log(modDb)    
     let redirect = null;
+    let role = 'admin'
 
     if (role === 'admin') {
         redirect = `${process.env.CLIENT_URL}/admin`;
