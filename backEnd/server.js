@@ -43,10 +43,6 @@ app.use(passport.session())
 app.use("/auth", authRoute)
 
 
-app.get('/db', (req, res)=>{
-    
-})
-
 app.use((req, res)=>{
     //if you made a mistake on typing the url
     res.status(404).send(`<h1>WRONG URL!</h1>`)

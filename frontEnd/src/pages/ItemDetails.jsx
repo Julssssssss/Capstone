@@ -9,7 +9,7 @@ const ItemDetails = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`${import.meta.env.VITE_API_URL}/items/${itemId}`, { withCredentials: true });
+        const response = await axios.get(`${import.meta.env.VITE_API_URL}/auth/items/${itemId}`, { withCredentials: true });
         setData(response.data);
       } catch (error) {
         console.log("Error fetching data", error);
