@@ -1,6 +1,6 @@
 const GoogleStrategy = require("passport-google-oauth20").Strategy
 const passport =require('passport')
-const jwt = require('jsonwebtoken')
+const findOrCreateUser = require('./findOrCreateUser')
 
 passport.serializeUser((user, done)=>{
     done(null, user)
@@ -17,15 +17,10 @@ passport.use(
             callbackURL: "/auth/google/callback",
             scope:["email", "profile"],
         },
-        function (accessToken, refreshToken, profile, cb){
-            const {name, picture, email} = profile._json
-            const data = {name, picture, email}
-            //dko nilagyan expiration muna
-            const user = {
-                'accessToken': `${jwt.sign(data, process.env.JWT_ACCESS_SECRET)}`,
-                'refreshToken' : `${jwt.sign(data, process.env.JWT_REFRESH_SECRET)}`
-            }
-            cb(null, user)
+        function (accessToken, refreshToken, profile, done){
+            const {sub, name, picture, email} = profile._json
+            const user = {sub, name, picture, email}
+            findOrCreateUser(user, done);
         }
     )
 )

@@ -11,18 +11,20 @@ const verifyToken = (req, res, next) => {
     console.log(authHeader)
 };
 
-router.get("/data", verifyToken, (req, res)=>{
+router.get("/data", (req, res)=>{
+    const {accessToken} = req.user
+    const user = jwt.verify(accessToken, process.env.JWT_ACCESS_SECRET)
     itemModels.find({})
         .then(result=>{
             res.status(200).json({
                 items: result,
-                userData: req.user,
+                user: user
             })
         }
     ).catch(err=>{console.log(err)})
 })
 
-router.get('/items/:itemId', verifyToken, async(req, res)=>{
+router.get('/items/:itemId', async(req, res)=>{
     try {
         const item = await itemModels.findById(req.params.itemId);
         if (!item) {

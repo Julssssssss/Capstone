@@ -7,6 +7,9 @@ import { useEffect } from "react"
 import axios from 'axios'
 
 const LandingPage = () => {
+  useEffect(()=>{
+    getAccessToken()
+  },[])
 
   return (
     <>

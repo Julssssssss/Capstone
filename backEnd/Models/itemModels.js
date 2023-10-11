@@ -20,6 +20,6 @@ const itemSchema = new schema({
         required: true
     }
 })
-const itemModelo = mongoose.model("item", itemSchema)
+const itemModelo = mongoose.model("items", itemSchema)
 module.exports = itemModelo
 

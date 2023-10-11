@@ -2,7 +2,7 @@ import { useState, useEffect } from "react"
 import axios from 'axios'
 import {Navigate} from 'react-router-dom'
 
- export const getAccessToken = () => {
+ const getAccessToken = () => {
 
     const uri = `${import.meta.env.VITE_API_URL}/auth/login/success`
   
@@ -14,4 +14,5 @@ import {Navigate} from 'react-router-dom'
       catch(err){ console.log(err)}
     }
     return fetchToken()
-}
+  }
+  export {getAccessToken}
