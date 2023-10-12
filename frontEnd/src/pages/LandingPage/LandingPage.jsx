@@ -1,8 +1,8 @@
-import LpCont1 from "../LandingPageContents/LpCont1"
-import LpCont2 from "../LandingPageContents/LpCont2"
-import Faq from "../LandingPageContents/Faq"
-import Auth from "../components/Auth"
-import { getAccessToken } from "../components/api/getAccessToken.js"
+import LpCont1 from "./components/LpCont1"
+import LpCont2 from "./components/LpCont2"
+import Faq from "./components/Faq"
+import Auth from "../../components/Auth"
+import { getAccessToken } from "../../components/api/getAccessToken.js"
 import { useEffect } from "react"
 import axios from 'axios'
 

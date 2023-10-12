@@ -1,7 +1,7 @@
 const User = require('../Models/userModels')
 const jwt = require('jsonwebtoken')
 
-const createToken = (user)=>{
+const createToken = (user, profile)=>{
   const {_id, Name, Email, Role}=user
     const data = {_id, Name, Email, Role}
     // If user exists, return the user
@@ -9,9 +9,9 @@ const createToken = (user)=>{
     const refreshToken = jwt.sign(data, process.env.JWT_REFRESH_SECRET)
     const token = {
       'accessToken': accessToken,
-      'refreshToken': refreshToken
+      'refreshToken': refreshToken,
+      'picture': profile.picture
     }
-    console.log(data)
     return token
 }
 
@@ -21,7 +21,7 @@ const findOrCreateUser = async (profile, done) => {
       let user = await User.findOne({ 'Email': profile.email });
   
       if (user) {
-        const token = createToken(user)
+        const token = createToken(user, profile)
         return done(null, token);
       } else {
         // If user doesn't exist, create a new user
@@ -33,7 +33,7 @@ const findOrCreateUser = async (profile, done) => {
           // Add any other relevant fields from the profile
         });
         await user.save();
-        const token = createToken(user)
+        const token = createToken(user, profile)
         return done(null, token);
       }
     } catch (error) {
