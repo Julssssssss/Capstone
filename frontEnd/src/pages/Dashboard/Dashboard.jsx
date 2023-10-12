@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
-import NavBar from '/src/components/NavBar'
+import NavBar from './components/NavBar'
 import Profile from './components/ProfilePic'
-import SearchBar from '/src/components/SearchBar'
+import SearchBar from './components/ProfilePic'
 import axios from 'axios'
 import { Link} from "react-router-dom"
 import Logout from "../UserProfile/components/Logout"

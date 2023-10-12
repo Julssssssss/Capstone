@@ -6,11 +6,11 @@ const LpCont2 = () => {
     
   return (
     <>
-      <div className="bg-[#0d1832] h-auto mt-14">
+      <div className="bg-[#0d1832] h-auto">
 
         {/* dko alam itatawag basta check mo sa figma 2nd part ng landing page*/}
         {/* deisng sa background lang to */}
-        <div className="mt-[4rem] bg-[#17394c] w-screen h-[5rem]"></div>
+        <div className="mt-[5rem] bg-[#17394c] w-screen h-[5rem]"></div>
         {/*image na nakapatong dun sa una*/}
           {/* <img className="w-[10rem] h-[10rem]" src={img}></img> */}
         <img className="w-[6.5rem] h-[10rem] -mt-[7rem] ml-[3rem]" src={img}></img>
@@ -18,7 +18,7 @@ const LpCont2 = () => {
 
         
         {/* dko sure ano lalagay nya basta dalawang window shit dito */}
-        <div className="mt-[9rem] w-full h-[13rem] flex flex-col ">
+        <div className="mt-[9rem] w-full h-[13rem] flex flex-col">
           <div className=" flex flex-row justify-evenly">
             <div className="rounded-lg w-[10rem] h-[7rem] shadow-yellow-400 bg-[#17394c] shadow-sm"></div>
             <div className="rounded-lg w-[10rem] h-[7rem] shadow-yellow-400 bg-[#17394c] shadow-sm"></div>

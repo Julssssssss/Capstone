@@ -1,6 +1,6 @@
 import { useState } from "react"
-import Login from "/src/components/Login"
-import Signup from "/src/components/Signup"
+import Login from "./Login"
+import Signup from "./Signup"
 
 
 const LpCont1 = () => {
@@ -36,10 +36,10 @@ const LpCont1 = () => {
  
     return (
         <>
-            <div className="h-auto flex flex-col items-center">
+            <div className="h-auto flex flex-col items-center bg-[#0d1832]">
                 {/* dko alam ano itatawag dito basta eto nasa unahan */}
                 
-                <div className="flex flex-row bg-[#0d1832] rounded-2xl shadow-3xl shadow-[#003985] w-[20rem] h-[11.6rem] mt-[3rem]">
+                <div className="flex flex-row rounded-2xl shadow-3xl shadow-[#003985] w-[20rem] h-[11.6rem] mt-[3rem]">
                     {/* img */}
                     <img className="h-full w-[55%] rounded-l-2xl" src={img}></img>
 
