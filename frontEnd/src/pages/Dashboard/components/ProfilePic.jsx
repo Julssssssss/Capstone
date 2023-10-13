@@ -14,7 +14,7 @@ const Profile = ({User}) => {
       {/* Parent profile */}
       
       <Link to='/Profile'>
-        <div style={{backgroundImage:`url(${User[0].user._json.picture})`}} className={`bg-contain cursor-pointer mt-4 mr-3 rounded-full bg-center h-10 w-10 z-20 ${profile ? 'bg-opacity-20' : ''}`} onClick={toggleProfile}></div>
+        <div style={{backgroundImage:`url(${User})`}} className={`bg-contain cursor-pointer mt-4 mr-3 rounded-full bg-center h-10 w-10 z-20 ${profile ? 'bg-opacity-20' : ''}`} onClick={toggleProfile}></div>
       </Link>
         
           

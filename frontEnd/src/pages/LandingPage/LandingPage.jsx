@@ -2,7 +2,7 @@ import LpCont1 from "./components/LpCont1"
 import LpCont2 from "./components/LpCont2"
 import Faq from "./components/Faq"
 import Auth from "../../components/Auth"
-import { getAccessToken } from "../../components/api/getAccessToken.js"
+import {getAccessToken} from "../../components/api/getAccessToken"
 import { useEffect } from "react"
 import axios from 'axios'
 

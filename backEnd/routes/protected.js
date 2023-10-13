@@ -11,20 +11,22 @@ const verifyToken = (req, res, next) => {
     console.log(authHeader)
 };
 
+//papalitan to ng post mmya pero get muna kasi tinetest placement ng data
 router.get("/data", (req, res)=>{
-    const {accessToken} = req.user
+    const {accessToken, picture} = req.user
     const user = jwt.verify(accessToken, process.env.JWT_ACCESS_SECRET)
     itemModels.find({})
         .then(result=>{
             res.status(200).json({
                 items: result,
-                user: user
+                user: user,
+                picture: picture
             })
         }
     ).catch(err=>{console.log(err)})
 })
 
-router.get('/items/:itemId', async(req, res)=>{
+router.post('/items/:itemId', async(req, res)=>{
     try {
         const item = await itemModels.findById(req.params.itemId);
         if (!item) {

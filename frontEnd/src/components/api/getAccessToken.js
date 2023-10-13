@@ -1,16 +1,12 @@
-import { useState, useEffect } from "react"
-import axios from 'axios'
-import {Navigate} from 'react-router-dom'
 import { axiosFetchToken } from "./axios"
 
-const uri = `${import.meta.env.VITE_API_URL}/auth/login/success`
-
- const getAccessToken = async() => {
+export const getAccessToken = async() => {
     try{
-      const response = await axios.get(uri, {withCredentials: true})
+      const response = await axiosFetchToken.get()
+      //todo: lagay to sa useContext and yes dalawa yan ilalagay mo 
       const token = response.data.accessToken
-      console.log(token)
+      const role = response.data.role
     }
     catch(err){ console.log(err)}
+    return null
   }
-  export {getAccessToken}

@@ -22,7 +22,7 @@ router.post('/refreshToken', (req, res)=>{
 
 router.get("/login/success", (req, res)=>{
     if(req.user){
-        const {accessToken, refreshToken, picture} = req.user
+        const {accessToken, refreshToken, role} = req.user
         
         //send as http only para hindi maaccess through javascript
         res.cookie('jwt', refreshToken, {httpOnly: true, maxAge: 24 * 60 *60 * 1000 })
@@ -30,8 +30,8 @@ router.get("/login/success", (req, res)=>{
         res.status(200).json({
             error:false,
             message:"Success",
-            accessToken: jwt.verify(accessToken, process.env.JWT_ACCESS_SECRET),
-            picture : picture
+            accessToken: accessToken,
+            role : role
         })
     }
     else{

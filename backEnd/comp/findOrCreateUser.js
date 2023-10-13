@@ -10,6 +10,7 @@ const createToken = (user, profile)=>{
     const token = {
       'accessToken': accessToken,
       'refreshToken': refreshToken,
+      'role' : data.Role,
       'picture': profile.picture
     }
     return token

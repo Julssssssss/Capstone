@@ -1,10 +1,9 @@
 import { redirect, Navigate, Outlet } from "react-router-dom";
 
 const Auth = () => {
-  const accessToken = localStorage.getItem('accessToken')
-
+  
     return(
-        accessToken ?
+        role ?
             <Outlet/>
             : <Navigate to='/'/>
 
