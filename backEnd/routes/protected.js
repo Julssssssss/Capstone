@@ -7,12 +7,13 @@ const jwt = require('jsonwebtoken')
 
 //to verify token 
 const verifyToken = (req, res, next) => {
-    const authHeader = req.headers['Authorization'];
+    const authHeader = req.headers['authorization']
     console.log(authHeader)
+    next()
 };
 
 //papalitan to ng post mmya pero get muna kasi tinetest placement ng data
-router.get("/data", (req, res)=>{
+router.post("/data", verifyToken, (req, res)=>{
     const {accessToken, picture} = req.user
     const user = jwt.verify(accessToken, process.env.JWT_ACCESS_SECRET)
     itemModels.find({})

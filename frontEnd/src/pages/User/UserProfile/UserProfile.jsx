@@ -3,6 +3,7 @@ import Logout from "./components/Logout";
 
 
 const Profile = ({User}) => {
+  console.log(User)
   return (
     <>
     {/* close button */}
@@ -23,11 +24,11 @@ const Profile = ({User}) => {
         </div>
         <div className="bg-[#0d1832] h-screen flex flex-col items-center">
           {/* USER IMAGE */}
-          <img className='rounded-full border-8 mt-10 w-[10rem] h-[10rem] border-yellow-400' src={User[0].user._json.picture}></img>
+          <img className='rounded-full border-8 mt-10 w-[10rem] h-[10rem] border-yellow-400' src={User[0].user.picture}></img>
           {/* USER DATA */}
           <div className="bg-[#003985] h-[10rem] w-[15rem] mt-[3.5rem] text-white p-5 z-20">
-            Name: {User[0].user.displayName}  <br/>
-            Email: {User[0].user.emails[0].value}
+            Name: {User[0].user.Name}  <br/>
+            Email: {User[0].user.Emails}
           </div>
           {/* yellow designs */}
           <div className="absolute left-0 top-[18rem] bg-yellow-400 w-[14rem] h-[4.6rem] z-10"></div>

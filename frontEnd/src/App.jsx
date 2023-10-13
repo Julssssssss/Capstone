@@ -1,20 +1,9 @@
 import {Route, Routes, Navigate} from 'react-router-dom'
-import { useState, useEffect } from 'react'
-import axios from 'axios'
 //test
-import Dashboard from './pages/Dashboard/Dashboard'
-import Help from './navComponents/Help'
+import Dashboard from './pages/User/Dashboard/Dashboard'
 import LandingPage from './pages/LandingPage/LandingPage'
-import Profile from './pages/UserProfile/UserProfile'
-import Item from './pages/ItemDetails/ItemDetails'
-import Confirmation from './pages/Confirmation/Confirmation'
-import SignUpSecQ from './pages/NotSure/SignUpSecQ'
-import SecSignUp from './pages/NotSure/SecSignUp'
-import Authenticate from './components/RefreshToken'
-import {getAccessToken} from './components/api/getAccessToken'
-import Auth from './components/Auth'
 import Page404 from './pages/404/Page404'
-import UserProfile from './pages/UserProfile/UserProfile'
+import UserProfile from './pages/User/UserProfile/UserProfile'
 
 const App = () => {
   //nababaliw ka na san mo lalagay yung accessToken kasi wala kayong rtk

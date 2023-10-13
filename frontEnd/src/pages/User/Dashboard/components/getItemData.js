@@ -1,5 +1,5 @@
 import axios from "axios"
-import { axiosFetchItems } from "../../../components/api/axios"
+import { axiosFetchItems } from "../../../../components/api/axios"
 
 
 export const getItemData = async() =>{

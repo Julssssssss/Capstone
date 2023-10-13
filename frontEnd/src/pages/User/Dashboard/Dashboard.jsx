@@ -1,24 +1,37 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState, useContext } from "react"
 import NavBar from './components/NavBar'
 import { Link} from "react-router-dom"
 import Logout from "../UserProfile/components/Logout"
-import { axiosFetchItems } from "../../components/api/axios"
+import { axiosFetchItems } from "../../../components/api/axios"
 import ProfilePic from "./components/ProfilePic"
 import SearchBar from "./components/SearchBar"
+import Profile from "./components/ProfilePic"
+import { AccessTokenContext } from "../../../components/api/getTokenRole"
 
-
+import axios from 'axios'
 
 const Dashboard = () => {
 
   // Create an asynchronous function within useEffect
   //eto yung sa data like items eme
   
-  const [data, setData] = useState()
+  //lagay sa USECONTEXT para mapasa sa ibang may kaylangan na pages
+  const [data, setData] = useState(null)
   const [loading, setLoading] = useState(true);
+  const accessToken = useContext(AccessTokenContext)
+  console.log(accessToken)
 
   const fetchData = async() => {
     try {
-      const response = await axiosFetchItems.get()
+      const response = await axios.post(`${import.meta.env.VITE_API_URL}/prot/data`,
+        null,
+        {
+          headers:{
+            'authorization': `Bearer ${accessToken}`
+          }, 
+          withCredentials: true
+        }
+      )
       setData([response.data])
     } catch (error) { 
       console.log("Error fetching data", error);
@@ -34,7 +47,6 @@ const Dashboard = () => {
   if (loading) {
     return <div>Loading...</div>;
   }
-
   function sample() {
     return data.map((elem) => 
       Object.values(elem.items).map((el, index)=>{
