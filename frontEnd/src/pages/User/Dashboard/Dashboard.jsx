@@ -1,14 +1,10 @@
 import { useEffect, useState, useContext } from "react"
 import NavBar from './components/NavBar'
 import { Link} from "react-router-dom"
-import Logout from "../UserProfile/components/Logout"
-import { axiosFetchItems } from "../../../components/api/axios"
 import ProfilePic from "./components/ProfilePic"
 import SearchBar from "./components/SearchBar"
-import Profile from "./components/ProfilePic"
-import { AccessTokenContext } from "../../../components/api/getTokenRole"
+import { getUserAndItem } from "./components/getUserAndItemData"
 
-import axios from 'axios'
 
 const Dashboard = () => {
 
@@ -18,43 +14,33 @@ const Dashboard = () => {
   //lagay sa USECONTEXT para mapasa sa ibang may kaylangan na pages
   const [data, setData] = useState(null)
   const [loading, setLoading] = useState(true);
-  const accessToken = useContext(AccessTokenContext)
-  console.log(accessToken)
 
-  const fetchData = async() => {
-    try {
-      const response = await axios.post(`${import.meta.env.VITE_API_URL}/prot/data`,
-        null,
-        {
-          headers:{
-            'authorization': `Bearer ${accessToken}`
-          }, 
-          withCredentials: true
-        }
-      )
-      setData([response.data])
-    } catch (error) { 
-      console.log("Error fetching data", error);
-    }
+  const getData = async()=>{
+    const temp = await getUserAndItem()
+    setData([temp]);
+    setLoading(false)
   }
 
-  useEffect(() => {
-    // Call the asynchronous function
-    fetchData().finally(() => setLoading(false))
-  }, []);
-
+  useEffect(()=>{
+    getData()
+  },[])
+  
   //lagay dito loading eme
   if (loading) {
     return <div>Loading...</div>;
   }
+
   function sample() {
     return data.map((elem) => 
       Object.values(elem.items).map((el, index)=>{
         return (
           // container for item and description
-          <div key={index} className="flex flex-row m-3 rounded-lg mb-[1rem] z-0 justify-end h-[9rem] items-center">
+          <div key={index} className="flex flex-row m-3 rounded-lg mb-[1rem] z-0 justify-end h-[9rem] items-center ">
               {/*title container*/}
-            <Link to={`/Item/${el._id}`}>
+
+            <Link to={{pathname:`/Item/${el._id}`}}
+                state={{el}}
+              >
               <div className="m-2 rounded-lg bg-[#003985] hover:bg-sky-700 active:bg-[#0d1832] overflow-hidden w-[15rem] h-[5rem]">
                 <div className="flex items-center font-bold text-white ml-[5rem] h-full p-3">
                   {el.title}
@@ -62,7 +48,7 @@ const Dashboard = () => {
               </div>
             </Link>
 
-            <div className="p-2 m-3 rounded-full bg-yellow-400 overflow-hidden absolute left-[1rem]">
+            <div className="p-2 m-3 rounded-full bg-yellow-400 overflow-hidden absolute left-[1rem] ">
               <img src={el.img} alt={el.title} className="rounded-full object-contain w-[7rem]"/>
             </div>
             
@@ -86,7 +72,7 @@ const Dashboard = () => {
           <div className="text-white text-lg"> Hello, {data[0].user.Name}</div>
         </div>
         <div className="flex justify-end space-x-2 w-[12rem]">
-          <ProfilePic User={data[0].picture}/>
+          <ProfilePic User={data}/>
         </div>
       </div>
           {/*Item display parent*/}

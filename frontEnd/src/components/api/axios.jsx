@@ -5,7 +5,7 @@ axios.defaults.headers.post['Content-Type'] = 'application/json';
 axios.defaults.headers.common['Accept'] = 'application/json';
 
 const baseUrl = `${import.meta.env.VITE_API_URL}`;
-const accessToken = null
+const accessToken = localStorage.getItem('accessToken')
 
 //get
 const axiosFetchToken = axios.create({

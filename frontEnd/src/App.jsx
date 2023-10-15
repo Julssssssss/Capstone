@@ -4,6 +4,8 @@ import Dashboard from './pages/User/Dashboard/Dashboard'
 import LandingPage from './pages/LandingPage/LandingPage'
 import Page404 from './pages/404/Page404'
 import UserProfile from './pages/User/UserProfile/UserProfile'
+import ItemDetails from './pages/User/itemDetails/ItemDetails'
+import Confirmation from './pages/User/Confirmation/Confirmation'
 
 const App = () => {
   //nababaliw ka na san mo lalagay yung accessToken kasi wala kayong rtk
@@ -26,7 +28,8 @@ const App = () => {
 
             <Route path='/Dashboard' element={<Dashboard/>}/>
             <Route path='/Profile' element={<UserProfile/>}/>
-            <Route path='/Item/:itemId' element={<itemDetails/>}/>
+            <Route path='/Item/:itemId' element={<ItemDetails/>}/>
+            <Route path='/Confirmation' element={<Confirmation/>}/>
             
           
 
