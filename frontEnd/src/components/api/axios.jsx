@@ -20,4 +20,27 @@ const axiosFetchItems = axios.create({
     }
 });
 
-export { axiosFetchToken, axiosFetchItems };
+axiosFetchItems.interceptors.response.use(
+    response => response,
+    error => {
+        const originalRequest = error.config;
+        if (error.response.status === 403 && !originalRequest._retry) {
+            originalRequest._retry = true;
+            return axiosFetchRefreshToken.post('/auth/refreshToken')
+                .then(response => {
+                    console.log(response)
+                    const newAccessToken = response.data.accessToken;
+                    localStorage.setItem('accessToken', newAccessToken);
+                    originalRequest.headers['Authorization'] = `Bearer ${newAccessToken}`;
+                    return axiosFetchItems(originalRequest);
+                });
+        }
+        return Promise.reject(error);
+    }
+);
+//TODO: NEED TO FIX THE INTERCEPTOR AFTER REREQUEST
+const axiosTry = axios.create({
+    baseURL: `${baseUrl}/auth/refreshToken`,
+});
+
+export { axiosFetchToken, axiosFetchItems, axiosTry };

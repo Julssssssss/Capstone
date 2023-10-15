@@ -4,9 +4,20 @@ import Faq from "./components/Faq"
 import Auth from "../../components/Auth"
 import { useEffect, useContext, useState } from "react"
 import { getAccessTokenAndRole } from "./components/getAccessTokenAndRole"
+import { axiosTry } from "../../components/api/axios"
 
 const LandingPage = () => {
-  getAccessTokenAndRole()
+  //getAccessTokenAndRole()
+
+  const tryRefreshToken = async()=>{
+    const res = await axiosTry.post()
+    console.log(res.data)
+  }
+
+  useEffect(()=>{
+    tryRefreshToken()
+  },[])
+
   return (
     <>
         <div className="bg-[#0d1832] flex flex-col w-screen h-screen">

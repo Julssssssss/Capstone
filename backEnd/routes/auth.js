@@ -6,16 +6,13 @@ let refreshTokens = []
 
 router.post('/refreshToken', (req, res)=>{
     const refreshToken =req.cookies
-    if(!refreshToken?.jwt) return res.status(401)
-    if (!refreshTokens.includes(refreshToken)) return res.status(403)
-    jwt.verify (refreshToken, process.env.JWT_REFRESH_SECRET, (err, user)=>{
-        if(err) return res.status(403)
-        const accessToken = generateAccessToken(//ginawa to para hindi maget yung ias
-        { 
-            name: user.name,
-            picture: user.picture,
-            email: user.email
-        })
+    if(!refreshToken?.jwt) return res.sendStatus(401)
+    //if (!refreshTokens.includes(refreshToken)) return res.sendStatus(403)
+    jwt.verify (refreshToken.jwt, process.env.JWT_REFRESH_SECRET, (err, user)=>{
+        if(err) return res.sendStatus(403)
+        const {_id, Name, Email, Role}=user
+        const data = {_id, Name, Email, Role}
+        const accessToken = jwt.sign(data, process.env.JWT_ACCESS_SECRET)
         res.json({ accessToken: accessToken})
     })
 })
