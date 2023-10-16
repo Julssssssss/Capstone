@@ -1,5 +1,13 @@
 const User = require('../Models/userModels')
+const jwtRefreshToken = require('../Models/refreshTokenModels')
 const jwt = require('jsonwebtoken')
+
+const addRefreshToken = (refreshToken) =>{
+  refreshToken = new jwtRefreshToken({
+    refreshToken: refreshToken,
+  });
+  refreshToken.save();
+}
 
 const createToken = (user, profile)=>{
   const {_id, Name, Email, Role}=user
@@ -7,6 +15,7 @@ const createToken = (user, profile)=>{
     // If user exists, return the user
     const accessToken = jwt.sign(data, process.env.JWT_ACCESS_SECRET)
     const refreshToken = jwt.sign(data, process.env.JWT_REFRESH_SECRET)
+    addRefreshToken(refreshToken)
     const token = {
       'accessToken': accessToken,
       'refreshToken': refreshToken,

@@ -1,13 +1,34 @@
 const router =require("express").Router()
 const passport = require("passport")
 const jwt = require('jsonwebtoken')
+const jwtRefreshToken = require('../Models/refreshTokenModels')
 
-let refreshTokens = []
+//TODO: check and fix this
+const checkRefToken = async(refreshToken) =>{
+    try{
+        let token = await jwtRefreshToken.findOne({ 'refreshToken': refreshToken });
+        if(token){
+            console.log('success')
+            return null
+        }
+        else{
+            return 401
+        }
+    }catch(err) {return 403}
+}
 
-router.post('/refreshToken', (req, res)=>{
+router.post('/refreshToken', async(req, res)=>{
     const refreshToken =req.cookies
     if(!refreshToken?.jwt) return res.sendStatus(401)
-    //if (!refreshTokens.includes(refreshToken)) return res.sendStatus(403)
+
+    const status = await checkRefToken(refreshToken.jwt)
+        if(status=== 401){
+            return res.sendStatus(401)
+        }
+        else if (status === 403){
+            return res.sendStatus(403)
+        }
+
     jwt.verify (refreshToken.jwt, process.env.JWT_REFRESH_SECRET, (err, user)=>{
         if(err) return res.sendStatus(403)
         const {_id, Name, Email, Role}=user
@@ -55,9 +76,19 @@ router.get("/google/callback",
 )
 router.get("/google", passport.authenticate("google", ["email", "profile"]))
 
+//TODO: check and fix this
+const deleteRefTokenDb = async(refreshToken)=>{
+    try{
+        let token = await jwtRefreshToken.findOne({ 'refreshToken': refreshToken });
+        if(token){
+            //delete refreshToken from database
+        }
+    }catch(err) {console.log(err)}
+}
+
 router.get("/logout", (req, res)=>{
     const refreshToken =req.cookies
-    if (refreshTokens.includes(refreshToken)) refreshTokens.splice(refreshTokens.indexOf(refreshToken), 1)
+    deleteRefTokenDb(refreshToken.jwt)
     req.logout();
     res.redirect(process.env.CLIENT_URL)
 })

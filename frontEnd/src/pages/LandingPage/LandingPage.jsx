@@ -2,21 +2,11 @@ import LpCont1 from "./components/LpCont1"
 import LpCont2 from "./components/LpCont2"
 import Faq from "./components/Faq"
 import Auth from "../../components/Auth"
-import { useEffect, useContext, useState } from "react"
 import { getAccessTokenAndRole } from "./components/getAccessTokenAndRole"
-import { axiosTry } from "../../components/api/axios"
 
 const LandingPage = () => {
-  //getAccessTokenAndRole()
 
-  const tryRefreshToken = async()=>{
-    const res = await axiosTry.post()
-    console.log(res.data)
-  }
-
-  useEffect(()=>{
-    tryRefreshToken()
-  },[])
+  getAccessTokenAndRole()
 
   return (
     <>
