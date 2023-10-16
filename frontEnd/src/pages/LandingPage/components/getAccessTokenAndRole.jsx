@@ -11,8 +11,8 @@ const getAccessTokenAndRole = () => {
         try {
             const response = await axiosFetchToken.get();
             const { accessToken, role } = response.data;
-            setAccessToken(JSON.stringify(accessToken));
-            setRole(JSON.stringify(role));
+            setAccessToken(accessToken);
+            setRole(role);
         } catch (err) {
             console.error(err);
             return null

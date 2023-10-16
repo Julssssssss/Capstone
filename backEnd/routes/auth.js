@@ -8,7 +8,6 @@ const checkRefToken = async(refreshToken) =>{
     try{
         let token = await jwtRefreshToken.findOne({ 'refreshToken': refreshToken });
         if(token){
-            console.log('success')
             return null
         }
         else{
@@ -69,7 +68,8 @@ router.get("/login/failed", (req, res)=>{
 
 router.get("/google/callback",
     passport.authenticate("google", {
-        successRedirect: `${process.env.CLIENT_URL}`,
+        //NOTE!!!! TEMPORARY MUNA SA DASHBOARD IBATO PARA IF EVER IPRESENT PERO BABALIK SA / LANG PARA IAUTH
+        successRedirect: `${process.env.CLIENT_URL}dashboard`,
         failureRedirect: `/login/failed`,
 
     })
@@ -79,18 +79,26 @@ router.get("/google", passport.authenticate("google", ["email", "profile"]))
 //TODO: check and fix this
 const deleteRefTokenDb = async(refreshToken)=>{
     try{
-        let token = await jwtRefreshToken.findOne({ 'refreshToken': refreshToken });
-        if(token){
-            //delete refreshToken from database
-        }
+        await jwtRefreshToken.findOneAndDelete({ 'refreshToken': refreshToken });
     }catch(err) {console.log(err)}
 }
 
 router.get("/logout", (req, res)=>{
-    const refreshToken =req.cookies
-    deleteRefTokenDb(refreshToken.jwt)
-    req.logout();
-    res.redirect(process.env.CLIENT_URL)
+    const cookies =req.cookies
+    const refreshToken = cookies.jwt
+    deleteRefTokenDb(refreshToken)
+        .then(()=>{ 
+            for (const cookieName in cookies) {
+                res.clearCookie(cookieName);
+              }
+            req.session = null            
+            req.logout();
+            res.redirect(process.env.CLIENT_URL)
+        })
+        .catch((err) => {
+            console.error(err);
+            res.sendStatus(500); // Return an appropriate status code in case of error
+        });
 })
 
 module.exports = router
