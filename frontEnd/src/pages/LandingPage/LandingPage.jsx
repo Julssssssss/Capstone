@@ -7,16 +7,7 @@ import { getAccessTokenAndRole } from "./components/getAccessTokenAndRole"
 import { axiosTry } from "../../components/api/axios"
 
 const LandingPage = () => {
-  //getAccessTokenAndRole()
-
-  const tryRefreshToken = async()=>{
-    const res = await axiosTry.post()
-    console.log(res.data)
-  }
-
-  useEffect(()=>{
-    tryRefreshToken()
-  },[])
+  getAccessTokenAndRole()
 
   return (
     <>

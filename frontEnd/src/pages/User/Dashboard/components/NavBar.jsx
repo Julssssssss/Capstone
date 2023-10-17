@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import { useState } from "react";
 import { Link } from "react-router-dom"
 
 
@@ -47,7 +47,7 @@ const NavBar = () => {
                 <Link to={menus.to} key={index}>
                   <button className="bg-[#134083] active:bg-[#0d1832] w-[10rem] rounded-full p-2">
                     {menus.label}
-                  </button>
+                  </button>                       
                 </Link>  
               ))}
             </div>
