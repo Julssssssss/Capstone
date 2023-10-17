@@ -2,7 +2,8 @@
 const Auth = () => {
     
     const role = localStorage.getItem('role')
-    if(role){
+    const token = localStorage.getItem('accessToken')
+    if(token){
         if(role==='user'){
             window.open(
                 `${import.meta.env.VITE_CLIENT_URL}/dashboard`, "_self"
