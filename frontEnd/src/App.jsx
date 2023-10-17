@@ -25,8 +25,7 @@ const App = () => {
       <div>
         <Routes>
           {/*default view */}
-          <Route exact path='/' element={<HlpDocumentation/>}/>
-          {/*<Route exact path='/' element={<LandingPage/>}/>*/}
+          <Route exact path='/' element={<LandingPage/>}/>
           {/*pag gusto mo mag-add pa ng ibang path declare mo muna dito*/}
 
             <Route path='/Dashboard' element={<Dashboard/>}/>

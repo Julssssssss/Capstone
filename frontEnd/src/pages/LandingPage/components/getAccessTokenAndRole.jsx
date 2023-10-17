@@ -1,31 +1,18 @@
 import { axiosFetchToken } from "../../../components/api/axios";
-import { useState, useEffect } from "react";
 
-const getAccessTokenAndRole = () => {
+
+const getAccessTokenAndRole = async() => {
     
-    const [accessToken, setAccessToken] = useState(null);
-    const [role, setRole] = useState(null);
-    const [loading, setLoading] = useState(true)
-
-    const getData = async()=>{
-        try {
-            const response = await axiosFetchToken.get();
-            const { accessToken, role } = response.data;
-            setAccessToken(accessToken);
-            setRole(role);
-        } catch (err) {
-            console.error(err);
-            return null
-        }
-    }
-
-    useEffect(() => {
-        getData().finally(()=>{setLoading(false)})
-    }, []);
-    if(loading === false){
+    try {
+        const response = await axiosFetchToken.get();
+        const { accessToken, role } = response.data;
         localStorage.setItem('accessToken', accessToken)
         localStorage.setItem('role', role)
+    } catch (err) {
+        console.error(err);
+        return null
     }
 }
+
 
 export { getAccessTokenAndRole }

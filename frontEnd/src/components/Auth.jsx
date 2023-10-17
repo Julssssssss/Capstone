@@ -1,14 +1,26 @@
-import {Navigate, Outlet } from "react-router-dom";
 
 const Auth = () => {
     
     const role = localStorage.getItem('role')
-  
-    return(
-        role ?
-            <Outlet/>
-            : <Navigate to='/'/>
-
-    )
+    if(role){
+        if(role==='user'){
+            window.open(
+                `${import.meta.env.VITE_CLIENT_URL}/dashboard`, "_self"
+            )
+        }
+        else if(role === 'mod'){
+            window.open(
+                `${import.meta.env.VITE_CLIENT_URL}/mod`, "_self"
+            )
+        }
+        else if (role === 'admin'){
+            window.open(
+                `${import.meta.env.VITE_CLIENT_URL}/admin`, "_self"
+            )
+        }
+    }
+    else{
+        return null
+    }
 }
-export default Auth
+export {Auth}

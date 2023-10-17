@@ -69,7 +69,7 @@ router.get("/login/failed", (req, res)=>{
 router.get("/google/callback",
     passport.authenticate("google", {
         //NOTE!!!! TEMPORARY MUNA SA DASHBOARD IBATO PARA IF EVER IPRESENT PERO BABALIK SA / LANG PARA IAUTH
-        successRedirect: `${process.env.CLIENT_URL}dashboard`,
+        successRedirect: `${process.env.CLIENT_URL}`,
         failureRedirect: `/login/failed`,
 
     })
