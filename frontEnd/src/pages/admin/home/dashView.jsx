@@ -1,7 +1,7 @@
 import Panels from './widgets/panels'
 import LostItems from './widgets/lostItems'
 import SearchBar from './widgets/searchBar'
-import PIcon from './widgets/profileIcon'
+import ProfileIcon from './widgets/profileIcon'
 
 const dashView = () => {
   return (
@@ -11,7 +11,7 @@ const dashView = () => {
           <div className='flex flex-row w-[73rem] text-white text-[3rem]'>
             DASHBOARD <SearchBar />
               <div className='flex flex-row-reverse w-[73rem] text-white'>
-                <PIcon />
+                <ProfileIcon />
               </div>
           </div>
         

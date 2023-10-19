@@ -20,8 +20,8 @@ const Confirmation = () => {
         </div>
 
         {/*back to landing page*/}
-        <Link to='/dashboard'> 
-          <button className="bg-yellow-500 h-[2rem] w-[10rem] rounded-full mt-[3.7rem] mb-[3rem] text-center p-1">
+        <Link to='/dashboard' className="bg-yellow-500 h-[2rem] w-[10rem] rounded-full mt-[3rem] mb-[3rem] text-center p-1"> 
+          <button>
             DONE
           </button>
         </Link>

@@ -35,17 +35,15 @@ const Dashboard = () => {
       Object.values(elem.items).map((el, index)=>{
         return (
           // container for item and description
-          <div key={index} className="flex flex-row m-3 rounded-lg mb-[1rem] z-0 justify-end h-[9rem] items-center ">
+          <div key={index} className="flex flex-row m-3 rounded-lg mb-[1rem] z-0 justify-end h-[8.5rem] items-center ">
               {/*title container*/}
 
-            <Link to={{pathname:`/Item/${el._id}`}}
+            <Link className="shadow-sm shadow-black rounded-lg bg-[#003985] hover:bg-sky-700 active:bg-[#0d1832] overflow-hidden w-[15rem] h-[5rem]" to={{pathname:`/Item/${el._id}`}}
                 state={{el}}
               >
-              <div className="m-2 rounded-lg bg-[#003985] hover:bg-sky-700 active:bg-[#0d1832] overflow-hidden w-[15rem] h-[5rem]">
                 <div className="flex items-center font-bold text-white ml-[5rem] h-full p-3">
                   {el.title}
                 </div>
-              </div>
             </Link>
 
             <div className="p-2 m-3 rounded-full bg-yellow-400 overflow-hidden absolute left-[1rem] ">
@@ -76,7 +74,7 @@ const Dashboard = () => {
         </div>
       </div>
           {/*Item display parent*/}
-        <SearchBar />
+      <SearchBar />
       <div className="flex flex-col h-screen p-[1rem]">
         {sample()}
       </div>

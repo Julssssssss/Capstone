@@ -1,5 +1,4 @@
-
-
+// for dashboard and lost items section
 const addItem = () => {
   return (
     <>

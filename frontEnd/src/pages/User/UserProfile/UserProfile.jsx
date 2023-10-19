@@ -10,7 +10,7 @@ const Profile = () => {
   return (
     <>
     {/* close button */}
-        <div className="bg-[#0d1832] flex flex-row">
+        <div className="bg-[#0D1832] flex flex-row">
           <Link to='/Dashboard'>
             <button className='mt-[1rem] ml-[1rem]'>
               <svg xmlns="http://www.w3.org/2000/svg" width="27" height="26" viewBox="0 0 27 26" fill="none">
@@ -25,18 +25,23 @@ const Profile = () => {
             </button>
           </Link>
         </div>
-        <div className="bg-[#0d1832] h-screen flex flex-col items-center">
+        <div className="bg-[#0d1832] h-auto flex flex-col items-center">
           {/* USER IMAGE */}
           <img className='rounded-full border-8 mt-10 w-[10rem] h-[10rem] border-yellow-400' src={User[0].picture}></img>
           {/* USER DATA */}
-          <div className="bg-[#003985] h-[10rem] w-[15rem] mt-[3.5rem] text-white p-5 z-20">
+          <div className="flex flex-row-reverse self-end mt-[2rem]">
+            <div className="bg-yellow-400 w-[14rem] h-[4.6rem] z-10"></div>
+          </div>
+          <div className="bg-[#003985] h-[10rem] w-[15rem]  text-white p-5 z-50 rounded-lg">
             <b>Name:</b> {User[0].user.Name}  <br/>
             <b>Email:</b> {User[0].user.Email}
           </div>
           {/* yellow designs */}
-          <div className="absolute left-0 top-[18rem] bg-yellow-400 w-[14rem] h-[4.6rem] z-10"></div>
-          <div className=" absolute right-0 top-[26rem] bg-yellow-400 w-[14rem] h-[4.6rem] z-10"></div>
-          <div className="mt-[3rem] mb-[1rem]">
+          
+          <div className="flex flex-row self-start">
+            <div className="bg-yellow-400 w-[14rem] h-[4.6rem]"></div>
+          </div>
+          <div className="mt-[5rem] mb-[5rem] ">
             <Logout />
           </div>
         </div>

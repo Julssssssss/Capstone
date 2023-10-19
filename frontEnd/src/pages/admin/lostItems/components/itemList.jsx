@@ -4,7 +4,7 @@ import ResButton from "./resButton"
 import DeleteButton from "./deleteButton"
 
 const lostItems = () => {
-
+//sample lang muna
 const sample = [
   {label: 'wallet'},
   {label: 'cellphone'},
