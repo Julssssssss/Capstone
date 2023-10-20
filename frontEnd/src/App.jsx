@@ -6,11 +6,13 @@ import Page404 from './pages/404/Page404'
 import UserProfile from './pages/User/UserProfile/UserProfile'
 import ItemDetails from './pages/User/itemDetails/ItemDetails'
 import Confirmation from './pages/User/Confirmation/Confirmation'
-import AdminDash from './pages/admin/dashboard'
+import HlpDocumentation from './pages/admin/HlpDocumentation/HlpDocumentation'
 
 const App = () => {
   //nababaliw ka na san mo lalagay yung accessToken kasi wala kayong rtk
   
+  //kunin nyo to if may gusto kayo comment
+  {/* */}
   
   return (
     <>
@@ -23,8 +25,7 @@ const App = () => {
       <div>
         <Routes>
           {/*default view */}
-          
-            <Route exact path='/' element={<LandingPage />}/>
+          <Route exact path='/' element={<LandingPage/>}/>
           {/*pag gusto mo mag-add pa ng ibang path declare mo muna dito*/}
 
             <Route path='/Dashboard' element={<Dashboard/>}/>

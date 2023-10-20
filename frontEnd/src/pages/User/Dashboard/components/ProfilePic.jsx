@@ -10,7 +10,7 @@ const Profile = ({User}) => {
       <Link to={{pathname:`/Profile`}}
         state={{User}}
       >
-        <div style={{backgroundImage:`url(${User[0].picture})`}} className={`bg-contain cursor-pointer mt-4 mr-3 rounded-full bg-center h-10 w-10 z-20 border-2 border-[#F9D62B]`}></div>
+        <div style={{backgroundImage:`url(${User[0].picture})`}} className={`bg-contain cursor-pointer mt-4 mr-3 rounded-full bg-center h-10 w-10 z-20`}></div>
       </Link>
         
           

@@ -6,7 +6,7 @@ const ItemDetails = () => {
   
   return (
     <div>
-      {/* back button */}
+      {/* Close button */}
       <div className="bg-[#0d1832] flex flex-row">
         <Link to='/Dashboard'>
           <button className='mt-[1rem] ml-[1rem]'>
@@ -30,7 +30,7 @@ const ItemDetails = () => {
           </div>
 
           {/* DIV FOR CONTAINER OF CONTENTS */}
-          <div className="text-center p-5 flex flex-col items-center bg-[#17394c] h-[20rem] w-[19rem] mt-[3rem] mb-[3rem] rounded-lg text-white">
+          <div className="text-center p-5 flex flex-col items-center bg-[#17394c] h-[27rem] w-[19rem] mt-[3rem] mb-[3rem] rounded-lg text-white">
             {/* title */}
             <div>{data.title}</div>
 
@@ -41,13 +41,14 @@ const ItemDetails = () => {
               {/* found at */}
               <p className="p-3 mt-[1rem] h-full">FOUND AT {data.founded} </p>
             </div>
-          </div>
-          {/* request button */}
-          <Link to="/Confirmation" className=" rounded-full p-2 px-3 bg-yellow-500 text-black mb-[2rem]">
-              <button>
+
+            {/* request button */}
+            <Link to="/Confirmation">
+              <button className="mb-[0.6rem] rounded-full p-2 px-3 bg-yellow-500 text-black mt-[2.8rem]">
                 REQUEST APPOINTMENT
               </button>
             </Link>
+          </div>
         </div>
       
     </div>
