@@ -1,22 +1,14 @@
+
 const Auth = () => {
     
     const role = localStorage.getItem('role')
     const token = localStorage.getItem('accessToken')
     if(token){
         if(role==='user'){
-            window.open(
-                `${import.meta.env.VITE_CLIENT_URL}/dashboard`, "_self"
-            )
+            window.location.href = `${import.meta.env.VITE_CLIENT_URL}/dashboard`
         }
-        else if(role === 'mod'){
-            window.open(
-                `${import.meta.env.VITE_CLIENT_URL}/Admin/Dashboard`
-            )
-        }
-        else if (role === 'admin'){
-            window.open(
-                `${import.meta.env.VITE_CLIENT_URL}/Admin/Dashboard`
-            )
+        else if(role === 'mod' || role === admin){
+            window.location.href = `${import.meta.env.VITE_CLIENT_URL}/Admin/Dashboard`
         }
     }
     else{

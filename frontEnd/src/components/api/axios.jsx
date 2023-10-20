@@ -35,6 +35,10 @@ axiosFetchItems.interceptors.response.use(
                     return axiosFetchItems(originalRequest);
                 });
         }
+        if (error.response.status === 401) {
+            window.location.href = `${import.meta.env.VITE_CLIENT_URL}/401`;
+            return Promise.resolve(); // Returning a resolved promise to stop further processing
+        }
         return Promise.reject(error);
     }
 );

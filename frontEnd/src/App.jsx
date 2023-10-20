@@ -39,6 +39,7 @@ const App = () => {
             <Route path='/Admin/HlpDocs' element={<HlpDocumentation/>}/>
 
           {/* 404 page  catch all  palitan to in the future hopefully ng 404 page tlga */}
+          <Route path='/401' element={<Page401/>}/>
           <Route path='*' element={<Page404/>}/>
         </Routes>
       </div>
