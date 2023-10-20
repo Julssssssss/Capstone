@@ -7,6 +7,7 @@ import UserProfile from './pages/User/UserProfile/UserProfile'
 import ItemDetails from './pages/User/itemDetails/ItemDetails'
 import Confirmation from './pages/User/Confirmation/Confirmation'
 import HlpDocumentation from './pages/Admin/HlpDocumentation'
+import Page401 from './pages/404/Page401'
 
 const App = () => {
   //nababaliw ka na san mo lalagay yung accessToken kasi wala kayong rtk
@@ -36,6 +37,7 @@ const App = () => {
           
 
           {/* 404 page  catch all  palitan to in the future hopefully ng 404 page tlga */}
+          <Route path='/401' element={<Page401/>}/>
           <Route path='*' element={<Page404/>}/>
           
         </Routes>
