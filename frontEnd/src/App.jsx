@@ -6,7 +6,7 @@ import Page404 from './pages/404/Page404'
 import UserProfile from './pages/User/UserProfile/UserProfile'
 import ItemDetails from './pages/User/itemDetails/ItemDetails'
 import Confirmation from './pages/User/Confirmation/Confirmation'
-import HlpDocumentation from './pages/Admin/HlpDocumentation'
+import HlpDocumentation from './pages/admin/HlpDocumentation/HlpDocumentation'
 import Page401 from './pages/404/Page401'
 
 const App = () => {
