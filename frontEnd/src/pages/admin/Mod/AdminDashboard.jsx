@@ -1,6 +1,5 @@
-import SideBar from '../admin/components/sidebar'
-import Home from '../admin/home/dashView'
-import LostItems from '../admin/lostItems/lostView'
+import SideBar from '../MainComponents/SideBar'
+import LostItems from '../Mod/LostItems/LostView'
 
 const dasboard = () => {
   return (

@@ -6,7 +6,8 @@ import Page404 from './pages/404/Page404'
 import UserProfile from './pages/User/UserProfile/UserProfile'
 import ItemDetails from './pages/User/itemDetails/ItemDetails'
 import Confirmation from './pages/User/Confirmation/Confirmation'
-import HlpDocumentation from './pages/admin/HlpDocumentation/HlpDocumentation'
+import HlpDocumentation from './pages/admin/Mod/HlpDocumentation/HlpDocumentation'
+import AdminDash from './pages/admin/Mod/AdminDashboard'
 
 const App = () => {
   //nababaliw ka na san mo lalagay yung accessToken kasi wala kayong rtk
@@ -33,7 +34,9 @@ const App = () => {
             <Route path='/Item/:itemId' element={<ItemDetails/>}/>
             <Route path='/Confirmation' element={<Confirmation/>}/>
             
-          
+          {/*admin/mod side */}
+            <Route path='/Admin/Dashboard' element={<AdminDash/>}/>
+            <Route path='/Admin/HlpDocs' element={<HlpDocumentation/>}/>
 
           {/* 404 page  catch all  palitan to in the future hopefully ng 404 page tlga */}
           <Route path='*' element={<Page404/>}/>

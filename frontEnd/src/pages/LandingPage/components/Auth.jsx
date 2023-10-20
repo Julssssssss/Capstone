@@ -10,12 +10,12 @@ const Auth = () => {
         }
         else if(role === 'mod'){
             window.open(
-                `${import.meta.env.VITE_CLIENT_URL}/mod`, "_self"
+                `${import.meta.env.VITE_CLIENT_URL}/Admin/Dashboard`
             )
         }
         else if (role === 'admin'){
             window.open(
-                `${import.meta.env.VITE_CLIENT_URL}/admin`, "_self"
+                `${import.meta.env.VITE_CLIENT_URL}/Admin/Dashboard`
             )
         }
     }

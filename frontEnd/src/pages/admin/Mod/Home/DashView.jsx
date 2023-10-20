@@ -1,7 +1,7 @@
-import Panels from './widgets/panels'
-import LostItems from './widgets/lostItems'
-import SearchBar from './widgets/searchBar'
-import ProfileIcon from './widgets/profileIcon'
+import Panels from './Widgets/Panels'
+import LostItems from './Widgets/LostItems'
+import SearchBar from './Widgets/SearchBar'
+import ProfileIcon from './Widgets/ProfileIcon'
 
 const dashView = () => {
   return (

@@ -1,5 +1,5 @@
-import SearchBar from "../home/widgets/searchBar"
-import ItemList from './components/itemList'
+import SearchBar from "../Home/Widgets/SearchBar"
+import ItemList from './Components/ItemList'
 
 
 const lostView = () => {

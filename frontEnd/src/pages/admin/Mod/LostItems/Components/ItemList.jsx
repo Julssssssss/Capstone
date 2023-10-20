@@ -1,7 +1,7 @@
-import AddItem from "../../components/addItem"
-import EditButton from "./editButton"
-import ResButton from "./resButton"
-import DeleteButton from "./deleteButton"
+import AddItem from "../../../MainComponents/AddItem"
+import EditButton from "./EditButton"
+import ResButton from "./ResButton"
+import DeleteButton from "./DeleteButton"
 
 const lostItems = () => {
 //sample lang muna
