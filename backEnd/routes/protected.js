@@ -1,13 +1,15 @@
 const router =require("express").Router()
+const jwt = require('jsonwebtoken')
 
 //schemas
 const itemModels = require('../Models/itemModels')
-const jwt = require('jsonwebtoken')
+const reqModel = require("../Models/requestModels")
 
 //to verify token 
 const verifyToken = (req, res, next) => {
     const authHeader = req.headers['authorization']
     const token = authHeader.split(' ')[1]
+    console.log(token)
     if(token === 'null' ) {return res.sendStatus(401)}
     jwt.verify(token, process.env.JWT_ACCESS_SECRET, (err, user)=>{
         if(err) return res.sendStatus(403)
@@ -38,5 +40,31 @@ router.post("/data", verifyToken, (req, res)=>{
         return res.sendStatus(403)
     }
 })
+
+router.post("/request", verifyToken, async(req, res)=>{
+    const {itemId} = req.body
+    const {user} = req.user
+    try{
+        let item = await itemModels.findOne({ '_id': itemId });
+
+        const {title, _id} = item
+        const {Email} = user
+        if(item == null){return res.sendStatus(403)}
+
+        const newReq = new reqModel({
+            itemId: _id,
+            title: title,
+            Email: Email, 
+        })
+        await newReq.save()
+        res.sendStatus(200);
+    }catch(err){
+        console.log(err)
+        res.sendStatus(500)
+    }
+    
+})
+
+
 
 module.exports = router

@@ -1,8 +1,28 @@
 import { Link, useLocation } from "react-router-dom";
+import axios from "axios"
+import { useEffect } from "react";
 
 const ItemDetails = () => {
   const location = useLocation()
   const data = location.state.el
+
+  const accessToken = localStorage.getItem('accessToken')
+
+  const sendReq = async()=>{
+    try{
+      const response = await axios.post(`${import.meta.env.VITE_API_URL}/prot/request`,
+        {itemId : data._id}, 
+        {
+          headers:{
+            'Authorization': `Bearer ${accessToken}`
+          }
+        }
+      )
+    }
+    catch(err){console.log(err)}
+  } 
+
+  console.log(data._id)
   
   return (
     <div>
@@ -43,8 +63,10 @@ const ItemDetails = () => {
             </div>
 
             {/* request button */}
+            {/* NOTE: NEED TO FIX TO */}
             <Link to="/Confirmation">
-              <button className="mb-[0.6rem] rounded-full p-2 px-3 bg-yellow-500 text-black mt-[2.8rem]">
+              <button className="mb-[0.6rem] rounded-full p-2 px-3 bg-yellow-500 text-black mt-[2.8rem]" 
+              onClick={sendReq}>
                 REQUEST APPOINTMENT
               </button>
             </Link>
