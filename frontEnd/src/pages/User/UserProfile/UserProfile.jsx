@@ -29,14 +29,14 @@ const Profile = () => {
           {/* USER IMAGE */}
           <img className='rounded-full border-8 mt-10 w-[10rem] h-[10rem] border-yellow-400' src={User[0].picture}></img>
           {/* USER DATA */}
-          <div className="bg-[#003985] h-[10rem] w-[15rem] mt-[3.5rem] text-white p-5 z-20">
-            <b>Name:</b> {User[0].user.Name}  <br/>
+          <div className="bg-[#003985] h-[10rem] w-[15rem] mt-[3.5rem] text-white p-5 z-20 rounded-xl">
+            <b>Name:</b> {User[0].user.Name}  <br/><br/>
             <b>Email:</b> {User[0].user.Email}
           </div>
           {/* yellow designs */}
           <div className="absolute left-0 top-[18rem] bg-yellow-400 w-[14rem] h-[4.6rem] z-10"></div>
           <div className=" absolute right-0 top-[26rem] bg-yellow-400 w-[14rem] h-[4.6rem] z-10"></div>
-          <div className="mt-[3rem] mb-[1rem]">
+          <div className="mt-[5rem] mb-[2rem]">
             <Logout />
           </div>
         </div>
