@@ -2,6 +2,7 @@ const express = require('express') //npm i express cors
 const cors = require('cors')
 const app = express(); //to use express
 const port = 3000;
+const bodyParser = require('body-parser');
 require('dotenv').config()
 
 const protRoute = require('./routes/protected')
@@ -36,6 +37,9 @@ const corsOptions =
     }
 
 app.use(cors(corsOptions))
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(cookieParser())
 
