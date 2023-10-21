@@ -13,9 +13,9 @@ const sample = [
 ]
 
   function itemsFormat (){
-    return sample.map((elem) =>{
+    return sample.map((elem, index) =>{
       return(
-        <div className=" mt-[2rem]">
+        <div key={index} className=" mt-[2rem]">
               <div className="flex flex-row bg-[#17394C] w-[70rem] h-auto space-x-[2rem] rounded-xl">
                 <div className="text-white ml-[1rem] text-[2rem]">
                   {elem.label}

@@ -12,6 +12,7 @@ const passport = require('passport')
 const passportSetup =require('./comp/passport')
 //routes
 const authRoute = require("./routes/auth")
+const adminRoute = require("./routes/admin")
 
 //session para sa google oauth
 const session = require("cookie-session")
@@ -57,6 +58,8 @@ app.use(passport.session())
 app.use("/auth", authRoute)
 
 app.use("/prot", protRoute)
+
+app.use("/priv", adminRoute)
 
 app.use((req, res)=>{
     //if you made a mistake on typing the url

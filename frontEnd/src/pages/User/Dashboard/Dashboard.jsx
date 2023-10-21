@@ -30,6 +30,8 @@ const Dashboard = () => {
     return <div>Loading...</div>;
   }
 
+
+
   function sample() {
     return data.map((elem) => 
       Object.values(elem.items).map((el, index)=>{
@@ -76,7 +78,7 @@ const Dashboard = () => {
         </div>
       </div>
           {/*Item display parent*/}
-        <SearchBar />
+        <SearchBar/>
       <div className="flex flex-col h-screen p-[1rem]">
         {sample()}
       </div>
