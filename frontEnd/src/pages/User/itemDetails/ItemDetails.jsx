@@ -1,13 +1,26 @@
 import { Link, useLocation } from "react-router-dom";
 import axios from "axios"
-import { useEffect } from "react";
+import { useState } from "react";
+import Confirmation from "../Confirmation/Confirmation";
 
 const ItemDetails = () => {
+
   const location = useLocation()
   const data = location.state.el
+  //for modal
+  const [userClicked, setuserClicked] = useState(false);
+  //for another modal
+  //const [confirm, setConfirm] = useState(false);
+  
+  const handleYesAction = () => {
+    setuserClicked(true); // Set the userClicked state to true
+    sendReq();
+    //setConfirm(true);
+    
+  };
 
   const accessToken = localStorage.getItem('accessToken')
-
+ 
   const sendReq = async()=>{
     try{
       const response = await axios.post(`${import.meta.env.VITE_API_URL}/prot/request`,
@@ -50,7 +63,7 @@ const ItemDetails = () => {
           </div>
 
           {/* DIV FOR CONTAINER OF CONTENTS */}
-          <div className="text-center p-5 flex flex-col items-center bg-[#17394c] h-[23rem] w-[19rem] mt-[3rem] mb-[2rem] rounded-lg text-white">
+          <div className="text-center p-5 flex flex-col items-center bg-[#17394c] h-[27rem] w-[19rem] mt-[3rem] mb-[2rem] rounded-lg text-white">
             {/* title */}
             <div>{data.title}</div>
 
@@ -61,13 +74,11 @@ const ItemDetails = () => {
               {/* found at */}
               <p className="p-3 mt-[1rem] h-full">FOUND AT {data.founded} </p>
             </div>
-
-            {/* request button */}
-            <Link to="/Confirmation">
-              <button className="mb-[0.6rem] rounded-full p-2 px-3 bg-yellow-500 text-black mt-[2.8rem]">
-                REQUEST APPOINTMENT
-              </button>
-            </Link>
+            
+          </div>
+          {/* request button */}
+            {/* NOTE:Modal: Cannot register modal instance that's already open */}
+            <Confirmation onYesAction={handleYesAction} />
         </div>
       
     </div>

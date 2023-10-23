@@ -17,7 +17,7 @@ const sample = [
       return(
         <div key={index} className=" mt-[2rem]">
               <div className="flex flex-row bg-[#17394C] w-[70rem] h-auto space-x-[2rem] rounded-xl">
-                <div className="text-white ml-[1rem] text-[2rem]">
+                <div className="text-white ml-[1rem] text-[1.5rem]">
                   {elem.label}
                 </div>
                   <div className="flex flex-row-reverse bg-[#17394C] w-[70rem] items-center">
