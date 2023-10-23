@@ -8,7 +8,7 @@ const dasboard = () => {
     <>
     <div className='flex flex-row h-screen w-screen bg-[#17394C] space-x-[1.5rem] overflow-x-hidden overflow-y-hidden'>
         <SideBar />
-        <RequestsView />
+        <LostView/>
     </div>
     </>
   )
