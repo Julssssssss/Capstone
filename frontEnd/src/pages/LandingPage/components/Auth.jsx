@@ -3,7 +3,7 @@ const Auth = () => {
     
     const role = localStorage.getItem('role')
     const token = localStorage.getItem('accessToken')
-    if(token){
+    if(token && role){
         if(role==='user'){
             window.location.href = `${import.meta.env.VITE_CLIENT_URL}/dashboard`
         }

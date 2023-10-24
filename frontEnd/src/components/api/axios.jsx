@@ -24,21 +24,34 @@ axiosFetchItems.interceptors.response.use(
     response => response,
     error => {
         const originalRequest = error.config;
-        if (error.response.status === 403 && !originalRequest._retry) {
-            originalRequest._retry = true;
-            return axiosReFetchToken.post()
-                .then(response => {
-                    const newAccessToken = response.data.accessToken;
-                    const temp = JSON.stringify(newAccessToken)
-                    localStorage.setItem('accessToken', temp);
-                    originalRequest.headers['Authorization'] = `Bearer ${newAccessToken}`;
-                    return axiosFetchItems(originalRequest);
-                });
-        }
-        if (error.response.status === 401) {
-            window.location.href = `${import.meta.env.VITE_CLIENT_URL}/401`;
-            return Promise.resolve(); // Returning a resolved promise to stop further processing
-        }
+        try
+            {    if (error.response.status === 403 && !originalRequest._retry) {
+                    originalRequest._retry = true;
+                    return axiosReFetchToken.post()
+                        .then(response => {
+                            const newAccessToken = response.data.accessToken;
+                            const temp = JSON.stringify(newAccessToken)
+                            localStorage.setItem('accessToken', temp);
+                            originalRequest.headers['Authorization'] = `Bearer ${newAccessToken}`;
+                            return axiosFetchItems(originalRequest);
+                        });
+                }
+                else if (error.response.status === 401) {
+                    window.location.href = `${import.meta.env.VITE_CLIENT_URL}/401`;
+                    return Promise.resolve(); // Returning a resolved promise to stop further processing
+                }
+            } 
+            catch (e){
+                const logout =()=>{
+                    localStorage.clear()
+                    window.open(
+                        `${import.meta.env.VITE_API_URL}/auth/logout`, "_self"
+                    )
+                }
+                logout()
+                return Promise.resolve()
+            }
+
         return Promise.reject(error);
     }
 );

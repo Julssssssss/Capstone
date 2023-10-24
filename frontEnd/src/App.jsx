@@ -33,7 +33,6 @@ const App = () => {
             <Route path='/Dashboard' element={<Dashboard/>}/>
             <Route path='/Profile' element={<UserProfile/>}/>
             <Route path='/Item/:itemId' element={<ItemDetails/>}/>
-            <Route path='/Confirmation' element={<Confirmation/>}/>
             
           {/*admin/mod side */}
             <Route path='/Admin/Dashboard' element={<AdminDash/>}/>

@@ -20,6 +20,7 @@ const Confirmation = ({ onYesAction }) => {
 
   const showSuccessAlert = () => {
     alert("Your request has been sent to the administrators!\n\nPlease check your email for further details and instructions");
+    handleYesClick()
     window.location.href = "/Dashboard";
   };
   
