@@ -91,8 +91,8 @@ router.get("/logout", (req, res)=>{
             for (const cookieName in cookies) {
                 res.clearCookie(cookieName);
               }
-            req.session = null            
             req.logout();
+            req.session = null            
             res.redirect(process.env.CLIENT_URL)
         })
         .catch((err) => {

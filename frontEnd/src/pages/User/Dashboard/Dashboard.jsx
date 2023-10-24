@@ -43,7 +43,7 @@ const Dashboard = () => {
     else{
       setFilteredData(data[0].items)
     }
-  }, 2000); 
+  }, 1000); 
 
   const handleInputChange = (e) => {
     setSearchQuery(e.target.value);
