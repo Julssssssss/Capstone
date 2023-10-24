@@ -1,9 +1,9 @@
 // for dashboard and lost items section
 const RequestsButton = () => {
   return (
-    <div>
-         <button className="bg-[#F9D62B] w-[15rem] h-[3rem] mb-[2rem] rounded-[1rem]">REQUESTS</button>
-    </div>
+    <>
+         <button className="bg-[#F9D62B] font-bold w-[15rem] h-[3.5rem] mb-[2rem] rounded-[1rem]">REQUESTS</button>
+    </>
   )
 }
 

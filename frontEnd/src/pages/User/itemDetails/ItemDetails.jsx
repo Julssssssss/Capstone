@@ -9,6 +9,7 @@ const ItemDetails = () => {
   const data = location.state.el
   //for modal
   const [userClicked, setuserClicked] = useState(false);
+  
   //for another modal
   //const [confirm, setConfirm] = useState(false);
   
@@ -79,6 +80,7 @@ const ItemDetails = () => {
           {/* request button */}
             {/* NOTE:Modal: Cannot register modal instance that's already open */}
             <Confirmation onYesAction={handleYesAction} />
+            
         </div>
       
     </div>

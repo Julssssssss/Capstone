@@ -1,14 +1,17 @@
 import {Route, Routes, Navigate} from 'react-router-dom'
-//test
-import Dashboard from './pages/User/Dashboard/Dashboard'
-import LandingPage from './pages/LandingPage/LandingPage'
 import Page404 from './pages/404/Page404'
 import Page401 from './pages/404/Page401'
+//test
+//user
+import Dashboard from './pages/User/Dashboard/Dashboard'
+import LandingPage from './pages/LandingPage/LandingPage'
 import UserProfile from './pages/User/UserProfile/UserProfile'
 import ItemDetails from './pages/User/itemDetails/ItemDetails'
-import Confirmation from './pages/User/Confirmation/Confirmation'
+//admin & mod
+import DashView from './pages/admin/Mod/Home/DashView'
+import LostView from './pages/admin/Mod/LostItems/LostView'
+import RequestsView from './pages/admin/Mod/Requests/RequestsView'
 import HlpDocumentation from './pages/admin/Mod/HlpDocumentation/HlpDocumentation'
-import AdminDash from './pages/admin/Mod/AdminDashboard'
 
 const App = () => {
   //nababaliw ka na san mo lalagay yung accessToken kasi wala kayong rtk
@@ -33,10 +36,12 @@ const App = () => {
             <Route path='/Dashboard' element={<Dashboard/>}/>
             <Route path='/Profile' element={<UserProfile/>}/>
             <Route path='/Item/:itemId' element={<ItemDetails/>}/>
-            <Route path='/Confirmation' element={<Confirmation/>}/>
+            
             
           {/*admin/mod side */}
-            <Route path='/Admin/Dashboard' element={<AdminDash/>}/>
+            <Route path='/Admin/Dashboard' element={<DashView/>}/>
+            <Route path='/Admin/LostItems' element={<LostView/>}/>
+            <Route path='/Admin/Requests' element={<RequestsView/>}/>
             <Route path='/Admin/HlpDocs' element={<HlpDocumentation/>}/>
 
           {/* 404 page  catch all  palitan to in the future hopefully ng 404 page tlga */}
