@@ -57,7 +57,7 @@ const Dashboard = () => {
           <div className="w-[2rem] h-[2rem] p-2 bg-[#17394C] rounded-l-lg">
             <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M11 6C13.7614 6 16 8.23858 16 11M16.6588 16.6549L21 21M19 11C19 15.4183 15.4183 19 11 19C6.58172 19 3 15.4183 3 11C3 6.58172 6.58172 3 11 3C15.4183 3 19 6.58172 19 11Z" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></path> </g></svg>
           </div>
-          <input type="text" className="bg-[#17394C] text-white p-[1rem] w-72 h-8 rounded-r-lg"
+          <input type="text" className="bg-[#17394C] text-white p-[1rem] w-[16rem] h-8 rounded-r-lg"
           value={searchQuery}
           onChange={handleInputChange}/>  
       </div>
@@ -70,20 +70,20 @@ const Dashboard = () => {
     return filteredData.map((el, index)=>{
       return (
         // container for item and description
-        <div key={index} className="flex flex-row m-3 rounded-lg z-0 justify-end h-[9rem] items-center ">
+        <div key={index} className="flex flex-row m-[1rem] mb-[2.5rem] rounded-lg z-0 justify-end h-[6rem] items-center ">
             {/*title container*/}
 
           <Link to={{pathname:`/Item/${el._id}`}}
               state={{el}}
             >
-            <div className="m-2 rounded-lg bg-[#003985] hover:bg-sky-700 active:bg-[#0d1832] overflow-hidden w-[15rem] h-[5rem]">
-              <div className="flex items-center font-bold text-white ml-[5rem] h-full p-3">
+            <div className="m-2 rounded-lg bg-[#003985] hover:bg-sky-700 active:bg-[#0d1832] overflow-hidden w-[16rem] h-[5rem]">
+              <div className="flex items-center font-bold text-white ml-[7rem] h-full p-4">
                 {el.title}
               </div>
             </div>
           </Link>
 
-          <div className="p-2 m-3 rounded-full bg-yellow-400 overflow-hidden absolute left-[1rem] ">
+          <div className="p-2 rounded-full bg-yellow-400 overflow-hidden absolute left-[3rem] ">
             <img src={el.img} alt={el.title} className="rounded-full object-contain w-[7rem]"/>
           </div>
           
@@ -95,26 +95,37 @@ const Dashboard = () => {
   
   return (
     
-    <div className="bg-[#0d1832] h-full">
-        {/*navbar and item contaner */}
-      <div className="w-full h-full flex">
-        {/* for navigation bar  */}
-        <div className="flex justify-start items-end space-x-3 w-[4rem]">
+    
+    <div className="bg-[#0d1832] h-full p-[1rem]">
+      {/*objects*/}
+        <img className="w-[1rem] h-[6rem] absolute right-0 top-0" src="https://i.postimg.cc/bJdsVcjw/Rectangle-4.png" alt="rectangle"/>
+        <img className="w-[1rem] h-[9rem] absolute left-0 top-[5rem]" src="https://i.postimg.cc/bJdsVcjw/Rectangle-4.png" alt="rectangle"/>
+        <img className="w-[1rem] h-[9rem] absolute right-0 bottom-0" src="https://i.postimg.cc/bJdsVcjw/Rectangle-4.png" alt="rectangle"/>
+        <img className="w-[1rem] h-[9rem] absolute left-0 top-[14rem]" src="https://i.postimg.cc/CxY4cgFg/Rectangle-2.png" alt="rectangle"/>
+        <img className="w-[1rem] h-[9rem] absolute right-0 top-[35rem]" src="https://i.postimg.cc/CxY4cgFg/Rectangle-2.png" alt="rectangle"/>
+      <div className="bg-[#002855] rounded-[1rem]">
+          {/*navbar and item contaner */}
+        <div className="w-full h-full flex pt-[1rem] pl-[1rem]">
+          <ProfilePic User={data}/>
+          <div className="flex justify-start  items-end space-x-3 w-[50rem] p-[0.5rem]">
+            <div className="text-white text-lg"> Hi, {data[0].user.Name}</div>
+          </div>
+          <div className="flex justify-end space-x-2 w-[12rem]">
+           {/* */}
+          </div>
+        </div>
+          {/*Item display parent*/}
+          {searchBar()}
+        <div className="flex flex-col p-[1rem]"> 
+          <img className="w-[5rem] h-[5rem] fixed right-[0.5rem] top-[8rem]" src="https://i.postimg.cc/y6yXpNN8/Untitled-design-4.png" alt="rectangle"/>
+          <img className="w-[5rem] h-[5rem] fixed left-[0.6rem] bottom-[2rem]" src="https://i.postimg.cc/QNqNF2fz/Untitled-design-8.png" alt="rectangle"/>
+          <img className="w-[5rem] h-[5rem] fixed left-[10rem] top-[19rem]" src="https://i.postimg.cc/W1chrGMW/Untitled-design-9.png" alt="rectangle"/>
+          {sample()}
           
         </div>
-        <div className="flex justify-start items-end space-x-3 w-[50rem] ml-2">
-          <div className="text-white text-lg"> Hello, {data[0].user.Name}</div>
-        </div>
-        <div className="flex justify-end space-x-2 w-[12rem]">
-          <ProfilePic User={data}/>
-        </div>
-      </div>
-          {/*Item display parent*/}
-        {searchBar()}
-      <div className="flex flex-col bg-[#0d1832] p-[1rem]">
-        {sample()}
       </div>
     </div>
+    
   )
 }
 export default Dashboard
