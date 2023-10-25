@@ -5,15 +5,19 @@ const jwtRefreshToken = require('../Models/refreshTokenModels')
 
 //TODO: check and fix this
 const checkRefToken = async(refreshToken) =>{
+    let token = await jwtRefreshToken.findOne({ 'refreshToken': refreshToken });
+    if(token){
+        return null
+    }
+    else{
+        return 401
+    }
+}
+
+const deleteRefTokenDb = async(refreshToken)=>{
     try{
-        let token = await jwtRefreshToken.findOne({ 'refreshToken': refreshToken });
-        if(token){
-            return null
-        }
-        else{
-            return 401
-        }
-    }catch(err) {return 403}
+        await jwtRefreshToken.findOneAndDelete({ 'refreshToken': refreshToken });
+    }catch(err) {console.log(err)}
 }
 
 router.post('/refreshToken', async(req, res)=>{
@@ -24,12 +28,13 @@ router.post('/refreshToken', async(req, res)=>{
         if(status=== 401){
             return res.sendStatus(401)
         }
-        else if (status === 403){
-            return res.sendStatus(403)
-        }
 
     jwt.verify (refreshToken.jwt, process.env.JWT_REFRESH_SECRET, (err, user)=>{
-        if(err) return res.sendStatus(403)
+        //if expired na refreshToken delete na
+        if(err) {
+            deleteRefTokenDb(refreshToken.jwt)
+            return res.sendStatus(401)
+        }
         const {_id, Name, Email, Role}=user
         const data = {_id, Name, Email, Role}
         const accessToken = jwt.sign(data, process.env.JWT_ACCESS_SECRET)
@@ -75,13 +80,6 @@ router.get("/google/callback",
     })
 )
 router.get("/google", passport.authenticate("google", ["email", "profile"]))
-
-//TODO: check and fix this
-const deleteRefTokenDb = async(refreshToken)=>{
-    try{
-        await jwtRefreshToken.findOneAndDelete({ 'refreshToken': refreshToken });
-    }catch(err) {console.log(err)}
-}
 
 router.get("/logout", (req, res)=>{
     const cookies =req.cookies

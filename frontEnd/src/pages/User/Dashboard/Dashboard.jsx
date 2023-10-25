@@ -70,7 +70,7 @@ const Dashboard = () => {
     return filteredData.map((el, index)=>{
       return (
         // container for item and description
-        <div key={index} className="flex flex-row m-3 rounded-lg mb-[3rem] z-0 justify-end h-[9rem] items-center ">
+        <div key={index} className="flex flex-row m-3 rounded-lg z-0 justify-end h-[9rem] items-center ">
             {/*title container*/}
 
           <Link to={{pathname:`/Item/${el._id}`}}
@@ -100,9 +100,7 @@ const Dashboard = () => {
       <div className="w-full h-full flex">
         {/* for navigation bar  */}
         <div className="flex justify-start items-end space-x-3 w-[4rem]">
-          <div className="">
-            {/* for navigation bar  */}
-          </div>
+          
         </div>
         <div className="flex justify-start items-end space-x-3 w-[50rem] ml-2">
           <div className="text-white text-lg"> Hello, {data[0].user.Name}</div>
@@ -113,7 +111,7 @@ const Dashboard = () => {
       </div>
           {/*Item display parent*/}
         {searchBar()}
-      <div className="flex flex-col bg-[#0d1832] h-screen p-[1rem]">
+      <div className="flex flex-col bg-[#0d1832] p-[1rem]">
         {sample()}
       </div>
     </div>

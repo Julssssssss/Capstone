@@ -3,6 +3,10 @@ const schema = mongoose.Schema;
 
 
 const refreshTokensSchema = new schema({
+    Email:{
+        type: String, 
+        required: true
+    },
     refreshToken:{
         type: String, 
         required: true
