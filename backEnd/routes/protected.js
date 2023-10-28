@@ -42,14 +42,23 @@ router.post("/data", verifyToken, (req, res)=>{
 
 router.post("/request", verifyToken, async(req, res)=>{
     const {itemId} = req.body
-    console.log(itemId)
     const {user} = req.user
     try{
         let item = await itemModels.findOne({ '_id': itemId });
 
         const {title, _id} = item
         const {Email} = user
+
         if(item == null){return res.sendStatus(403)}
+
+        let repeat = await reqModel.findOne({ 
+            'itemId': itemId,
+            'Email': Email
+        })
+
+        if(repeat){
+            return res.sendStatus(200)
+        }
 
         const newReq = new reqModel({
             itemId: _id,
@@ -57,10 +66,10 @@ router.post("/request", verifyToken, async(req, res)=>{
             Email: Email, 
         })
         await newReq.save()
-        res.sendStatus(200);
+        return res.sendStatus(200);
     }catch(err){
         console.log(err)
-        res.sendStatus(500)
+        return res.sendStatus(500)
     }
     
 })
