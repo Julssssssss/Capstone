@@ -43,13 +43,14 @@ const Dashboard = () => {
     else{
       setFilteredData(data[0].items)
     }
-  }, 1000); 
+  }, 500); 
 
   const handleInputChange = (e) => {
     setSearchQuery(e.target.value);
-    debouncedFilter(); 
+    debouncedFilter();
   }
 
+  
   function searchBar() {
     return (
       <>
@@ -95,28 +96,26 @@ const Dashboard = () => {
   
   return (
     
-    
-    <div className="bg-[#0d1832] h-full p-[1rem]">
+    <div className="bg-[#0d1832] p-[1rem] min-h-screen"> {/* background */}
       {/*objects*/}
         <img className="w-[1rem] h-[6rem] absolute right-0 top-0" src="https://i.postimg.cc/bJdsVcjw/Rectangle-4.png" alt="rectangle"/>
         <img className="w-[1rem] h-[9rem] absolute left-0 top-[5rem]" src="https://i.postimg.cc/bJdsVcjw/Rectangle-4.png" alt="rectangle"/>
-        <img className="w-[1rem] h-[9rem] absolute right-0 bottom-0" src="https://i.postimg.cc/bJdsVcjw/Rectangle-4.png" alt="rectangle"/>
+        <img className="w-[1rem] h-[9rem] absolute right-0 bottom-7" src="https://i.postimg.cc/bJdsVcjw/Rectangle-4.png" alt="rectangle"/>
         <img className="w-[1rem] h-[9rem] absolute left-0 top-[14rem]" src="https://i.postimg.cc/CxY4cgFg/Rectangle-2.png" alt="rectangle"/>
-        <img className="w-[1rem] h-[9rem] absolute right-0 top-[35rem]" src="https://i.postimg.cc/CxY4cgFg/Rectangle-2.png" alt="rectangle"/>
+        <img className="w-[1rem] h-[9rem] absolute right-0 top-[31rem]" src="https://i.postimg.cc/CxY4cgFg/Rectangle-2.png" alt="rectangle"/>
       <div className="bg-[#002855] rounded-[1rem]">
+        
           {/*navbar and item contaner */}
-        <div className="w-full h-full flex pt-[1rem] pl-[1rem]">
+        <div className="flex pt-[1rem] px-[1rem]">
           <ProfilePic User={data}/>
-          <div className="flex justify-start  items-end space-x-3 w-[50rem] p-[0.5rem]">
+          <div className="flex p-[0.5rem] whitespace-nowrap w-full">
             <div className="text-white text-lg"> Hi, {data[0].user.Name}</div>
           </div>
-          <div className="flex justify-end space-x-2 w-[12rem]">
-           {/* */}
-          </div>
         </div>
+        
           {/*Item display parent*/}
           {searchBar()}
-        <div className="flex flex-col p-[1rem]"> 
+        <div className={`flex flex-col p-[1rem] min-h-screen`}> 
           <img className="w-[5rem] h-[5rem] fixed right-[0.5rem] top-[8rem]" src="https://i.postimg.cc/y6yXpNN8/Untitled-design-4.png" alt="rectangle"/>
           <img className="w-[5rem] h-[5rem] fixed left-[0.6rem] bottom-[2rem]" src="https://i.postimg.cc/QNqNF2fz/Untitled-design-8.png" alt="rectangle"/>
           <img className="w-[5rem] h-[5rem] fixed left-[10rem] top-[19rem]" src="https://i.postimg.cc/W1chrGMW/Untitled-design-9.png" alt="rectangle"/>

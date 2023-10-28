@@ -2,6 +2,7 @@ import {Route, Routes, Navigate} from 'react-router-dom'
 import Page404 from './pages/404/Page404'
 import Page401 from './pages/404/Page401'
 //test
+
 //user
 import Dashboard from './pages/User/Dashboard/Dashboard'
 import LandingPage from './pages/LandingPage/LandingPage'
@@ -26,6 +27,7 @@ const App = () => {
       <style>
         {`*{outline: solid red}`}
       </style>
+      
 
       <div>
         <Routes>
