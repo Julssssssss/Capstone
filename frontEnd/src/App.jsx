@@ -1,4 +1,4 @@
-import {Route, Routes, Navigate} from 'react-router-dom'
+import {Route, Routes} from 'react-router-dom'
 import Page404 from './pages/404/Page404'
 import Page401 from './pages/404/Page401'
 //test
@@ -24,9 +24,7 @@ const App = () => {
     <>
 
       {/* eto yung red pang debug to*/}
-      <style>
-        {`*{outline: solid red}`}
-      </style>
+      
       
 
       <div>

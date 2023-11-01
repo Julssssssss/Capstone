@@ -1,4 +1,4 @@
-import { useEffect, useState, useContext } from "react"
+import { useEffect, useState} from "react"
 import NavBar from './components/NavBar'
 import { Link} from "react-router-dom"
 import ProfilePic from "./components/ProfilePic"
@@ -31,7 +31,6 @@ const Dashboard = () => {
   if (loading) {
     return <div>Loading...</div>;
   }
-
 
   const debouncedFilter = debounce(() => {
     if(searchQuery.length > 1){
