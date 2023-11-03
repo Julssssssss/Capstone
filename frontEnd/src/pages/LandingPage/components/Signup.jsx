@@ -12,7 +12,7 @@ const Signup = () => {
       <button onClick={()=>{setShowTAC(!showTAC)}} className="mt-[2rem] mb-[1rem] bg-[#003985] h-[2rem] w-[8rem] p-1 rounded-md text-white text-poppins text-[0.9rem] mx-1">Sign up</button>
         {showTAC ? 
           <div>
-            <div></div>
+            <div onClick={()=>{setShowTAC(false)}} className="fixed inset-0 z-10"></div>
             <TermsAndAgreement/>
           </div>
           : null}

@@ -8,7 +8,7 @@ const TermsAndAgreement = () => {
   }
 
   return (
-    <div className='h-[80%] w-[80%] absolute top-10 left-8 z-50 bg-white'>
+    <div className='h-[80%] w-[80%] fixed top-10 left-8 z-20 bg-white'>
       <div className='flex flex-col'>
 
         <div className='p-5 h-[23rem]'>
