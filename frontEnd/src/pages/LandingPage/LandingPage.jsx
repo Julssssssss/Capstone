@@ -18,10 +18,11 @@ const LandingPage = () => {
   
   return (
     <>
-        <div className="bg-[#0d1832] flex flex-col w-screen h-screen">
+        <div className="bg-[#0d1832] flex flex-col overflow-y-auto w-screen h-auto">
             <LpCont1/>
             <LpCont2/>
             <Faq/>
+            
         </div>
     </>
   )

@@ -4,74 +4,34 @@ import Signup from "./Signup"
 
 
 const LpCont1 = () => {
-    let r= false
-    const img = `https://picsum.photos/200`
-    const lorem = `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`
    
     const [showBtn, setBtn] = useState(true)
     const handleBtn =() => {
         setBtn(false)
     }
 
-    function content1(){
-        return(
-            <>
-                {/* content na dko din alam itatawag */}
-                <div className={`flex w-screen h-[10rem] justify-between ${r? 'flex-row-reverse mt-[3.5rem]': 'mt-[3rem]'}`}>
-                    <div className="bg-[#134083] w-[5rem]"></div>
-                        
-                    <div className="text-center rounded-lg p-2 w-[12rem] bg-[#17394c] shadow-md shadow-yellow-400 text-white sm:text-black">
-                        {lorem}
-                    </div>
-
-                </div>
-                {/* phone i guess? */}
-                
-                <img className={`w-[6.5rem] h-[12rem] shadow-sm rounded-md ${r? '-mt-[11rem] ml-[11rem]': '-mt-[11rem] mr-[11rem]'}`} src={img}></img>
-                {r=true}
-                
-            </>
-        )
-    }               
- 
+   
     return (
-        <>
-            <div className="h-auto flex flex-col items-center bg-[#0d1832]">
-                {/* dko alam ano itatawag dito basta eto nasa unahan */}
-                
-                <div className="flex flex-row rounded-2xl shadow-3xl shadow-[#003985] w-[20rem] h-[11.6rem] mt-[3rem]">
-                    {/* img */}
-                    <img className="h-full w-[55%] rounded-l-2xl" src={img}></img>
-
-                    {/* txt cont */}
-                    <div className="flex flex-col justify-center text-white text-center w-[40%] p-2">
-                        {/* h1 txt */}
-                        <h1 className="font-bold">
-                            LANDING PAGE CONTENTS
-                        </h1>
-
-                        {/* p txt */}
-                        <p className="mt-[1rem]">
-                            Lorem ipsum dolor sit amet
-                        </p>
-
-                    </div>
+        <div className="relative h-auto pt-[2rem] overflow-hidden">
+            <div>
+                <div className="flex flex-col h-[11rem] bg-[#183A4C] bg-opacity-30 space-y-[1rem]">
+                    <div className="text-white font-poppins font-bold text-[2rem] text-left ml-[1rem] mr-[9rem]">Lost & Found</div>
+                    <div className="text-white font-poppins font-thin text-[0.7rem] text-left ml-[1rem] mr-[9rem]">Hindi ko pa alam ang ilalagay, gawan ko to after ng terms and agreement and before defense ok?</div>
                 </div>
-                
-                {/* get started na button */}
-                {showBtn ?(
-                <button onClick={handleBtn} className="mt-[1.7rem] bg-[#003985] h-[3rem] w-[11rem] p-2 rounded-xl text-white">GET STARTED</button>
-                ) : (<div className='flex flex-row'> 
+                <img src="https://i.postimg.cc/R0V3WBsF/i-Phone-15-Pro.png" alt="Mockups" className="absolute -top-[1.8rem] -right-[4.5rem] w-[18rem] h-[18rem] z-20"/>
+                <img src="https://i.postimg.cc/5twwqLm4/rtu-logo-3-2.png" alt="rtu logo" className="absolute top-[10rem] right-[1.3rem] w-[2.2rem] h-[2.2rem] opacity-50 z-20"/>
+                <img src="https://i.postimg.cc/MHxC97Rz/Untitled-design-5-3.png" alt="lF logo" className="absolute top-[0rem] right-[4rem] w-[3rem] h-[3rem] opacity-50 z-10"/>
+                <div className="absolute right-[5rem] top-[10rem] bg-[#17394C] w-[6rem] h-[6rem] rounded-full blur-xl"/>
+                <div className="absolute right-0 top-4 bg-[#17394C] w-[6rem] h-[6rem] rounded-full blur-xl"/>
+            </div>
+            {/* get started na button */}
+            {showBtn ?(
+                <button onClick={handleBtn} className="mt-[2rem] ml-[2rem] bg-[#003985] h-[2rem] w-[8rem] text-[0.9rem] rounded-md text-white font-poppins mb-[1rem]">Get Starded</button>
+                ) : (<div className='flex flex-row ml-[1rem] space-x-[1rem]'> 
                         <Signup /> 
                         <Login /> 
                 </div>)}
-                {/* dko din alam tatawag dito basta first content */}
-                {content1()}
-                {content1()}
-
-                
-            </div>
-        </>
+        </div>
     )
 }
 
