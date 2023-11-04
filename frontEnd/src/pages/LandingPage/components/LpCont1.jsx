@@ -16,7 +16,7 @@ const LpCont1 = () => {
             <div>
                 <div className="flex flex-col h-[11rem] bg-[#183A4C] bg-opacity-30 space-y-[1rem]">
                     <div className="text-white font-poppins font-bold text-[2rem] text-left ml-[1rem] mr-[9rem]">Lost & Found</div>
-                    <div className="text-white font-poppins font-thin text-[0.7rem] text-left ml-[1rem] mr-[9rem]">Hindi ko pa alam ang ilalagay, gawan ko to after ng terms and agreement and before defense ok?</div>
+                    <div className="text-white font-poppins font-thin text-[0.7rem] text-left ml-[1rem] mr-[9rem]">The Rizal Technological University Lost and Found Monitoring Solution System that simplifies the process of tracking, locating, and reuniting with individuals.</div>
                 </div>
                 <img src="https://i.postimg.cc/R0V3WBsF/i-Phone-15-Pro.png" alt="Mockups" className="absolute -top-[1.8rem] -right-[4.5rem] w-[18rem] h-[18rem] z-10"/>
                 <img src="https://i.postimg.cc/5twwqLm4/rtu-logo-3-2.png" alt="rtu logo" className="absolute top-[10rem] right-[1.3rem] w-[2.2rem] h-[2.2rem] opacity-50 z-20"/>

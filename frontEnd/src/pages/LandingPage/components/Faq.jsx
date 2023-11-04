@@ -2,11 +2,11 @@ import { useState } from "react";
 
 const Faq = () => {
   const Questions = [
-    { label: 'hello', contents: 'hi?' },
-    { label: 'eme', contents: 'mema?' },
-    { label: 'eme', contents: 'mema?' },
-    { label: 'eme', contents: 'mema?' },
-    { label: 'eme', contents: 'mema?' }
+    { label: '1.	What is Lost and Found Monitoring Solution System?', contents: 'The lost and Found Monitoring Solution System is a platform designed to help individuals claim found items. Users can request appointments to retrieve items that have been reported as found.' },
+    { label: '2.	How can I request an appointment to claim a found item?', contents: 'To request an appointment for claiming a found item, log in to your account and access the Found Items section. Select the item you wish to claim and click the "Request for Appointment" button.' },
+    { label: '3.	Who decides the appointment schedule and instructions for item retrieval?', contents: 'The appointment schedule and specific instructions for item retrieval are determined by the administrators of the Lost and Found Monitoring System. They will review your appointment request and communicate the schedule and instructions to you via email.' },
+    { label: '4.	How will I receive the appointment schedule and instructions?', contents: 'The administrators will send the appointment schedule and detailed instructions to your registered email address. It is essential to regularly check your email for updates regarding your appointment and item retrieval.' },
+    { label: '5.	How can I surrender an item to the Lost and Found Monitoring System?', contents: 'Surrendering an item should be done in person at our designated physical location. If you have found an item and would like to surrender it, please visit our designated drop-off location during our operating hours. Our team will assist you with the surrender process.' }
   ];
 
   const [isOpen, setIsOpen] = useState(new Array(Questions.length).fill(false));
@@ -22,7 +22,7 @@ const Faq = () => {
       return (
         <div key={index}>
           <div className="bg-[#134083] rounded-full flex flex-row justify-between p-[0.2rem] px-[1rem] items-center relative z-20">
-            <div className="text-[0.9rem]">{el.label}</div>
+            <div className="text-[0.7rem] text-justify">{el.label}</div>
             <button
               onClick={() => toggleDropdown(index)}
               className="w-[1rem] h-[1rem] flex items-center justify-center"
@@ -35,7 +35,7 @@ const Faq = () => {
             </button>
           </div>
           {isOpen[index] && (
-            <div className="p-2 border border-[#F9D62B] rounded shadow-md mt-2">
+            <div className="p-2 text-justify text-[0.7rem] border border-[#F9D62B] rounded shadow-md mt-2">
               {el.contents}
             </div>
           )}
@@ -50,7 +50,7 @@ const Faq = () => {
         <div className="text-white font-poppins flex flex-col space-y-[1rem] mx-[1.5rem] mb-[3rem]">
           <div className="text-[1.5rem] font-bold">FAQ</div>
           <div className="text-[0.9rem]">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+            Frequently Asked Questions
           </div>
           {Format()}
         </div>
