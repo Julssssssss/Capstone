@@ -16,9 +16,27 @@ const axiosFetchToken = axios.create({
 const axiosFetchItems = axios.create({
     baseURL: `${baseUrl}/prot/data`,
     headers:{
-        'Authorization': `Bearer ${accessToken}`
+        'authorization': `Bearer ${accessToken}`
     }
 });
+
+const axiosReFetchToken = axios.create({
+    baseURL: `${baseUrl}/auth/refreshToken`,
+});
+
+const axiosAcceptTAC = axios.create({
+    baseURL: `${baseUrl}/prot/TACagreement`,
+    headers: {
+        'authorization': `Bearer ${accessToken}`
+    }
+});
+
+const logout =()=>{
+    localStorage.clear()
+    window.open(
+        `${import.meta.env.VITE_API_URL}/auth/logout`, "_self"
+    )
+}
 
 axiosFetchItems.interceptors.response.use(
     response => response,
@@ -32,22 +50,18 @@ axiosFetchItems.interceptors.response.use(
                             const newAccessToken = response.data.accessToken;
                             const temp = JSON.stringify(newAccessToken)
                             localStorage.setItem('accessToken', temp);
-                            originalRequest.headers['Authorization'] = `Bearer ${newAccessToken}`;
+                            originalRequest.headers['authorization'] = `Bearer ${newAccessToken}`;
                             return axiosFetchItems(originalRequest);
                         });
                 }
                 else if (error.response.status === 401) {
                     window.location.href = `${import.meta.env.VITE_CLIENT_URL}/401`;
+                    
                     return Promise.resolve(); // Returning a resolved promise to stop further processing
                 }
             } 
             catch (e){
-                const logout =()=>{
-                    localStorage.clear()
-                    window.open(
-                        `${import.meta.env.VITE_API_URL}/auth/logout`, "_self"
-                    )
-                }
+                console.log(e)
                 logout()
                 return Promise.resolve()
             }
@@ -56,9 +70,5 @@ axiosFetchItems.interceptors.response.use(
     }
 );
 
-const axiosReFetchToken = axios.create({
-    baseURL: `${baseUrl}/auth/refreshToken`,
-});
 
-
-export { axiosFetchToken, axiosFetchItems, axiosReFetchToken };
+export { axiosFetchToken, axiosFetchItems, axiosReFetchToken, axiosAcceptTAC };

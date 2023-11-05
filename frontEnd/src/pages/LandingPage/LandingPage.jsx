@@ -3,22 +3,48 @@ import LpCont2 from "./components/LpCont2"
 import Faq from "./components/Faq"
 import {Auth} from "./components/Auth"
 import { getAccessTokenAndRole } from "./components/getAccessTokenAndRole"
-import {useEffect } from "react"
+import {useEffect, useState } from "react"
+
+import TermsAndAgreement from "./components/TermsAndAgreement"
 
 const LandingPage = () => {
 
+  const [handleTAC, setHandleTAC] =useState(true)
+  
+
   const redirect = async()=>{
     await getAccessTokenAndRole()
-    await Auth()
+      .then(res=>{
+        if(res != null){
+          if(res === true){
+            window.location.href="/dashboard";
+          }
+          else{
+            setHandleTAC(res)
+          }
+        }
+      })
   }
   
   useEffect(()=>{
     redirect()
   },[])
+
+  const logout =()=>{
+    window.open(
+        `${import.meta.env.VITE_API_URL}/auth/logout`, "_self"
+    )
+    localStorage.clear()
+  }
+
+  const closeTAC = () => {
+    setHandleTAC(false);
+    logout()
+  };
   
   return (
     <>
-        <div className="bg-[#0d1832] flex flex-col overflow-x-hidden overflow-y-auto w-auto h-auto">
+        <div className="bg-[#0d1832] flex flex-col overflow-y-auto w-screen h-auto">
             <LpCont1/>
             <LpCont2/>
             <Faq/> 

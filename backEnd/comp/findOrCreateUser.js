@@ -13,7 +13,7 @@ const addRefreshToken = async(refreshToken, Email) =>{
 }
 
 const createToken = (user, profile)=>{
-  const {_id, Name, Email, Role}=user
+  const {_id, Name, Email, Role, TAC}=user
     const data = {_id, Name, Email, Role}
     // If user exists, return the user
     const accessToken = jwt.sign(data, process.env.JWT_ACCESS_SECRET)
@@ -23,7 +23,8 @@ const createToken = (user, profile)=>{
       'accessToken': accessToken,
       'refreshToken': refreshToken,
       'role' : data.Role,
-      'picture': profile.picture
+      'picture': profile.picture, 
+      'TAC': TAC
     }
     return token
 }
@@ -42,10 +43,13 @@ const findOrCreateUser = async (profile, done) => {
           _id: profile.sub,
           Name: profile.name,
           Email: profile.email,
-          Role: 'user'
+          Role: 'user', 
+          TAC: false
           // Add any other relevant fields from the profile
         });
         await user.save();
+
+        const newUser = true
         const token = createToken(user, profile)
         return done(null, token);
       }

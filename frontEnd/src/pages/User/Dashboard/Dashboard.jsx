@@ -1,5 +1,4 @@
 import { useEffect, useState} from "react"
-import NavBar from './components/NavBar'
 import { Link} from "react-router-dom"
 import ProfilePic from "./components/ProfilePic"
 import debounce from "debounce"
@@ -15,7 +14,6 @@ const Dashboard = () => {
   const [searchQuery, setSearchQuery] = useState("")
   const [filteredData, setFilteredData] = useState(null)
  
-
   const getData = async()=>{
     const temp = await getUserAndItem()
     setData([temp]);
@@ -26,6 +24,7 @@ const Dashboard = () => {
   useEffect(()=>{
     getData()
   },[])
+
   
   //lagay dito loading eme
   if (loading) {
