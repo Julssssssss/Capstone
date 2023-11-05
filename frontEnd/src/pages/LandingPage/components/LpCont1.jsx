@@ -12,7 +12,7 @@ const LpCont1 = () => {
 
    
     return (
-        <div className="relative h-auto pt-[2rem] overflow-hidden">
+        <div className="relative w-screen h-auto pt-[2rem] overflow-hidden">
             <div>
                 <div className="flex flex-col h-[11rem] bg-[#183A4C] bg-opacity-30 space-y-[1rem]">
                     <div className="text-white font-poppins font-bold text-[2rem] text-left ml-[1rem] mr-[9rem]">Lost & Found</div>

@@ -5,7 +5,7 @@ const LpCont2 = () => {
     
   return (
     <>
-      <div className="relative text-white overflow-hidden items-center">
+      <div className="relative text-white overflow-hidden w-screen items-center">
         <div className="absolute">
         <div className="absolute right-[5rem] top-[4.5rem] bg-[#17394C] w-[12rem] h-[12rem] rounded-full blur-xl"/>
           <div className="w-screen flex flex-col space-y-[0.5rem] items-center mt-[5rem] text-white font-poppins text-center">
