@@ -44,7 +44,7 @@ router.post('/refreshToken', async(req, res)=>{
 
 router.get("/login/success", (req, res)=>{
     if(req.user){
-        const {accessToken, refreshToken, role} = req.user
+        const {accessToken, refreshToken, role, TAC} = req.user
         
         //send as http only para hindi maaccess through javascript
         res.cookie('jwt', refreshToken, {httpOnly: true, maxAge: 24 * 60 *60 * 1000 })
@@ -53,7 +53,8 @@ router.get("/login/success", (req, res)=>{
             error:false,
             message:"Success",
             accessToken: accessToken,
-            role : role
+            role : role, 
+            TAC : TAC
         })
     }
     else{

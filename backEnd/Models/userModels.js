@@ -18,7 +18,12 @@ const userSchema = new schema({
     Role:{
         type: String,
         required: true
-    },
+    }, 
+    TAC:{
+        type: Boolean,
+        required: true
+    }
+
 })
 const userModelo = mongoose.model("users", userSchema)
 module.exports = userModelo

@@ -1,12 +1,18 @@
+import { axiosAcceptTAC } from "../../../components/api/axios"
+import { Auth } from "./Auth"
+
 
 const TermsAndAgreement = ({closeTAC}) => {
 
-  const googleAuth =()=>{
-   
-    window.open(
-        `${import.meta.env.VITE_API_URL}/auth/google/callback`, "_self"
-    )
+
+  const handleAcceptTAC = async()=>{
+    console.log(localStorage.getItem('accessToken'))
+    await axiosAcceptTAC.post() //d binabasa accessToken
+      .then((res)=>{
+        Auth()
+      })
   }
+
 
   return (
     <div className='h-auto w-[20rem] fixed top-10 left-7 z-30 bg-[#0D1E48] border-2 border-[#F9D62B] rounded-xl text-white'>
@@ -14,7 +20,7 @@ const TermsAndAgreement = ({closeTAC}) => {
         <div className="w-full flex flex-row justify-end">
           <button onClick={closeTAC} className='h-[1.5rem] w-[1.5rem] m-[0.5rem] rounded-full'>
             <svg fill="#F9D62B" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512"
-            pace="preserve" stroke="#F9D62B"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <g> <path d="M256,0C114.84,0,0,114.842,0,256s114.84,256,256,256s256-114.842,256-256S397.16,0,256,0z M256,462.452 c-113.837,0-206.452-92.614-206.452-206.452S142.163,49.548,256,49.548S462.452,142.163,462.452,256S369.837,462.452,256,462.452z "></path> </g> </g> <g> <g> <polygon points="355.269,191.767 320.233,156.731 256,220.964 191.767,156.731 156.731,191.767 220.964,256 156.731,320.233 191.767,355.269 256,291.036 320.233,355.269 355.269,320.233 291.036,256 "></polygon> </g> </g> </g></svg>
+            pace="preserve" stroke="#F9D62B"><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <g> <path d="M256,0C114.84,0,0,114.842,0,256s114.84,256,256,256s256-114.842,256-256S397.16,0,256,0z M256,462.452 c-113.837,0-206.452-92.614-206.452-206.452S142.163,49.548,256,49.548S462.452,142.163,462.452,256S369.837,462.452,256,462.452z "></path> </g> </g> <g> <g> <polygon points="355.269,191.767 320.233,156.731 256,220.964 191.767,156.731 156.731,191.767 220.964,256 156.731,320.233 191.767,355.269 256,291.036 320.233,355.269 355.269,320.233 291.036,256 "></polygon> </g> </g> </g></svg>
           </button>
         </div>
 
@@ -43,7 +49,7 @@ const TermsAndAgreement = ({closeTAC}) => {
               By using the Lost and Found Monitoring Solution System, you acknowledge that you have read, understood, and agree to these Terms and Conditions.
           </div>
         </div>
-        <button onClick={googleAuth} className='bg-[#003985] h-[2rem] w-[7rem] rounded-md font-poppins mb-[1rem]'>Accept</button>
+        <button onClick={handleAcceptTAC} className='bg-[#003985] h-[2rem] w-[7rem] rounded-md font-poppins mb-[1rem]'>Accept</button>
       </div>
     </div>
   )
