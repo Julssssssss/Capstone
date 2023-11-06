@@ -39,7 +39,7 @@ const ItemDetails = () => {
   console.log(data._id)
   
   return (
-    <div>
+    <div className="font-poppins">
       {/* Close button */}
       <div className="bg-[#0d1832] flex flex-row">
         <Link to='/Dashboard'>

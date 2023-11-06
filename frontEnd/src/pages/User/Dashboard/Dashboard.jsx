@@ -94,7 +94,7 @@ const Dashboard = () => {
   
   return (
     
-    <div className="bg-[#0d1832] p-[1rem] min-h-screen"> {/* background */}
+    <div className="bg-[#0d1832] p-[1rem] min-h-screen font-poppins"> {/* background */}
       {/*objects*/}
         <img className="w-[1rem] h-[6rem] absolute right-0 top-0" src="https://i.postimg.cc/bJdsVcjw/Rectangle-4.png" alt="rectangle"/>
         <img className="w-[1rem] h-[9rem] absolute left-0 top-[5rem]" src="https://i.postimg.cc/bJdsVcjw/Rectangle-4.png" alt="rectangle"/>

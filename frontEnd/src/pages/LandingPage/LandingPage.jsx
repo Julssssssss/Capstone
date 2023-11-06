@@ -44,10 +44,18 @@ const LandingPage = () => {
   
   return (
     <>
-        <div className="bg-[#0d1832] flex flex-col overflow-y-auto w-screen h-auto">
+        <div className="bg-[#0d1832] flex flex-col overflow-x-hidden overflow-y-auto w-auto h-auto">
+            {handleTAC ? 
+              null:
+              <div>
+                <TermsAndAgreement closeTAC={closeTAC}/>
+              </div>
+              }
+
             <LpCont1/>
             <LpCont2/>
-            <Faq/> 
+            <Faq/>
+            
         </div>
     </>
   )

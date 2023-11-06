@@ -34,7 +34,7 @@ const Confirmation = ({ onYesAction }) => {
         Request for Appointment
       </button>
       <Modal
-        className='p-[1rem] rounded-xl bg-[#17394C] m-[2rem] mt-[7rem] text-white'
+        className='font-poppins p-[1rem] rounded-xl bg-[#17394C] m-[2rem] mt-[7rem] text-white'
         isOpen={isModalOpen}
         onRequestClose={handleNoClick}
         contentLabel="Custom Modal"
