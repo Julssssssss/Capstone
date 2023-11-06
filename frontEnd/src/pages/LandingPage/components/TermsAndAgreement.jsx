@@ -1,16 +1,25 @@
-import { axiosAcceptTAC } from "../../../components/api/axios"
-import { Auth } from "./Auth"
 
+import { Auth } from "./Auth"
+import axios from 'axios'
 
 const TermsAndAgreement = ({closeTAC}) => {
 
+  const accessToken = localStorage.getItem('accessToken');
 
-  const handleAcceptTAC = async()=>{
-    console.log(localStorage.getItem('accessToken'))
-    await axiosAcceptTAC.post() //d binabasa accessToken
-      .then((res)=>{
-        Auth()
-      })
+  const handleAcceptTAC = async () => {
+    try{
+      const response = await axios.put(
+        `${import.meta.env.VITE_API_URL}/prot/TACagreement`,
+        null,
+        {
+            headers: {
+                'authorization': `Bearer ${accessToken}`
+            }
+        }
+      )
+      Auth()
+    }
+    catch(err){console.log(err)}
   }
 
 

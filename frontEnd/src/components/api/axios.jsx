@@ -24,13 +24,6 @@ const axiosReFetchToken = axios.create({
     baseURL: `${baseUrl}/auth/refreshToken`,
 });
 
-const axiosAcceptTAC = axios.create({
-    baseURL: `${baseUrl}/prot/TACagreement`,
-    headers: {
-        'authorization': `Bearer ${accessToken}`
-    }
-});
-
 const logout =()=>{
     localStorage.clear()
     window.open(
@@ -71,4 +64,4 @@ axiosFetchItems.interceptors.response.use(
 );
 
 
-export { axiosFetchToken, axiosFetchItems, axiosReFetchToken, axiosAcceptTAC };
+export { axiosFetchToken, axiosFetchItems, axiosReFetchToken};
