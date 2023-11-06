@@ -10,8 +10,6 @@ const UserModel = require('../Models/userModels')
 const verifyToken = (req, res, next) => {
     const authHeader = req.headers['authorization']
     const token = authHeader.split(' ')[1]
-    console.log(token)
-    console.log(req.body)
     if(token === 'null' ) {return res.sendStatus(401)}
     jwt.verify(token, process.env.JWT_ACCESS_SECRET, (err, user)=>{
         if(err) return res.sendStatus(403)
@@ -25,14 +23,12 @@ const verifyToken = (req, res, next) => {
     })
 };
 
-router.post("/TACagreement", verifyToken, async(req, res)=>{
+router.put("/TACagreement", verifyToken, async(req, res)=>{
     try{
         if(req.user){
             const {user} = req.user
             const {Email} = user
-            console.log(Email)
             let Agreed = await UserModel.updateOne({ 'Email': Email }, {$set:{TAC:true}})
-            console.log(Agreed)
 
            return res.sendStatus(200)
         }
