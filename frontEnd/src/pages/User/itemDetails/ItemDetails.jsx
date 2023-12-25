@@ -1,6 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
 import axios from "axios"
 import { useState } from "react";
+import Carousel from "../itemDetails/Carousel"
 import Confirmation from "../Confirmation/Confirmation";
 
 const ItemDetails = () => {
@@ -60,7 +61,7 @@ const ItemDetails = () => {
         <div className="bg-[#0d1832] h-auto flex flex-col items-center">
           {/* IMG */}
           <div className="p-4 bg-[#17394c] shadow-md shadow-black h-[13rem] w-[13rem] mt-[3rem] rounded-lg">
-            <img  src={data.img}/>
+            <Carousel />
           </div>
 
           {/* DIV FOR CONTAINER OF CONTENTS */}

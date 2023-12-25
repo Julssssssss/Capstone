@@ -54,7 +54,7 @@ const Faq = () => {
           </div>
           {Format()}
         </div>
-        <img src="https://i.postimg.cc/2jXgMqZF/ease-2.png" alt="Mockups" className="absolute bottom-[-2rem] right-0 w-[10rem] h-[15rem] z-10 opacity-50"/>
+        <img src="https://res.cloudinary.com/dxjpbwlkh/image/upload/v1702903076/Assets/ease_2_egomvy.png" alt="Mockups" className="absolute bottom-[-2rem] right-0 w-[10rem] h-[15rem] z-10 opacity-50"/>
       </div>
     </>
   );
