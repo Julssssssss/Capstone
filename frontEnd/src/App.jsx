@@ -6,13 +6,14 @@ import Page401 from './pages/404/Page401'
 //user
 import Dashboard from './pages/User/Dashboard/Dashboard'
 import LandingPage from './pages/LandingPage/LandingPage'
-import UserProfile from './pages/User/UserProfile/UserProfile'
+import Profile from './pages/User/UserProfile/Profile'
 import ItemDetails from './pages/User/itemDetails/ItemDetails'
 //admin & mod
 import DashView from './pages/admin/Mod/Home/DashView'
 import LostView from './pages/admin/Mod/LostItems/LostView'
 import RequestsView from './pages/admin/Mod/Requests/RequestsView'
 import HlpDocumentation from './pages/admin/Mod/HlpDocumentation/HlpDocumentation'
+import AdminProfile from './pages/admin/Mod/Home/Widgets/AdminProfile'
 
 const App = () => {
   //nababaliw ka na san mo lalagay yung accessToken kasi wala kayong rtk
@@ -36,7 +37,7 @@ const App = () => {
           {/*pag gusto mo mag-add pa ng ibang path declare mo muna dito*/}
 
             <Route path='/Dashboard' element={<Dashboard/>}/>
-            <Route path='/Profile' element={<UserProfile/>}/>
+            <Route path='/Profile' element={<Profile/>}/>
             <Route path='/Item/:itemId' element={<ItemDetails/>}/>
             
           {/*admin/mod side */}
@@ -44,6 +45,7 @@ const App = () => {
             <Route path='/Admin/LostItems' element={<LostView/>}/>
             <Route path='/Admin/Requests' element={<RequestsView/>}/>
             <Route path='/Admin/HlpDocs' element={<HlpDocumentation/>}/>
+            <Route path='/Admin/AdminProfile' element={<AdminProfile/>}/>
 
           {/* 404 page  catch all  palitan to in the future hopefully ng 404 page tlga */}
           <Route path='/401' element={<Page401/>}/>

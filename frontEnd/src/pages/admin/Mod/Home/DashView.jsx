@@ -2,8 +2,29 @@ import Panels from './Widgets/Panels'
 import SearchBar from './Widgets/SearchBar'
 import ProfileIcon from './Widgets/ProfileIcon'
 import Sidebar from '../../MainComponents/SideBar'
+import { getUserAndItem } from "../../../User/Dashboard/components/getUserAndItemData";
+import { useEffect, useState } from 'react';
+
 
 const dashView = () => {
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+ 
+
+  const getData = async () => {
+    const temp = await getUserAndItem();
+    setData([temp]);
+    setLoading(false);
+    
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
   return (
     <>
     <div className='flex flex-row h-screen w-screen bg-[#17394C] space-x-[1.5rem] overflow-x-hidden overflow-y-hidden'>
@@ -13,7 +34,7 @@ const dashView = () => {
           <div className='text-[2.5rem]'>
             DASHBOARD <SearchBar />
           </div>
-          <ProfileIcon />
+          <ProfileIcon User={data} />
         </div>
           <Panels />
       </div>

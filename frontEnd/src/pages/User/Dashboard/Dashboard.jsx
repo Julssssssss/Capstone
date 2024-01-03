@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import ProfilePic from "./components/ProfilePic";
 import debounce from "debounce";
 import { getUserAndItem } from "./components/getUserAndItemData";
-import Carousel from "../itemDetails/Carousel";
+
 
 const Dashboard = () => {
   const [data, setData] = useState(null);

@@ -1,25 +1,33 @@
-const mongoose = require('mongoose')
-const schema = mongoose.Schema;
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
+const items = new Schema({
+  url: {
+    type: [String],
+    required: true,
+  },
+  nameItem: {
+    type: String,
+    required: true,
+  },
+  desc:{
+    type: String,
+    require: true,
+  },
+  found:{
+    type: String,
+    require: true,
+  },
+  submitter:{
+    type: String,
+    require: true,
+  },
+  timestamp: {
+    type: String,
+    default: Date.now,
+  },
+});
 
-const itemSchema = new schema({
-    img:{
-        type: Array, 
-        required: true
-    },
-    title:{
-        type: String,
-        required: true
-    },
-    desc:{
-        type: String,
-        required: true
-    },
-    founded:{
-        type: String,
-        required: true
-    }
-})
-const itemModelo = mongoose.model("items", itemSchema)
-module.exports = itemModelo
+const itemModelo = mongoose.model("items", items);
 
+module.exports = itemModelo;

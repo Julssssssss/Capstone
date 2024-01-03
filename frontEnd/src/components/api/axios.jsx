@@ -24,6 +24,14 @@ const axiosReFetchToken = axios.create({
     baseURL: `${baseUrl}/auth/refreshToken`,
 });
 
+const axiosFetchCName = axios.create({
+    baseURL: `${baseUrl}/priv/cloudName`,
+});
+
+const axiosSendImage = axios.create({
+    baseURL: `${baseUrl}/priv/getImage`,
+});
+
 const logout =()=>{
     localStorage.clear()
     window.open(
@@ -64,4 +72,4 @@ axiosFetchItems.interceptors.response.use(
 );
 
 
-export { axiosFetchToken, axiosFetchItems, axiosReFetchToken};
+export { axiosFetchToken, axiosFetchItems, axiosReFetchToken, axiosFetchCName, axiosSendImage};
