@@ -79,7 +79,6 @@ const ItemDetails = () => {
             
           </div>
           {/* request button */}
-            {/* NOTE:Modal: Cannot register modal instance that's already open */}
             <Confirmation onYesAction={handleYesAction} />
             
         </div>
